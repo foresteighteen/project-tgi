@@ -1,0 +1,96 @@
+.contacts
+  &__hero
+    color: #111111
+    margin-bottom: 100px
+  &__title
+    margin-bottom: 2rem
+  &__subtitle
+    font-size: 0.9375rem
+    line-height: 1.875rem
+    padding-right: 20px
+  &__list
+    margin-bottom: 45px
+  &__list-item
+  &__item
+  &__item-title
+    font-size: 1.125rem
+    font-weight: bold
+    margin-bottom: 1rem
+  &__item-description
+    font-size: 1.0625rem
+    line-height: 25px
+  &__map
+  &__form
+    transform: translateY(-200px)
+    padding-left: 138px
+    padding-right: 138px
+    padding-top: 90px
+    background-color: #fff
+    border-radius: 5px
+    box-shadow: 0px 20px 30px rgba(0,0,0,.03)
+    color: #111
+  &__form-title
+    font-family: ProximaNova
+    font-weight: 800
+    font-size: 45px
+    margin-bottom: 70px
+  &__form-row
+    display: flex
+    min-height: 90px
+    margin-bottom: 20px
+    font-size: 21px
+  &__form-label
+    align-self: center
+    flex-basis: 33.5%
+  &__form-input
+    flex: 1
+    border: 1px solid rgba(#707070, .2)
+    color: rgba(#111, .5)
+    padding-left: 15px
+    padding-right: 15px
+  &__form-btn
+    margin-top: 20px
+    background: transparent linear-gradient(74deg, #EE9D35 0%, #EC841C 100%)
+    box-shadow: 0px 10px 15px rgba(#B45A0B, .2)
+    border-radius: 5px
+    padding: 30px 0
+    max-width: 276px
+    width: 100%
+    text-align: center
+    font-size: 19px
+    text-transform: uppercase
+    color: #ffffff
+    font-family: ProximaNova
+    font-weight: 700
+    cursor: pointer
+  &__form-btn-sub
+    font-size: 19px
+    margin-left: 31.333333%
+    margin-top: 10px
+    line-height: 25px
+textarea.contacts__form-input
+  padding-top: 20px
+
+@media (max-width: 575px)
+  .contacts
+    &__list-item
+      margin-bottom: 20px
+    &__form
+      margin-top: 20px
+      transform: translateY(0)
+      padding-top: 45px
+      padding-left: 10px
+      padding-right: 10px
+    &__form-title
+      text-align: center
+    &__form-row
+      font-size: 16px
+      flex-direction: column
+    &__form-label
+      flex-basis: auto
+      align-self: flex-start
+      margin-bottom: 10px
+    &__form-btn-sub
+      margin-left: 0
+      font-size: 14px
+

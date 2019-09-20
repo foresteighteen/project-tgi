@@ -1,20 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from '../components/Header';
+import ContactsPage from '../pages/ContactsPage';
 
 const App = () => (
-  <div
-    id="page-wrap"
-    style={{
-      overflow: 'auto',
-      overflowX: 'hidden',
-    }}
-  >
+  <div id="page-wrap">
     <BrowserRouter>
       <Header />
       <Switch>
         <Route exact path="/" render={() => 'main'} />
-        <Route render={() => 'else'} />
+        <Route exact path="/contacts" component={ContactsPage} />
       </Switch>
     </BrowserRouter>
   </div>
