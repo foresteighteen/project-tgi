@@ -1,0 +1,18 @@
+.burger-menu
+  position: relative
+  z-index: 1001
+  width: 39px
+  height: 39px
+  cursor: pointer
+  mix-blend-mode: exclusion   
+  display: none
+  &__line 
+    &-top,
+    &-middle,
+    &-bottom 
+      mix-blend-mode: multiply
+      stroke-width: 1px
+
+@media (max-width: 991px)
+  .burger-menu
+    display: initial
