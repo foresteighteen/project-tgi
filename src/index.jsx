@@ -1,8 +1,14 @@
+import 'regenerator-runtime/runtime';
+import 'core-js/modules/es.promise';
+import 'core-js/modules/es.array.iterator';
+import 'bootstrap/dist/css/bootstrap-grid.min.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 
-
-import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import configureStore, { history } from './store';
 
 import './assets/css/fonts.css';
 import './assets/css/reset.scss';
@@ -13,7 +19,13 @@ import App from './containers/App';
 
 const MOUNT_NODE = document.getElementById('app');
 
+const store = configureStore({}, history);
+
 ReactDOM.render(
-  <App />,
-  MOUNT_NODE
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>,
+  MOUNT_NODE,
 );
