@@ -30,10 +30,21 @@
   font-weight: 800;
   font-style: normal;
   src: url(../fonts/ProximaNova-ExtraBold/ProximaNova-ExtraBold.ttf);
+  src: url(../fonts/ProximaNova-ExtraBold/ProximaNova-ExtraBold.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/ProximaNova-ExtraBold/ProximaNova-ExtraBold.woff)
+      format('woff'),
+    url(../fonts/ProximaNova-ExtraBold/ProximaNova-ExtraBold.ttf)
+      format('truetype');
 }
 @font-face {
   font-family: 'ProximaNova';
   font-weight: 700;
   font-style: normal;
   src: url(../fonts/ProximaNova-SemiBold/ProximaNova-SemiBold.ttf);
+  src: url(../fonts/ProximaNova-SemiBold/ProximaNova-SemiBold.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/ProximaNova-SemiBold/ProximaNova-SemiBold.woff) format('woff'),
+    url(../fonts/ProximaNova-SemiBold/ProximaNova-SemiBold.ttf)
+      format('truetype');
 }

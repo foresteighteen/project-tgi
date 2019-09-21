@@ -1,4 +1,5 @@
 .contacts
+  margin-top: 250px
   &__hero
     color: #111111
     margin-bottom: 100px
@@ -71,13 +72,19 @@
 textarea.contacts__form-input
   padding-top: 20px
 
-@media (max-width: 575px)
+@media (max-width: 1439px)
+  .contacts
+    &__form
+      padding-left: 75px
+      padding-right: 75px
+
+@media (max-width: 1199px)
   .contacts
     &__list-item
       margin-bottom: 20px
     &__form
       margin-top: 20px
-      transform: translateY(0)
+      transform: translateY(-100px)
       padding-top: 45px
       padding-left: 10px
       padding-right: 10px
@@ -93,4 +100,14 @@ textarea.contacts__form-input
     &__form-btn-sub
       margin-left: 0
       font-size: 14px
+
+@media (max-width: 575px)
+  .contacts
+    margin-top: 175px
+    &__form
+      transform: translateY(0)
+    &__title
+      font-size: 3.5rem
+    &__list-item
+      margin-bottom: 20px
 

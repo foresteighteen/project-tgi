@@ -2,10 +2,12 @@ import React from 'react';
 import H1 from '../../components/H1';
 import './ContactsPage.sass';
 const ContactsPage = () => (
-  <div className="container" style={{ marginTop: '250px' }}>
+  <div className="contacts container">
     <div className="row">
-      <div className="breadcrumbs col-md-2">BREADCRUMBS</div>
-      <div className="contacts__hero col-md-6">
+      <div className="col-md-2" style={{ marginTop: '30px' }}>
+        BREADCRUMBS
+      </div>
+      <div className="contacts__hero col-md-10 col-xl-6">
         <H1 className="contacts__title">Контакты</H1>
         <p className="contacts__subtitle">
           Это специальный элемент веб-дизайна, представляющий собой блок с
@@ -15,28 +17,28 @@ const ContactsPage = () => (
       </div>
     </div>
     <div className="contacts__list row">
-      <div className="contacts__list-item col-md-3">
+      <div className="contacts__list-item col-md-6 col-lg-3">
         <p className="contacts__item-title">Офис</p>
         <p className="contacts__item-description">
           127238, Москва, Дмитровское шоссе, дом № 71Б БЦ {'"7ONE"'}, офис 728
         </p>
       </div>
-      <div className="contacts__list-item col-md-3">
+      <div className="contacts__list-item col-md-6 col-lg-3">
         <p className="contacts__item-title">Производство</p>
         <p className="contacts__item-description">
           601021, Владимирская область, Киржачский р-н, д Федоровское, ул.
           Сельская, д.57
         </p>
       </div>
-      <div className="contacts__list-item col-md-2">
+      <div className="contacts__list-item col-md-6 col-lg-2">
         <p className="contacts__item-title">Телефон</p>
         <p className="contacts__item-description">+7 (495) 980-10-91</p>
       </div>
-      <div className="contacts__list-item col-md-2">
+      <div className="contacts__list-item col-md-6 col-lg-2">
         <p className="contacts__item-title">Почта</p>
         <p className="contacts__item-description">info@z-tgi.ru</p>
       </div>
-      <div className="contacts__list-item col-md-2">
+      <div className="contacts__list-item col-md-12 col-lg-2">
         <p className="contacts__item-title">Часы работы</p>
         <p className="contacts__item-description">с 9-00 до 18-00</p>
       </div>
@@ -49,9 +51,9 @@ const ContactsPage = () => (
     />
 
     <div className="row">
-      <div className="contacts__form col-md-8 mx-auto">
+      <div className="contacts__form col-md-10 mx-auto">
         <h2 className="contacts__form-title">Напишите Нам</h2>
-        <form action="#">
+        <form>
           <div className="contacts__form-row">
             <label htmlFor="department" className="contacts__form-label">
               Выберите отдел
@@ -116,7 +118,9 @@ const ContactsPage = () => (
             />
           </div>
           <div className="contacts__form-row">
-            <button className="contacts__form-btn mx-auto">отправить</button>
+            <button type="submit" className="contacts__form-btn mx-auto">
+              отправить
+            </button>
           </div>
           <div className="contacts__form-row">
             <p className="contacts__form-btn-sub col-md-8">
