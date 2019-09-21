@@ -1,13 +1,50 @@
 @charset "UTF-8";
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-weight: 400;
   font-style: normal;
   src: url(../fonts/Roboto-Regular/Roboto-Regular.eot);
-  src: url(../fonts/Roboto-Regular/Roboto-Regular.eot?#iefix) format("embedded-opentype"), url(../fonts/Roboto-Regular/Roboto-Regular.woff) format("woff"), url(../fonts/Roboto-Regular/Roboto-Regular.ttf) format("truetype"); }
+  src: url(../fonts/Roboto-Regular/Roboto-Regular.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/Roboto-Regular/Roboto-Regular.woff) format('woff'),
+    url(../fonts/Roboto-Regular/Roboto-Regular.ttf) format('truetype');
+}
 @font-face {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-weight: 500;
   font-style: normal;
   src: url(../fonts/Roboto-Medium/Roboto-Medium.eot);
-  src: url(../fonts/Roboto-Medium/Roboto-Medium.eot?#iefix) format("embedded-opentype"), url(../fonts/Roboto-Medium/Roboto-Medium.woff) format("woff"), url(../fonts/Roboto-Medium/Roboto-Medium.ttf) format("truetype"); }
+  src: url(../fonts/Roboto-Medium/Roboto-Medium.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/Roboto-Medium/Roboto-Medium.woff) format('woff'),
+    url(../fonts/Roboto-Medium/Roboto-Medium.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-style: normal;
+  src: url(../fonts/Roboto-Bold/Roboto-Bold.ttf);
+}
+@font-face {
+  font-family: 'ProximaNova';
+  font-weight: 800;
+  font-style: normal;
+  src: url(../fonts/ProximaNova-ExtraBold/ProximaNova-ExtraBold.ttf);
+  src: url(../fonts/ProximaNova-ExtraBold/ProximaNova-ExtraBold.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/ProximaNova-ExtraBold/ProximaNova-ExtraBold.woff)
+      format('woff'),
+    url(../fonts/ProximaNova-ExtraBold/ProximaNova-ExtraBold.ttf)
+      format('truetype');
+}
+@font-face {
+  font-family: 'ProximaNova';
+  font-weight: 700;
+  font-style: normal;
+  src: url(../fonts/ProximaNova-SemiBold/ProximaNova-SemiBold.ttf);
+  src: url(../fonts/ProximaNova-SemiBold/ProximaNova-SemiBold.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/ProximaNova-SemiBold/ProximaNova-SemiBold.woff) format('woff'),
+    url(../fonts/ProximaNova-SemiBold/ProximaNova-SemiBold.ttf)
+      format('truetype');
+}
