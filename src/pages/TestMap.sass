@@ -1,0 +1,38 @@
+.tooltip
+  padding: 15px
+  &__title
+    font-size: 1.5rem
+    font-family: 'Roboto'
+    margin-bottom: 1.5rem
+  &__list
+    display: flex
+  &__item
+    display: flex
+    &:after
+      content: ''
+      width: 1px
+      height: 50px
+      background: gray
+      display: inline-block
+      margin: 0 20px
+    &:last-child:after
+      display: none
+  &__item-info
+    margin-left: .5rem
+  &__item-title
+    font-size: 1.75rem
+    font-weight: bold
+    line-height: 1.25
+  &__item-subtitle
+    color: gray
+    text-transform: uppercase
+
+.__react_component_tooltip.show
+  opacity: 1
+
+.water-drop
+  width: 39px
+  height: 51px
+  &--blue
+    path
+      fill: #32B8FF
