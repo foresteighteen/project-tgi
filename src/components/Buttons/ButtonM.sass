@@ -1,0 +1,43 @@
+.btn-main
+  padding: 30px 50px
+  text-align: center
+  font-size: 19px
+  text-transform: uppercase
+  color: #ffffff
+  font-family: ProximaNova 
+  cursor: pointer
+  position: relative
+  transition: color .35s
+  white-space: nowrap
+  .btn-text
+    position: relative
+    z-index: 3
+  &.btn-u
+    text-transform: uppercase
+  &.btn-r
+    border-radius: 5px
+  &.btn-b
+    font-weight: 700
+  &.btn-s
+    box-shadow: 0px 10px 15px rgba(#B45A0B, .2)
+  &:before, &:after
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    right: 0 
+    background: transparent linear-gradient(180deg, #EE9D35 0%, #EC841C 100%) 0% 0% no-repeat
+    z-index: 1
+  &.btn-bg-deg
+    &:before
+      background: transparent linear-gradient(74deg, #EE9D35 0%, #EC841C 100%)
+  &:after
+    background: #fff
+    opacity: 0
+    z-index: 2
+    transition: opacity .35s
+  &:hover
+    color: #EE9D35
+    &:after
+      opacity: 1

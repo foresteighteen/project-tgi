@@ -1,0 +1,37 @@
+.question-form
+  display: flex
+  justify-content: space-between
+  padding: 55px 140px
+  background-color: #F6F3EF
+  align-items: center
+  &__info
+  font-family: ProximaNova
+  &__title
+    font-size: 37px
+    font-weight: 600
+    margin-bottom: 10px
+  &__text
+    font-size: 21px
+    line-height: 25px
+  &__btn
+    margin-left: 25px
+    
+@media (max-width: 991px)
+  .question-form
+    padding: 35px 40px
+    &__text
+      font-size: 16px
+    &__title
+      font-size: 25px
+
+@media (max-width: 767px)
+  .question-form
+    flex-wrap: wrap
+    &__info 
+      text-align: center
+    &__btn
+      margin: 20px auto 0
+
+@media (max-width: 575px)
+  .question-form
+    padding: 35px 25px

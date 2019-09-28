@@ -1,0 +1,110 @@
+.side-photo__block 
+  width: 83%
+  margin: 600px auto
+  position: relative
+  &__img
+    position: absolute
+    right: 0
+    bottom: -35px
+    // width: 675px
+    width: 50%
+    height: 900px
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover
+  &__before
+    width: 100%
+    height: 100%
+    background-color: #EC841C
+    display: block
+    position: absolute
+    z-index: -1
+    top: -6px
+  &__after
+    width: 71%
+    height: 20px
+    background-color: #EC841C
+    display: block
+    position: absolute
+    z-index: -1
+    bottom: -15px
+    margin: auto
+    left: 50%
+    transform: translateX(-50%)
+  &__info
+    position: relative
+    max-width: 100%
+    min-height: 520px
+    padding: 50px 70px
+    padding-top: 0
+    padding-right: 54.6%
+    background-color: #ffffff
+    h2
+      font-size: 19px
+      margin-bottom: 30px
+      display: inline-block
+      position: relative
+      background-color: #ffffff
+      padding-top: 70px
+    p
+      line-height: 30px
+      margin-bottom: 30px
+      &:last-of-type
+        margin-bottom: 0
+
+// media (max-width: 1590px)
+//   .side-photo__block
+//     &__info
+//       padding-right: 10%
+
+@media (max-width: 1439px)
+  .side-photo__block
+    &__info
+      padding-right: 50%
+    &__img
+      height: 110%
+      right: -35px
+
+@media (max-width: 1199px)
+  .side-photo__block
+    &__info
+      padding-right: 50%
+      padding-left: 40px
+    &__img
+      height: 110%
+      right: -15%
+      width: 60%
+
+@media (max-width: 991px)
+  .side-photo__block
+    width: 100%
+    &__info
+      padding-right: 55%
+      padding-left: 30px
+    &__img
+      height: 110%
+      right: -5%
+      width: 55%
+
+@media (max-width: 767px)
+  .side-photo__block
+    width: 100%
+    &__info
+      padding-right: 30px
+      padding-left: 30px
+      h2
+        text-align: center
+    &__img
+      width: auto
+      position: static
+      margin-bottom: 40px
+      img
+        max-width: 100%
+        display: block
+        margin: auto
+@media (max-width: 575px)
+  .side-photo__block
+    &__info
+      padding-right: 20px
+      padding-left: 20px

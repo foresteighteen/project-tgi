@@ -45,7 +45,7 @@ const Header = () => {
             </nav>
           </div>
           <div className="col-auto">
-            <a href="tel()" className="roboto-b">
+            <a href="tel()" className="roboto-m">
               8 800 777 10 91
             </a>
           </div>
