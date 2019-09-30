@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import { NewsRow, SubscribeForm } from '../../../components';
 
 import SliderArrows from '../SliderArrows';
 
@@ -16,7 +17,7 @@ const NewsSection = () => {
   return (
     <div className="news">
       <div className="container left-offset">
-        <div className="news__header">
+        {/* <div className="news__header">
           <div className="news__title">Новости</div>
           <SliderArrows
             onClickPrev={() => {
@@ -52,7 +53,10 @@ const NewsSection = () => {
               SECRET FIX
             </h3>
           </div>
-        </Slider>
+        </Slider> */}
+        <NewsRow first />
+        <SubscribeForm />
+        <NewsRow />
       </div>
     </div>
   );
