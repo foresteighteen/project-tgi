@@ -1,0 +1,45 @@
+@import '../../../assets/css/gradient-mixin'
+
+.partners
+  padding-bottom: 150px
+  &__header
+    display: flex
+    justify-content: space-between
+  &__title
+    font-size: 40px
+    font-family: 'ProximaNova', sans-serif
+    font-weight: bold
+    margin-bottom: 4rem
+    color: #111111
+  &__cert-list
+    overflow: hidden
+    margin-bottom: 4rem
+  &__cert-item
+    display: block
+  &__list
+  &__item
+    margin-right: 29px
+    margin-bottom: 20px
+  
+
+@media (min-width: 1600px)
+  .partners
+    &__cert-list
+      justify-content: space-between
+      margin-left: -25px
+      margin-right: -50px
+    &__item:nth-child(7n)
+      margin-right: 0
+
+@media (max-width: 550px)
+  .partners
+    &__header
+      flex-direction: column
+      align-items: center
+      margin-bottom: 2rem
+    &__title
+      margin-bottom: 2rem
+    &__item
+      width: 31%
+      margin-right: 5px
+      margin-bottom: 5px

@@ -1,0 +1,67 @@
+.production
+  color: #111111
+  padding-top: 150px
+  padding-bottom: 150px
+  &__title
+    font-size: 45px
+    font-family: 'ProximaNova', sans-serif
+    font-weight: bold
+    margin-bottom: 2rem
+  &__poster
+    width: auto
+    height: auto
+    max-width: 100%
+    max-height: 100%
+  &__list
+    display: flex
+    margin-left: 200px
+    transform: translateY(-250px)
+  &__item
+    max-width: 613px
+    width: 100%
+    padding: 50px 90px
+    height: 286px
+    background: #F5FAFC
+    box-shadow: 0px 20px 30px rgba(51, 51, 51, 0.03)
+    cursor: pointer
+    transition: all .25s
+    &:first-child
+      margin-right: 20px
+    &:hover
+      background: #EE9D35
+      box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.07)
+      & > .production__item-title
+        color: #ffffff
+      & > .production__item-icon
+        fill: #fff
+  &__item-icon
+    fill: #EE9D35
+  &__item-title
+    font-size: 31px
+    font-family: 'Roboto', sans-serif
+    font-weight: 500
+@media (max-width: 1440px)
+  .production
+    padding-bottom: 0
+@media (max-width: 1024px)
+  .production
+    &__list
+      justify-content: space-around
+      transform: translateY(-150px)
+      margin: 0
+    &__item
+      padding: 15px 25px
+      width: 45%
+@media (max-width: 550px)
+  .production
+    padding-bottom: 100px
+    &__list
+      flex-direction: column
+      margin-left: 0
+      transform: translateY(0)
+    &__item
+      padding: 15px 25px
+      height: auto
+      width: 100%
+      &:first-child
+        margin-right: 0

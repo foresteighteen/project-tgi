@@ -1,6 +1,16 @@
 @charset "UTF-8";
 @font-face {
   font-family: 'Roboto';
+  font-weight: 300;
+  font-style: normal;
+  src: url(../fonts/Roboto-Light/Roboto-Light.eot);
+  src: url(../fonts/Roboto-Light/Roboto-Light.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/Roboto-Light/Roboto-Light.woff) format('woff'),
+    url(../fonts/Roboto-Light/Roboto-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
   font-weight: 400;
   font-style: normal;
   src: url(../fonts/Roboto-Regular/Roboto-Regular.eot);
@@ -57,4 +67,14 @@
     url(../fonts/ProximaNova-SemiBold/ProximaNova-SemiBold.woff) format('woff'),
     url(../fonts/ProximaNova-SemiBold/ProximaNova-SemiBold.ttf)
       format('truetype');
+}
+@font-face {
+  font-family: 'ProximaNova';
+  font-weight: 600;
+  font-style: normal;
+  src: url(../fonts/ProximaNova-Bold/ProximaNova-Bold.ttf);
+  src: url(../fonts/ProximaNova-Bold/ProximaNova-Bold.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/ProximaNova-Bold/ProximaNova-Bold.woff) format('woff'),
+    url(../fonts/ProximaNova-Bold/ProximaNova-Bold.ttf) format('truetype');
 }
