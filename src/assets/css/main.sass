@@ -1,7 +1,11 @@
+html
+  box-sizing: border-box
+
 body
   font-family: "Roboto", sans-serif
   font-size: 15px
   background-color: #F2F9FB
+  font-weight: 400
   overflow-x: hidden
 
 .roboto-b
@@ -17,3 +21,38 @@ body
     height: 100%
 .slick-list
   overflow: unset
+
+html, body, #app
+  height: 100%
+
+.font-nova
+  font-family: "ProximaNoma", sans-serif
+
+.font-roboto
+  font-family: "Roboto", sans-serif
+
+.font-bold
+  font-weight: 700
+
+.roboto-m
+  font-weight: 500
+
+.img-responsive
+  max-width: 100%
+  display: block
+
+.fill-text
+  position: relative
+  &:before
+    content: attr(data-text)
+    position: absolute
+    top: 10%
+    left: 0
+    width: 0
+    transition: width .55s
+    overflow: hidden
+    z-index: 2
+    -webkit-text-stroke-width: 1px
+  // &:hover
+  //   &:before
+  //     width: 100%

@@ -1,0 +1,115 @@
+.tabs-slider
+  // margin: 200px 0
+  font-size: 19px
+  // height: 1500px
+  .fix
+    // margin-top: 50px
+    // background: red
+    visibility: hidden
+  &__item
+    // width: 500px
+    // height: 500px
+  &__info
+    padding: 100px 5% 50px
+    background-color: #fff
+    line-height: 30px
+    text-align: center
+    // margin-bottom: 50px
+  &__title
+    width: 100%
+    position: relative
+    transition: color .5s
+    background: linear-gradient(247deg, #EE9D35 0%, #EC841C 100%) 0% 0% no-repeat
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    padding: 30px 20px
+    color: #fff
+    line-height: 35px
+    display: none
+    &:before
+      content: ''
+      position: absolute
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      background: #ffffff
+      opacity: 0
+      transition: opacity .5s
+    h3
+      position: relative
+      z-index: 2
+  &__inner
+    display: flex
+    height: 100%
+    width: 100%
+    padding: 0 15%
+    // color: #fff
+      // line-height: 100%
+  &__img
+    width: 100%
+    height: 470px
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+  .slick-thumb
+    position: absolute
+    top: 360px
+    width: 100%
+    display: flex!important
+    justify-content: center
+    align-items: center
+    li
+      width: 23%
+      height: 160px
+      position: relative
+      display: block
+      margin-right: 1%
+      cursor: pointer
+      &:last-of-type
+        margin-right: 0
+      &.slick-active
+        .tabs-slider
+          &__title
+            color: #111
+            &:before
+              opacity: 1
+
+@media (max-width: 1439px)
+  .tabs-slider
+    &__inner
+      padding: 0 5%
+
+@media (max-width: 1199px)
+  .tabs-slider
+    font-size: 17px
+    &__inner
+      padding: 0 4%
+    .slick-thumb
+      li
+        width: 24%
+        margin-right: 5px
+
+@media (max-width: 991px)
+  .tabs-slider
+    &__title
+      display: flex
+    &__inner
+      display: none
+    &__item
+      margin-bottom: 50px
+    &__info
+      padding: 40px 30px 30px
+    .slick-track, .slick-list
+      height: auto!important
+
+@media (max-width: 575px)
+  .tabs-slider
+    &__info
+      padding: 40px 20px 30px
+      text-align: left
+      font-size: 15px
+    
