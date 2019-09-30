@@ -1,0 +1,46 @@
+.catalog__grid__item
+  min-height: 535px
+  background: #fff
+  padding-top: 3%
+  img
+    max-height: 480px
+    margin: 0 auto
+
+ul.catalog__grid__item__list
+  margin-top: 80px
+  padding-left: 16%
+  font-family: "ProximaNova", sans-serif
+  display: flex
+  flex-wrap: wrap
+  li
+    margin-bottom: 30px
+    &:nth-child(odd)
+      width: 50%
+  dt
+    &.list__title
+      font-weight: 600
+      font-size: 16px
+      margin-bottom: 10px
+  dd
+    &.list__text
+      font-weight: 400
+      font-size: 17px
+
+@media (max-width: 1439px)
+  .catalog__grid__item
+    min-height: auto
+  ul.catalog__grid__item__list
+    padding-left: 5%
+@media (max-width: 991px)
+  ul.catalog__grid__item__list
+    padding-left: 16%
+
+@media (max-width: 575px)
+  ul.catalog__grid__item__list
+    // padding-left: 5%
+    margin-top: 40px
+    li
+      width: 50%
+      &:nth-child(odd)
+        width: 40%
+        margin-right: 5px

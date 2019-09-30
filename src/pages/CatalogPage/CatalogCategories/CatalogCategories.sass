@@ -1,0 +1,12 @@
+.catalog__categories-grid
+  display: grid
+  grid-template: 670px / repeat(4, auto)
+  grid-gap: 20px
+
+@media (max-width: 1439px)
+  .catalog__categories-grid
+    grid-template: auto / repeat(2, auto)
+
+@media (max-width: 767px)
+  .catalog__categories-grid
+    grid-template: auto / 1fr

@@ -1,0 +1,96 @@
+.subscribe-form
+  display: flex
+  justify-content: space-between
+  padding: 60px 50px 60px 100px
+  background-color: #E1F0F5
+  align-items: center
+  font-family: ProximaNova
+  &__form
+    display: flex
+    justify-content: space-between
+    flex: 1
+    margin-left: auto
+  &__input
+    flex: 1
+    height: 80px
+    border: 0
+    border-radius: 5px
+    font-size: 35px
+    padding-left: 20px
+    // margin-right: 20px
+    max-width: 540px
+  &__info
+    margin-right: 45px
+  &__title
+    font-size: 37px
+    font-weight: 600
+    margin-bottom: 10px
+  &__text
+    font-size: 21px
+    line-height: 25px
+  &__btn
+    margin-left: 45px
+    
+@media (max-width: 1439px)
+  .subscribe-form
+    // padding: 35px 40px
+    &__form
+      flex-direction: column
+      flex: 0
+    &__input
+      flex: initial
+      margin-bottom: 30px
+      width: 100%
+    &__info
+      flex: 1
+    &__btn
+      margin-left: 0
+
+@media (max-width: 991px)
+  .subscribe-form
+    padding: 35px 40px
+    &__text
+      font-size: 16px
+    &__title
+      font-size: 25px
+
+@media (max-width: 767px)
+  .subscribe-form
+    flex-wrap: wrap
+    justify-content: center
+    &__info 
+      text-align: center
+    &__btn
+      margin: 20px auto 0
+    &__form
+      margin-left: 0
+      margin-top: 30px
+    &__info
+      margin-right: 0
+    &__text
+      font-size: 19px
+    &__title
+      font-size: 25px
+
+@media (max-width: 575px)
+  .subscribe-form
+    padding: 35px 25px
+    &__info
+      flex: initial
+      width: 100%
+    &__input
+      width: 100%
+    &__form
+      width: 100%
+      flex: initial
+    &__btn
+      width: 100%
+    .btn-main
+      width: 100%
+      font-size: 16px
+      padding-left: 10px
+      padding-right: 10px
+      display: flex
+      justify-content: center
+      font-size: 15px
+
