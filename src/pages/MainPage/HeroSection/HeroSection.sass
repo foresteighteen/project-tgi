@@ -1,6 +1,4 @@
 .hero
-  background: url(/src/assets/img/mp-hero-bg.png) no-repeat
-  background-size: cover
   height: 100vh
   position: relative
   padding-top: 200px
@@ -8,6 +6,22 @@
   & > .container
     position: relative
     height: 100%
+  &__bg-slider
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100vh
+  &__bg-slide-wrapper
+    position: relative
+    height: 100vh
+  &__bg-slide
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    right: 0
+    background-position: center center
   &__title
     font-family: 'ProximaNova', sans-serif
     font-size: 4.375rem
