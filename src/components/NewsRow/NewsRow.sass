@@ -1,0 +1,15 @@
+.news-grid
+  display: grid
+  grid-template: auto / repeat(2, calc(50% - 9px))
+  grid-gap: 18px
+  &__bottom
+  grid-gap: 160px 18px
+
+@media (max-width: 991px)
+  .news-grid
+    grid-gap: 100px 18px
+
+@media (max-width: 767px)
+  .news-grid
+    grid-template: auto / 100%
+    grid-gap: 50px

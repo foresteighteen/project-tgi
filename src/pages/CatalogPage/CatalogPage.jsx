@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 
-import CatalogGrid from './CatalogGrid';
-import CatalogProducts from './CatalogProducts';
-import CatalogCategories from './CatalogCategories';
-import { ButtonM } from '../../components/Buttons';
+import CatalogGridSection from './CatalogGridSection';
+import CatalogProductsSection from './CatalogProductsSection';
+import CatalogCategoriesSection from './CatalogCategoriesSection';
+import { QuestionForm } from '../../components';
 
-export default class CatalogPage extends Component {
+import './CatalogPage.sass';
+
+class CatalogPage extends Component {
   render() {
     return (
-      <main className="main">
-        {/* <H1white text={'hello'} /> */}
-        <CatalogGrid />
-        <CatalogProducts />
-        {/* <ButtonM classes={'red blue'} clickF={(e)=>{console.log(e)}} text={'hello'} /> */}
-        <CatalogCategories />
+      <main className="main catalog-page">
+        <CatalogGridSection />
+        <CatalogProductsSection />
+        <CatalogCategoriesSection />
+        <QuestionForm />
       </main>
     );
   }
 }
+
+export default CatalogPage;

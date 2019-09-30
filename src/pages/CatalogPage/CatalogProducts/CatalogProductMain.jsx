@@ -11,34 +11,34 @@ const CatalogProductMain = () => {
       <div className="flip-text">
         <h2>Теплогидроизоляция труб</h2>
       </div>
-      <div className="catalog-product__title">
+      <div className="catalog-product__grid__title">
         <h3>Скорлупа</h3>
       </div>
-      <div className="catalog-product__items">
-        <ul className="catalog-product__list">
-          <li className="catalog-product__list-item">
+      <div className="catalog-product__grid__items">
+        <ul className="catalog-product__grid__list">
+          <li className="catalog-product__grid__list-item">
             <Link to="/">
               <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
             </Link>
           </li>
-          <li className="catalog-product__list-item">
+          <li className="catalog-product__grid__list-item">
             <Link to="/">
               <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
             </Link>
           </li>
-          <li className="catalog-product__list-item">
+          <li className="catalog-product__grid__list-item">
             <Link to="/">
               <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
             </Link>
           </li>
-          <li className="catalog-product__list-item">
+          <li className="catalog-product__grid__list-item">
             <Link to="/">
               <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
             </Link>
           </li>
         </ul>
       </div>
-      <div className="catalog-product__img">
+      <div className="catalog-product__grid__img">
         <img src="/src/assets/img/catalog/scorlupa.png" />
         <div className="white-bg"></div>
       </div>
@@ -47,29 +47,29 @@ const CatalogProductMain = () => {
       <div className="flip-text">
         <h2>Теплогидроизоляция труб</h2>
       </div>
-      <div className="catalog-product__title">
+      <div className="catalog-product__grid__title">
         <h3>Фасонные <br />изделия</h3>
       </div>
-      <div className="catalog-product__items">
-        <ul className="catalog-product__list">
-          <li className="catalog-product__list-item">
+      <div className="catalog-product__grid__items">
+        <ul className="catalog-product__grid__list">
+          <li className="catalog-product__grid__list-item">
             <Link to="/">
               <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
             </Link>
           </li>
-          <li className="catalog-product__list-item">
+          <li className="catalog-product__grid__list-item">
             <Link to="/">
               <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
             </Link>
           </li>
-          <li className="catalog-product__list-item">
+          <li className="catalog-product__grid__list-item">
             <Link to="/">
               <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
             </Link>
           </li>
         </ul>
       </div>
-      <div className="catalog-product__img">
+      <div className="catalog-product__grid__img">
         <img src="/src/assets/img/catalog/fason.png" />
         <div className="white-bg"></div>
       </div>
@@ -78,34 +78,34 @@ const CatalogProductMain = () => {
       <div className="flip-text">
         <h2></h2>
       </div>
-      <div className="catalog-product__title">
+      <div className="catalog-product__grid__title">
         <h3>Плита</h3>
       </div>
-      <div className="catalog-product__items">
-        <ul className="catalog-product__list">
-          <li className="catalog-product__list-item">
+      <div className="catalog-product__grid__items">
+        <ul className="catalog-product__grid__list">
+          <li className="catalog-product__grid__list-item">
             <Link to="/">
               <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
             </Link>
           </li>
-          <li className="catalog-product__list-item">
+          <li className="catalog-product__grid__list-item">
             <Link to="/">
               <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
             </Link>
           </li>
-          <li className="catalog-product__list-item">
+          <li className="catalog-product__grid__list-item">
             <Link to="/">
               <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
             </Link>
           </li>
-          <li className="catalog-product__list-item">
+          <li className="catalog-product__grid__list-item">
             <Link to="/">
               <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
             </Link>
           </li>
         </ul>
       </div>
-      <div className="catalog-product__img">
+      <div className="catalog-product__grid__img">
         <img src="/src/assets/img/catalog/plita.png" />
         <div className="white-bg"></div>
       </div>

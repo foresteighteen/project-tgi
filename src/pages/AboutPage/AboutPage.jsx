@@ -1,20 +1,20 @@
 import React from 'react';
 
-import SidePhotoBlock from '../../components/SidePhotoBlock';
-import { TabsSlider } from '../../components/Sliders';
+import AboutInfoSection from './AboutInfoSection';
+import AboutSliderSection from './AboutSliderSection';
+
+import { QuestionForm } from '../../components';
+
+import './AboutPage.sass';
 
 const AboutPage = () => {
   return (
-    <main>
-      <div className="container">
-        <SidePhotoBlock />
-      </div>
-      <div className="container">
-        <TabsSlider />
-      </div>
-      
+    <main className="main about-page">
+      <AboutInfoSection />
+      <AboutSliderSection />
+      <QuestionForm />
     </main>
-  )
-}
+  );
+};
 
 export default AboutPage;

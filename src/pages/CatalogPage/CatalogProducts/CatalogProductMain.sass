@@ -1,6 +1,8 @@
+
 .catalog-product__grid
+  $blockClass: &
   display: grid
-  font-family: Proxima Nova
+  font-family: ProximaNova
   position: relative
   grid-template: repeat(2, auto)/ repeat(2, auto)
   margin-bottom: 70px
@@ -8,7 +10,7 @@
     display: none
   &.grid-reverse
     padding-right: 11%
-    .catalog-product__img
+    #{$blockClass}__img
       grid-area: 1 / 1/ -1/ 2
       img
         width: 128%
@@ -16,11 +18,11 @@
         right: initial
       .white-bg
         margin-left: -35px
-    .catalog-product__title, .catalog-product__items
+    #{$blockClass}__title, #{$blockClass}__items
       display: flex
       justify-content: flex-end
   &.flat-wbg
-    .catalog-product__img
+    #{$blockClass}__img
       img
         width: 163%
         top: initial
@@ -49,7 +51,7 @@
       width: 1px
       height: 1px
       white-space: nowrap
-  .catalog-product__img
+  &__img
     grid-area: 1 / 2/ -1/ -1
     position: relative
     // margin-left: 25px
@@ -72,97 +74,98 @@
       z-index: 2
       right: 13%
       // height: 100%
-  .catalog-product__title
+  &__title
     padding-top: 165px
     // padding-top: 8.4vw
     h3
       font-weight: 800
       font-size: 70px
-  .catalog-product__items
+  &__items
     padding-top: 180px
     // padding-top: 9.38vw
     padding-bottom: 150px
     font-size: 45px
     // padding-bottom: 7.8vw
-    .catalog-product__list
-      .catalog-product__list-item
+  &__list
+    &-item
+      position: relative
+      margin-bottom: 50px
+      &:last-of-type
+        margin-bottom: 0
+      a
         position: relative
-        margin-bottom: 50px
-        &:last-of-type
-          margin-bottom: 0
-        a
-          position: relative
-          font-weight: 700
-          transition: color .35s
-          &:before, &:after
+        font-weight: 700
+        transition: color .35s
+        &:before, &:after
+          content: ''
+          position: absolute
+          width: 100%
+          height: 2px
+          left: 0
+          bottom: -5px
+          background-color: #000000
+          opacity: .2
+        &:after
+          opacity: 1
+          background-color: #EC841C
+          transform-origin: 0% 50%
+          transform: scaleX(0)
+          transition: transform .55s
+        .link-arrow
+          position: absolute
+          left: -138px
+          top: -4px
+          width: 66px
+          height: 66px
+          background-color: #fff
+          border-radius: 100%
+          transition: background-color .55s
+          &:before
             content: ''
+            display: block
             position: absolute
-            width: 100%
+            width: 27%
             height: 2px
-            left: 0
-            bottom: -5px
-            background-color: #000000
-            opacity: .2
-          &:after
-            opacity: 1
-            background-color: #EC841C
-            transform-origin: 0% 50%
-            transform: scaleX(0)
-            transition: transform .55s
-          .link-arrow
-            position: absolute
-            left: -138px
-            top: -4px
-            width: 66px
-            height: 66px
-            background-color: #fff
-            border-radius: 100%
+            left: 50%
+            top: 50%
+            background-color: rgba(0,0,0, .2)
+            transform: translate(-50%, -50%)
             transition: background-color .55s
-            &:before
-              content: ''
-              display: block
-              position: absolute
-              width: 27%
-              height: 2px
-              left: 50%
-              top: 50%
-              background-color: rgba(0,0,0, .2)
-              transform: translate(-50%, -50%)
-              transition: background-color .55s
+          &:after
+            content: ''
+            display: block
+            position: absolute               
+            border-top: 2px solid rgba(0,0,0, .2)
+            border-right: 2px solid rgba(0,0,0, .2)
+            width: 15%
+            height: 15%
+            left: 49%
+            top: 43%
+            transform: rotate(45deg)
+            transition: border-color .55s
+        .fill-text
+          &:before
+            color: #EC841C
+            -webkit-text-stroke-color: #EC841C
+        &:hover
+          // color: #EC841C
+          &:after
+            transform: scaleX(1)
+          .link-arrow
+            background-color: #EC841C
             &:after
-              content: ''
-              display: block
-              position: absolute               
-              border-top: 2px solid rgba(0,0,0, .2)
-              border-right: 2px solid rgba(0,0,0, .2)
-              width: 15%
-              height: 15%
-              left: 49%
-              top: 43%
-              transform: rotate(45deg)
-              transition: border-color .55s
+              border-color: #ffffff
+            &:before
+              background-color: #fff
           .fill-text
             &:before
-              color: #EC841C
-              -webkit-text-stroke-color: #EC841C
-          &:hover
-            // color: #EC841C
-            &:after
-              transform: scaleX(1)
-            .link-arrow
-              background-color: #EC841C
-              &:after
-                border-color: #ffffff
-              &:before
-                background-color: #fff
-            .fill-text
-              &:before
-                width: 100%
+              width: 100%
 
 @media (max-width: 1439px)
   .catalog-product__grid
+    $blockClass: &
     &.grid-reverse
-      .catalog-product__img
+      #{$blockClass}__img
         img
           left: 19%
         .white-bg
@@ -171,22 +174,22 @@
       .flip-text
         left: -2%
     &.flat-wbg
-      .catalog-product__img
+      #{$blockClass}__img
         .white-bg
           height: 35%
 
 @media (max-width: 1199px)
   .catalog-product__grid
-    .catalog-product__title
+    &__title
       padding-top: 120px
       h3
         font-size: 55px
-    .catalog-product__items
+    &__items
       padding-top: 115px
       padding-bottom: 100px
       font-size: 35px
-      .catalog-product__list 
-        .catalog-product__list-item 
+      &__list 
+        &-item 
           a 
             .link-arrow
               width: 55px
@@ -200,16 +203,17 @@
 
 @media (max-width: 991px)
   .catalog-product__grid
-    .catalog-product__title
+    $blockClass: &
+    &__title
       padding-top: 55px
       h3
         font-size: 45px
-    .catalog-product__items
+    &__items
       padding-top: 85px
       padding-bottom: 85px
       font-size: 25px
-      .catalog-product__list 
-        .catalog-product__list-item
+      #{$blockClass}__list 
+        &-item
           margin-bottom: 35px
           a 
             .link-arrow
@@ -224,9 +228,10 @@
 
 @media (max-width: 767px)
   .catalog-product__grid
+    $blockClass: &
     grid-template: auto / 1fr 
     &.grid-left, &.grid-reverse
-      .catalog-product__img
+      #{$blockClass}__img
         grid-area: 2 / 1 / 3 / 1
         img
           position: relative
@@ -240,14 +245,14 @@
           width: 54.5%
     &.grid-reverse, &.flat-wbg, &.grid-left
       padding: 0
-      .catalog-product__items, .catalog-product__title
+      #{$blockClass}__items, #{$blockClass}__title
         display: flex
         justify-content: center     
         text-align: center
         padding-left: 20px
         padding-right: 20px
     &.grid-left
-      .catalog-product__img
+      #{$blockClass}__img
         .white-bg
           width: 54%
           right: 0
@@ -256,22 +261,22 @@
         left: -8%
     &.flat-wbg
       padding-left: 0
-      .catalog-product__title
+      #{$blockClass}__title
         margin-bottom: -20px
         padding-top: 20px
-      .catalog-product__img
+      #{$blockClass}__img
         .white-bg
           width: 100%
           height: 50%
-    .catalog-product__title
+    &__title
       margin-bottom: 35px
       br
         display: none
-    .catalog-product__items
+    &__items
       padding-top: 40px
       padding-bottom: 20px
-      .catalog-product__list 
-        .catalog-product__list-item
+      #{$blockClass}__list 
+        &__list-item
           a 
             .link-arrow
               left: -60px
@@ -279,16 +284,18 @@
 
 @media (max-width: 575px)
   .catalog-product__grid
+    $blockClass: &
     &.grid-left
-      .catalog-product__img
+      #{$blockClass}__img
         .white-bg
         img
-    .catalog-product__title
-    .catalog-product__items
-      .catalog-product__list 
-        .catalog-product__list-item
+    &__title
+    &__items
+      #{$blockClass}__list 
+        #{$blockClass}__list-item
           a 
             .link-arrow
+              left: -60px
     &.grid-left
       .flip-text
         width: 1px

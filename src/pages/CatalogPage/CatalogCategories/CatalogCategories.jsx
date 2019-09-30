@@ -5,17 +5,10 @@ import CatalogCategorie from './CatalogCategorie';
 import './CatalogCategories.sass';
 
 const CatalogCategories = () => {
-  return (
-    <section id="catalog__categories">
-      <div className="container">
-        <div className="catalog__categories-grid">
-          {[1, 2, 3, 4].map(e => (
-            <CatalogCategorie img={e} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  const renderedItems = [1, 2, 3, 4].map((e, i) => (
+    <CatalogCategorie img={e} />
+  ));
+  return <div className="catalog__categories-grid">{renderedItems}</div>;
 };
 
 export default CatalogCategories;

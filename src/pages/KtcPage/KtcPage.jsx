@@ -1,19 +1,21 @@
 import React from 'react';
 
-import PhotoVideoBlock from '../../components/PhotoVideoBlock';
-import QuestionForm from '../../components/QuestionForm';
-import { ProductionSlider } from '../../components/Sliders';
-import KtcIncludes from './KtcIncludes';
+import KtcInfoSection from './KtcInfoSection';
+import KtcIncludesSection from './KtcIncludesSection';
+import KtcSliderSection from './KtcSliderSection';
+import { QuestionForm } from '../../components';
+
+import './KtcPage.sass';
 
 const KtcPage = () => {
   return (
-    <div>
-      <PhotoVideoBlock video={true} />
+    <main className="main ktc-page">
+      <KtcInfoSection />
+      <KtcIncludesSection />
+      <KtcSliderSection />
       <QuestionForm />
-      <ProductionSlider />
-      <KtcIncludes />
-    </div>
-  )
-}
+    </main>
+  );
+};
 
 export default KtcPage;

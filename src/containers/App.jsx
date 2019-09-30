@@ -1,10 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+
+
+import { Header, Footer } from '../components';
+
+// import Header from '../components/Header';
+// import Footer from '../components/Footer';
 import CatalogPage from '../pages/CatalogPage';
 import KtcPage from '../pages/KtcPage';
 import AboutPage from '../pages/AboutPage';
+import NewsPage from '../pages/NewsPage';
+import QualityPage from '../pages/QualityPage';
 
 const App = () => (
   <div
@@ -22,6 +28,8 @@ const App = () => (
         <Route exact path="/catalog" component={CatalogPage} />
         <Route exact path="/ktc" component={KtcPage} />
         <Route exact path="/about" component={AboutPage} />
+        <Route exact path="/news" component={NewsPage} />
+        <Route exact path="/quality" component={QualityPage} />
         <Route render={() => 'else'} />
       </Switch>
       {/* <Footer /> */}

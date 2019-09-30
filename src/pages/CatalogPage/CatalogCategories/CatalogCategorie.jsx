@@ -6,7 +6,7 @@ import './CatalogCategorie.sass';
 const CatalogCategorie = ({ img }) => {
   return (
     <Link to="/" className="catalog__categorie-item">
-      <h4>Маты прошивные</h4>
+      <h4 className="font-nova">Изделия из мин.ваты TECHWOOL</h4>
       <img src={`/src/assets/img/catalog/categories/${img}.png`} alt="" />
     </Link>
   );

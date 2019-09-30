@@ -114,31 +114,31 @@
 
 @media (max-width: 1439px)
   .photo-video__block
-    .photo-video__desc
+    &__desc
       padding-right: 50px
       padding-left: 50px
 
 @media (max-width: 1199px)
   .photo-video__block
-    .photo-video__wrapp
+    &__wrapp
       height: 550px
-      .photo-video__cover
-        .video-info
-          left: 20%
-          top: 45%
-    .photo-video__desc
+    &__cover
+      .video-info
+        left: 20%
+        top: 45%
+    &__desc
       width: 80%
       margin-right: auto
 
 @media (max-width: 767px)
   .photo-video__block
-    .photo-video__wrapp
+    &__wrapp
       height: 400px
-      .photo-video__cover
-        .video-info
-          left: 13%
-          top: 150px
-    .photo-video__desc
+    &__cover
+      .video-info
+        left: 13%
+        top: 150px
+    &__desc
       padding: 40px
       text-align: justify
       p
@@ -146,26 +146,25 @@
 
 @media (max-width: 575px)
   .photo-video__block
-    .photo-video__desc
+    &__desc
       padding: 25px
       text-align: justify
       width: 100%
       margin-top: 20px
       p 
         line-height: 25px
-    .photo-video__wrapp
-      .photo-video__cover
-        .video-info
-          left: 13%
-          left: 0
-          width: 100%
-          padding: 0 40px
-          top: 20%
-          max-width: 100%
-          .btn-video
-            width: 80px
-            height: 80px
-            left: 50%
-            top: 100px 
-            transform: translateX(-50%)
+    &__cover
+      .video-info
+        left: 13%
+        left: 0
+        width: 100%
+        padding: 0 40px
+        top: 20%
+        max-width: 100%
+        .btn-video
+          width: 80px
+          height: 80px
+          left: 50%
+          top: 120px 
+          transform: translateX(-50%)
 
