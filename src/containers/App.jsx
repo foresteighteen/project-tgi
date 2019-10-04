@@ -13,6 +13,8 @@ import QualityPage from '../pages/QualityPage';
 import ContactsPage from '../pages/ContactsPage';
 import CertificatesPage from '../pages/CertificatesPage';
 import MainPage from '../pages/MainPage';
+import VacancyPage from '../pages/VacancyPage';
+import ProductPage from '../pages/ProductPage';
 
 const App = () => (
   <div
@@ -20,6 +22,7 @@ const App = () => (
     style={{
       overflow: 'auto',
       overflowX: 'hidden',
+      height: '100%',
       // overflow: 'hidden',
     }}
   >
@@ -29,14 +32,16 @@ const App = () => (
         <Route exact path="/" component={MainPage} />
         <Route exact path="/catalog" component={CatalogPage} />
         <Route exact path="/ktc" component={KtcPage} />
+        <Route exact path="/product" component={ProductPage} />
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/news" component={NewsPage} />
         <Route exact path="/quality" component={QualityPage} />
         <Route exact path="/contacts" component={ContactsPage} />
         <Route exact path="/certificates" component={CertificatesPage} />
+        <Route exact path="/vacancy" component={VacancyPage} />
         <Route render={() => 'else'} />
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   </div>
 );

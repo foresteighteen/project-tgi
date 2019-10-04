@@ -24,22 +24,22 @@ const Header = () => {
             <nav className="header__nav">
               <ul>
                 <li>
-                  <Link to="/">О компании</Link>
+                  <Link to="/about">О компании</Link>
                 </li>
                 <li>
-                  <Link to="/">Продукция</Link>
+                  <Link to="/catalog">Продукция</Link>
                 </li>
                 <li>
-                  <Link to="/">Сертификаты</Link>
+                  <Link to="/certificates">Сертификаты</Link>
                 </li>
                 <li>
-                  <Link to="/">Партнеры</Link>
+                  <Link to="/vacancy">Вакансии</Link>
                 </li>
                 <li>
-                  <Link to="/">Новости</Link>
+                  <Link to="/news">Новости</Link>
                 </li>
                 <li>
-                  <Link to="/">Контакты</Link>
+                  <Link to="/contacts">Контакты</Link>
                 </li>
               </ul>
             </nav>

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import QualityHeroSection from './QualityHeroSection';
 import QualityInfoSection from './QualityInfoSection';
 import QualitySliderSection from './QualitySliderSection';
 
@@ -10,6 +11,7 @@ import './QualityPage.sass';
 const QualityPage = () => {
   return (
     <main className="main quality-page">
+      <QualityHeroSection />
       <QualityInfoSection />
       <QualitySliderSection />
       <QuestionForm />

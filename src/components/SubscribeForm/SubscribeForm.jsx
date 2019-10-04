@@ -16,7 +16,7 @@ const SubscribeForm = () => {
         <form action="" className="subscribe-form__form">
         <input type="text" className="subscribe-form__input" />
         <div className="subscribe-form__btn">
-          <ButtonM text={'Подписаться на рассылку'} classes={'padding-s'}/>
+          <ButtonM text={'Подписаться на рассылку'} classes={'padding-s btn-r'}/>
         </div>
         </form>
       </div>

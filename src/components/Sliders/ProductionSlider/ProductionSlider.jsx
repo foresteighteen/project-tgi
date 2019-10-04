@@ -19,7 +19,7 @@ const ProductionSlider = () => {
         breakpoint: 575,
         settings: {
           variableWidth: false,
-        }
+        },
       }],
   };
 

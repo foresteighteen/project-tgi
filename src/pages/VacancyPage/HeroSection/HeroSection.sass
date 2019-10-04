@@ -1,0 +1,86 @@
+#vacancy-hero
+  .hero__section__inner
+    padding-bottom: 190px  
+.vacancy-hero-title
+  font-size: 4.375rem
+  font-weight: 800
+  display: flex
+  align-items: center
+  color: #fff
+  .heading--h1
+    font-size: inherit
+  .vacancy-select
+    // font: inherit!important
+    color: inherit!important
+    flex: 1
+    &__control
+      background: none
+      border: 0
+      pointer-events: none
+      box-shadow: none
+    &__value-container
+      // flex: initial
+      input
+        // display: none
+    &__placeholder
+      pointer-events: all
+      color: inherit
+      padding-right: 30px
+      padding-bottom: 5px
+      cursor: pointer
+      // position: static
+      // transform: none
+      &:after
+        content: ''
+        display: block
+        position: absolute
+        top: 50%
+        right: 0
+        width: 0
+        height: 0
+        border-left: 5px solid transparent
+        border-right: 5px solid transparent
+        border-top: 10px solid #fff
+      &:before
+        content: ''
+        display: block
+        position: absolute
+        bottom: -5px
+        left: 4px
+        right: 0
+        width: 99%
+        height: 5px
+        background: #fff
+    &__indicators
+      display: none
+    &__menu
+      box-shadow: none
+      background: none
+      &-list
+        box-shadow: none
+        background: #fff
+        display: flex
+        flex-direction: column
+        width: max-content
+        color: #111
+    &__option
+      // background: none!important
+      padding-right: 30px
+      width: auto
+      display: block
+      cursor: pointer
+
+@media (max-width: 991px)
+  .vacancy-hero-title
+    font-size: 3rem 
+@media (max-width: 575px)
+  .vacancy-hero-title
+    flex-wrap: wrap
+    .heading--h1
+      width: 100%
+      text-align: center
+    .vacancy-select
+      &__value-container
+        justify-content: center
+      &__menu
+        text-align: center

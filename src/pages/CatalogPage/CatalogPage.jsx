@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import CatalogHeroSection from './CatalogHeroSection';
 import CatalogGridSection from './CatalogGridSection';
 import CatalogProductsSection from './CatalogProductsSection';
 import CatalogCategoriesSection from './CatalogCategoriesSection';
@@ -11,6 +12,7 @@ class CatalogPage extends Component {
   render() {
     return (
       <main className="main catalog-page">
+        <CatalogHeroSection />
         <CatalogGridSection />
         <CatalogProductsSection />
         <CatalogCategoriesSection />

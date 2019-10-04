@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { NewsRow, SubscribeForm } from '../../../components';
+import { NewsItem } from '../../../components';
 
 import SliderArrows from '../SliderArrows';
 
@@ -17,7 +17,7 @@ const NewsSection = () => {
   return (
     <div className="news">
       <div className="container left-offset">
-        {/* <div className="news__header">
+        <div className="news__header">
           <div className="news__title">Новости</div>
           <SliderArrows
             onClickPrev={() => {
@@ -29,19 +29,11 @@ const NewsSection = () => {
           />
         </div>
         <Slider ref={sliderRef} className="news__list" {...sliderOptions}>
-          <div className="news__item">
-            <img
-              src="/src/assets/img/news-1.png"
-              alt=""
-              className="news__item-image"
-            />
-            <p className="news__item-date">21 июля 2019</p>
-            <h3 className="news__item-title">
-              Компания «Завод Теплогидроизоляции» внесла вклад в реализацию
-              масштабного проекта ООО «Тулачермет-Сталь»
-            </h3>
-          </div>
-          <div className="news__item">
+          <NewsItem />
+          <NewsItem />
+          <NewsItem />
+          <NewsItem />
+          {/* <div className="news__item">
             <img
               src="/src/assets/img/news-2.png"
               alt=""
@@ -52,11 +44,8 @@ const NewsSection = () => {
               Прокатали очередную партию сэндвич-панелей со скрытым замком
               SECRET FIX
             </h3>
-          </div>
-        </Slider> */}
-        <NewsRow first />
-        <SubscribeForm />
-        <NewsRow />
+          </div> */}
+        </Slider>
       </div>
     </div>
   );

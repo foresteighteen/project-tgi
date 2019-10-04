@@ -2,9 +2,9 @@ import React from 'react';
 
 import './SidePhotoBlock.sass';
 
-const SidePhotoBlock = () => {
+const SidePhotoBlock = ({classes}) => {
   return (
-    <div className="side-photo__block">
+    <div className={`side-photo__block ${classes}`}>
       <div className="side-photo__block__after"></div>
       <div className="side-photo__block__info">       
         <h2 className="font-bold font-nova"><span className="side-photo__block__before"></span>О заводе</h2>

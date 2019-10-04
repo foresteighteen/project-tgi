@@ -46,22 +46,13 @@
   src: url(../fonts/ProximaNova-Regular/ProximaNova-Regular.eot);
   src: url(../fonts/ProximaNova-Regular/ProximaNova-Regular.eot?#iefix)
       format('embedded-opentype'),
+    url(../fonts/ProximaNova-Regular/ProximaNova-Regular.otf) format('otf'),
     url(../fonts/ProximaNova-Regular/ProximaNova-Regular.woff) format('woff'),
     url(../fonts/ProximaNova-Regular/ProximaNova-Regular.ttf) format('truetype');
 }
 @font-face {
   font-family: 'ProximaNova';
-  font-weight: 800;
-  font-style: normal;
-  src: url(../fonts/ProximaNova-Regular/ProximaNova-Regular.eot);
-  src: url(../fonts/ProximaNova-Regular/ProximaNova-Regular.eot?#iefix)
-      format('embedded-opentype'),
-    url(../fonts/ProximaNova-Regular/ProximaNova-Regular.woff) format('woff'),
-    url(../fonts/ProximaNova-Regular/ProximaNova-Regular.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'ProximaNova';
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   src: url(../fonts/ProximaNova-Semibold/ProximaNova-Semibold.eot);
   src: url(../fonts/ProximaNova-Semibold/ProximaNova-Semibold.eot?#iefix)
@@ -70,6 +61,17 @@
     url(../fonts/ProximaNova-Semibold/ProximaNova-Semibold.ttf)
       format('truetype');
 }
+@font-face {
+  font-family: 'ProximaNova';
+  font-weight: 600;
+  font-style: normal;
+  src: url(../fonts/ProximaNova-Bold/ProximaNova-Bold.ttf);
+  src: url(../fonts/ProximaNova-Bold/ProximaNova-Bold.eot?#iefix)
+      format('embedded-opentype'),
+    url(../fonts/ProximaNova-Bold/ProximaNova-Bold.woff) format('woff'),
+    url(../fonts/ProximaNova-Bold/ProximaNova-Bold.ttf) format('truetype');
+}
+
 @font-face {
   font-family: 'ProximaNova';
   font-weight: 700;
@@ -92,13 +94,4 @@
     url(../fonts/ProximaNova-Extrabold/ProximaNova-Extrabold.ttf)
       format('truetype');
 }
-@font-face {
-  font-family: 'ProximaNova';
-  font-weight: 600;
-  font-style: normal;
-  src: url(../fonts/ProximaNova-Bold/ProximaNova-Bold.ttf);
-  src: url(../fonts/ProximaNova-Bold/ProximaNova-Bold.eot?#iefix)
-      format('embedded-opentype'),
-    url(../fonts/ProximaNova-Bold/ProximaNova-Bold.woff) format('woff'),
-    url(../fonts/ProximaNova-Bold/ProximaNova-Bold.ttf) format('truetype');
-}
+

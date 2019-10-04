@@ -1,0 +1,40 @@
+.hero__section 
+  color: #111111
+  overflow: hidden
+  &.white
+    color: #fff
+  &.hero__ktc
+    min-height: 100vh
+    background-size: 50%
+    background-position: 110% 50%
+    background-repeat: no-repeat
+    position: relative
+  &.hero__full
+    min-height: 100vh
+    background-size: cover
+    background-position: 50% 50%
+    background-repeat: no-repeat
+    position: relative
+  &.hero-covered
+    position: relative
+    &:after
+      content: ''
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      position: absolute
+      background: #26353D
+      opacity: .75
+      // z-index: 1
+  &__inner
+    padding-top: 250px
+    padding-left: 17%
+    position: relative
+    z-index: 1
+
+@media (max-width: 991px)
+  .hero__section
+    &__inner
+      padding-left: 0
+      padding-top: 200px
