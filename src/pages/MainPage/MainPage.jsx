@@ -7,6 +7,8 @@ import ProductionSection from './ProductionSection';
 import PartnersSection from './PartnersSection';
 import NewsSection from './NewsSection';
 
+import { QuestionForm } from '../../components';
+
 import './MainPage.sass';
 
 const MainPage = () => (
@@ -17,7 +19,7 @@ const MainPage = () => (
     <ProductionSection />
     <PartnersSection />
     <NewsSection />
-    {/* ostalus' voprosu section */}
+    <QuestionForm />
   </React.Fragment>
 );
 

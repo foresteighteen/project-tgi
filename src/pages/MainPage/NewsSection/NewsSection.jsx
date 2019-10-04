@@ -29,11 +29,23 @@ const NewsSection = () => {
           />
         </div>
         <Slider ref={sliderRef} className="news__list" {...sliderOptions}>
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
+          <NewsItem className="news__item" />
+          <NewsItem className="news__item" />
+          <NewsItem className="news__item" />
+          <NewsItem className="news__item" />
           {/* <div className="news__item">
+            <img
+              src="/src/assets/img/news-2.png"
+              alt=""
+              className="news__item-image"
+            />
+            <p className="news__item-date">21 августа 2019</p>
+            <h3 className="news__item-title">
+              Прокатали очередную партию сэндвич-панелей со скрытым замком
+              SECRET FIX
+            </h3>
+          </div>
+          <div className="news__item">
             <img
               src="/src/assets/img/news-2.png"
               alt=""

@@ -15,7 +15,13 @@ const PartnersSection = () => {
     slidesToShow: 4,
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 760,
         settings: {
           slidesToShow: 2,
         },

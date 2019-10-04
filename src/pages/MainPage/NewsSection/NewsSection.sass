@@ -11,28 +11,17 @@
     margin-bottom: 4rem
   &__list
     max-width: 970px
-  &__item
-  &__item-image
-    width: auto
-    height: auto
-    max-width: 100%
-    max-height: 100%
-  &__item-title
-    font-size: 31px
-    line-height: 1.4
-    font-weight: 500
-  &__item-date
-    font-size: 21px
-    font-weight: 500
-    color: rgba(17, 17, 17, .5)
-    margin: 40px 0
+
+
+@media (min-width: 760px)
+  .news
+    &__item
+      margin-right: 20px
 
 @media (max-width: 550px)
   .news
     &__list
       overflow: hidden
-    &__item
-      width: 90%!important
     &__item-title
       font-size: 1.25rem
     &__item-date
