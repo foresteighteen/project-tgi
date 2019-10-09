@@ -15,7 +15,13 @@ const PartnersSection = () => {
     slidesToShow: 4,
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 760,
         settings: {
           slidesToShow: 2,
         },
@@ -29,7 +35,7 @@ const PartnersSection = () => {
     ],
   };
   return (
-    <div className="partners">
+    <section className="partners">
       <div className="container left-offset">
         <div className="partners__header">
           <h2 className="partners__title">Партнеры</h2>
@@ -73,7 +79,7 @@ const PartnersSection = () => {
           <LogoItem src="/src/assets/img/Group 1-4.png" alt="" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
