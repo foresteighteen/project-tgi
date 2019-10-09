@@ -1,9 +1,8 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { NewsItem } from '../../../components';
+import { NewsItem, QuestionForm } from '../../../components';
 
 import SliderArrows from '../SliderArrows';
-
 import './NewsSection.sass';
 
 const NewsSection = () => {
@@ -15,7 +14,7 @@ const NewsSection = () => {
     infinite: false,
   };
   return (
-    <div className="news">
+    <section className="news">
       <div className="container left-offset">
         <div className="news__header">
           <div className="news__title">Новости</div>
@@ -33,33 +32,10 @@ const NewsSection = () => {
           <NewsItem className="news__item" />
           <NewsItem className="news__item" />
           <NewsItem className="news__item" />
-          {/* <div className="news__item">
-            <img
-              src="/src/assets/img/news-2.png"
-              alt=""
-              className="news__item-image"
-            />
-            <p className="news__item-date">21 августа 2019</p>
-            <h3 className="news__item-title">
-              Прокатали очередную партию сэндвич-панелей со скрытым замком
-              SECRET FIX
-            </h3>
-          </div>
-          <div className="news__item">
-            <img
-              src="/src/assets/img/news-2.png"
-              alt=""
-              className="news__item-image"
-            />
-            <p className="news__item-date">21 августа 2019</p>
-            <h3 className="news__item-title">
-              Прокатали очередную партию сэндвич-панелей со скрытым замком
-              SECRET FIX
-            </h3>
-          </div> */}
         </Slider>
       </div>
-    </div>
+      <QuestionForm />
+    </section>
   );
 };
 

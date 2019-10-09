@@ -6,20 +6,20 @@ import DeliverySection from './DeliverySection';
 import ProductionSection from './ProductionSection';
 import PartnersSection from './PartnersSection';
 import NewsSection from './NewsSection';
-
-import { QuestionForm } from '../../components';
+import SectionNumbers from './SectionNumbers';
 
 import './MainPage.sass';
 
 const MainPage = () => (
   <React.Fragment>
-    <HeroSection />
-    <ProductSection />
-    <DeliverySection />
-    <ProductionSection />
-    <PartnersSection />
-    <NewsSection />
-    <QuestionForm />
+    <SectionNumbers>
+      <HeroSection />
+      <ProductSection />
+      <DeliverySection />
+      <ProductionSection />
+      <PartnersSection />
+      <NewsSection />
+    </SectionNumbers>
   </React.Fragment>
 );
 

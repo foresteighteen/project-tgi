@@ -1,6 +1,7 @@
 .news
   color: #111111
-  padding-bottom: 150px
+  & > .container:first-child
+    padding-bottom: 150px
   &__header
     display: flex
     justify-content: space-between
@@ -13,7 +14,7 @@
     max-width: 970px
 
 
-@media (min-width: 760px)
+@media (min-width: 550px)
   .news
     &__item
       margin-right: 20px

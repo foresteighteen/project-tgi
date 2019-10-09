@@ -1,6 +1,8 @@
 import React from 'react';
 import Slider from 'react-slick';
 
+import Section from '../Section';
+
 import './ProductSection.sass';
 
 const ProductSection = () => {
@@ -18,7 +20,7 @@ const ProductSection = () => {
     ],
   };
   return (
-    <div className="products">
+    <section className="products">
       <div className="container left-offset">
         <h2 className="products__title">Продукция</h2>
         <Slider className="products__list" {...sliderOptions}>
@@ -42,7 +44,7 @@ const ProductSection = () => {
           </div>
         </Slider>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -30,7 +30,20 @@
       margin-right: -50px
     &__item:nth-child(7n)
       margin-right: 0
-
+@media (max-width: 1024px) and (min-width: 550px)
+  .partners
+    &__cert-list
+      width: 100%
+    &__cert-item
+      width: 100%
+@media (max-width: 768px)
+  .partners
+    &__item
+      width: 32%
+      margin-right: 5px
+      margin-bottom: 2px
+      &:nth-child(3n)
+        margin-right: 0
 @media (max-width: 550px)
   .partners
     &__header
@@ -39,9 +52,5 @@
       margin-bottom: 2rem
     &__title
       margin-bottom: 2rem
-    &__item
-      width: 32%
-      margin-right: 5px
-      margin-bottom: 5px
-      &:nth-child(3n)
-        margin-right: 0
+    &__cert-item
+      margin: 0 auto

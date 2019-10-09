@@ -1,6 +1,8 @@
 import React from 'react';
 import Slider from 'react-slick';
 
+import Section from '../Section';
+
 import './HeroSection.sass';
 
 class HeroSection extends React.Component {
@@ -39,7 +41,7 @@ class HeroSection extends React.Component {
       fade: true,
     };
     return (
-      <div className="hero">
+      <section className="hero">
         <Slider
           ref={slider => (this.bgSliderRef = slider)}
           asNavFor={this.state.sliderRef}
@@ -197,7 +199,7 @@ class HeroSection extends React.Component {
             </div>
           </Slider>
         </div>
-      </div>
+      </section>
     );
   }
 }

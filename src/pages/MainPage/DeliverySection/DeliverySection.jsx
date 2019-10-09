@@ -5,7 +5,7 @@ import Map from './Map';
 import './DeliverySection.sass';
 
 const DeliverySection = () => (
-  <div className="delivery">
+  <section className="delivery">
     <div className="container left-offset">
       <h2 className="delivery__title">География поставок</h2>
       <p className="delivery__subtitle">
@@ -16,7 +16,7 @@ const DeliverySection = () => (
       </p>
       <Map />
     </div>
-  </div>
+  </section>
 );
 
 export default DeliverySection;

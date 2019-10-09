@@ -35,7 +35,7 @@ const PartnersSection = () => {
     ],
   };
   return (
-    <div className="partners">
+    <section className="partners">
       <div className="container left-offset">
         <div className="partners__header">
           <h2 className="partners__title">Партнеры</h2>
@@ -79,7 +79,7 @@ const PartnersSection = () => {
           <LogoItem src="/src/assets/img/Group 1-4.png" alt="" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
