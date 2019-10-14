@@ -4,10 +4,12 @@ import HeroSection from './HeroSection';
 import ListSection from './ListSection';
 import FeedbackSection from './FeedbackSection';
 
+import { QuestionForm } from '../../components';
+
 import './ContactsPage.sass';
 
 const ContactsPage = () => (
-  <div className="contacts container">
+  <main className="contacts">
     <HeroSection />
     <ListSection />
     {/* just image of map */}
@@ -17,8 +19,9 @@ const ContactsPage = () => (
       alt=""
     />
     <FeedbackSection />
+    <QuestionForm />
     {/* FOOTER */}
-  </div>
+  </main>
 );
 
 export default ContactsPage;

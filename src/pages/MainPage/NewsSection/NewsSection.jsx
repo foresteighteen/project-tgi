@@ -10,8 +10,9 @@ const NewsSection = () => {
 
   const sliderOptions = {
     arrows: false,
-    slidesToShow: 1,
+    slidesToShow: 2,
     infinite: false,
+    lazyLoad: true,
   };
   return (
     <section className="news">

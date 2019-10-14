@@ -20,14 +20,18 @@ const SectionNumbers = ({ children }) => {
   };
   return (
     <React.Fragment>
-      <div className="section-numbers">
-        <span
-          className="section-numbers__active"
-          data-sec-number={visibleSection}
-        >
-          {visibleSection}
-        </span>
-        <span className="section-numbers__total">{sections}</span>
+      <div className="section-numbers-wrap">
+        <div className="container">
+          <div className="section-numbers">
+            <span
+              className="section-numbers__active"
+              data-sec-number={visibleSection}
+            >
+              {visibleSection}
+            </span>
+            <span className="section-numbers__total">{sections}</span>
+          </div>
+        </div>
       </div>
       {children.map((sec, id) => (
         <VisibilitySensor

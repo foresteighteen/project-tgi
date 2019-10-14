@@ -1,5 +1,8 @@
 .news
   color: #111111
+  .slick-list
+    overflow: unset
+    width: 100vw
   & > .container:first-child
     padding-bottom: 150px
   &__header
@@ -10,16 +13,19 @@
     font-family: 'ProximaNova', sans-serif
     font-weight: bold
     margin-bottom: 4rem
-  &__list
-    max-width: 970px
+  // &__list
+  //   max-width: 970px
 
-
+@media (min-width: 991px)  
+  .news
+    .news-item__img
+      min-height: 435px
 @media (min-width: 550px)
   .news
     &__item
       margin-right: 20px
 
-@media (max-width: 550px)
+@media (max-width: 575px)
   .news
     &__list
       overflow: hidden
@@ -27,3 +33,11 @@
       font-size: 1.25rem
     &__item-date
       font-size: 1rem
+    &__header
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      margin-bottom: 25px
+    &__title
+      margin-bottom: 25px

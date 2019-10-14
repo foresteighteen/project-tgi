@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime';
 import 'core-js/modules/es.promise';
 import 'core-js/modules/es.array.iterator';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
-
+import 'react-image-lightbox/style.css';
 import 'slick-carousel/slick/slick.css';
 // import 'slick-carousel/slick/slick-theme.css';
 

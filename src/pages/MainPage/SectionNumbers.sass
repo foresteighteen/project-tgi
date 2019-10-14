@@ -1,8 +1,17 @@
-.section-numbers
+.section-numbers-wrap
   position: fixed
-  left: 140px
+  left: 0
+  right: 0
   top: 275px
+  pointer-events: none
   z-index: 250
+
+.section-numbers
+  // position: fixed
+  // left: 140px
+  // top: 275px
+  // z-index: 250
+  display: inline-block
   font-size: 15px
   transform: rotate(270deg)
   &__active
@@ -21,7 +30,7 @@
   &__total
     color: #999
 
-@media (max-width: 1599px)
+@media (max-width: 1199px)
   .section-numbers
     display: none
 

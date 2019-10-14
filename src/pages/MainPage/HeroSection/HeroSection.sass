@@ -1,20 +1,37 @@
 .hero
-  height: 100vh
+  min-height: 100vh
   position: relative
-  padding-top: 200px
   color: #fff
+  .hero__section__inner
+    height: 100%
+    min-height: 100vh
+    padding-top: 200px
+    display: flex
+    flex-direction: column   
   & > .container
     position: relative
     height: 100%
+  &__info-slider
+    margin-bottom: auto
+    .slick-list
+      overflow: hidden
+    .slick-slide
+      height: 100%
+      & > div
+        height: auto
   &__bg-slider
     position: absolute
     left: 0
     top: 0
     width: 100%
-    height: 100vh
+    height: 100%
+    .slick-slide > div
+      height: 100%
+    .slick-track, .slick-list
+      height: 100%
   &__bg-slide-wrapper
     position: relative
-    height: 100vh
+    height: 100%
   &__bg-slide
     position: absolute
     left: 0
@@ -22,6 +39,17 @@
     bottom: 0
     right: 0
     background-position: center center
+    background-repeat: no-repeat
+    background-size: cover
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      background: #26353D
+      opacity: .7
   &__title
     font-family: 'ProximaNova', sans-serif
     font-size: 4.375rem
@@ -29,41 +57,59 @@
     text-transform: uppercase
     line-height: 80px
     margin-bottom: 25px
+    letter-spacing: 4.9px
   &__subtitle
     font-family: 'Roboto'
     font-size: 21px
     font-weight: 300
     line-height: 35px
   &__slider
-    max-width: 1365px
-    margin-top: auto
-    height: 286px
+    // margin-top: auto
     overflow: hidden
+    .slick-slide
+      border-right: 3px solid transparent
+      border-left: 3px solid transparent
   &__slider-arrows
+    margin-top: -40px
     display: flex
-  &__slider-arrow
-    display: flex
-    justify-content: center
-    align-items: center
-    font-size: 2rem
-    width: 66px
-    height: 66px
-    background: rgba(255, 255, 255, .2)
-    border-radius: 50%
-    cursor: pointer
-    &:hover
-      opacity: .8
-    &:last-child
-      margin-left: 20px
+    padding-bottom: 20px
+    position: relative
+    z-index: 2
+    justify-content: flex-end
+    .link-arrow
+      background: rgba(255, 255, 255, .2)
+      opacity: 1
+      transition: opacity .55s
+      &:before
+        background-color: #fff
+      &:after
+        border-color: #fff
+      &:hover
+        opacity: .6
+      &:last-child
+        margin-left: 20px
   &__slide
     display: flex
     align-items: flex-start
-    padding: 55px
+    padding-top: 120px
+    padding-left: 30%
+    height: 280px
+    // padding: 55px
+    // margin-right: 2%
     background: rgba(255, 255, 255, .1)
-  &__slide-icon
+    position: relative
+    &__icon
+      position: absolute
+      left: 9%
+      top: 60px
+      width: 90px
+      height: 90px
+      img
+        max-width: 100%
+
   &__slide-info
-    padding-top: 60px
-    margin-left: 45px
+    // padding-top: 60px
+    // margin-left: 45px
   &__slide-title
     font-family: 'Roboto', sans-serif
     font-weight: 300
@@ -86,79 +132,158 @@
     background: #26353D
     opacity: .7
 
-@media (min-width: 1600px)
+@media (max-width: 1439px)
   .hero
-    padding-left: 400px
-    &__subtitle
-      padding-right: 20
+    &__title
+      font-size: 60px
     &__slide
-      width: 680px
-      margin-right: 5px
-      &:last-child
-        margin-right: 0
+      padding-top: 70px
+      padding-left: 21%
+      height: 210px
+      &-info
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        height: 100%
+        padding-bottom: 20px
+      &__icon
+        left: 3%
+        top: 25px
+        width: 65px
+      &-title
+        font-size: 20px
+      &-quantity
+        font-size: 25px
+        span
+          font-size: 40px
 
-@media (min-width: 1024px)
+@media (max-width: 1199px)
   .hero
-    &__slider-arrows
-      margin-left: auto
-      margin-right: 140px
-      padding-bottom: 20px
+    .hero__section__inner
+      padding-left: 0
 
-@media (max-width: 1024px)
+@media (max-width: 991px)
   .hero
+    .hero__section__inner
+      padding-top: 120px
     &__title
-      font-size: 3.5rem
+      font-size: 45px
+      line-height: 55px
     &__slider-arrows
-      margin: 20px auto
-
-@media (max-width: 1024px) and (orientation: landscape)
-  .hero
-    padding-top: 150px
-    &__title
-      font-size: 3rem
-      line-height: 1.25
-      margin-bottom: .5rem
-    &__subtitle
-      font-size: 1rem
-      line-height: 1.5
-
-@media (max-width: 550px)
-  .hero
-    padding-top: 100px
-    &__slider-arrows
-      margin: auto auto 10px auto
-    &__slider
-      height: unset
+      margin-top: 0
     &__slide
-      min-height: 200px
-      padding: 25px 15px
-    &__slide-info
-      padding-top: 0
-      margin-left: 25px
-    &__slide-title
-      font-size: 20px
-    &__slide-quantity
-      font-size: 20px
-      & > span
-        font-size: 30px
-    &__title
-      font-size: 1.75rem
-      line-height: 1.25
-      text-align: center
-    &__subtitle
-      font-size: 1rem
-      text-align: center
+      padding-left: 0
+      &__icon
+        width: 81px
+      &-info
+        align-items: center
 
-@media (max-width: 375px)
+@media (max-width: 767px)
   .hero
     &__title
-      font-size: 1.45rem
-      margin-bottom: .5rem
-    &__subtitle
-      line-height: 1.5
-    &__slide-title
-      font-size: 1rem
-    &__slide-quantity
-      font-size: 1rem
-      & > span
-        font-size: 1.25rem
+      font-size: 31px
+      line-height: 45px
+      word-wrap: break-word
+    &__slider-arrows
+      margin-top: 5px
+    &__slide
+      padding-left: 105px
+      &__icon
+        width: 81px
+      &-info
+        align-items: flex-start
+
+@media (max-width: 575px)
+  .hero
+    &__title
+      font-size: 31px
+      line-height: 35px
+      letter-spacing: 2px
+    &__slider-arrows
+      margin-top: 5px
+    &__slide
+      padding-left: 85px
+      padding-top: 50px
+      padding-right: 10px
+      &__icon
+        width: 61px
+      &-info
+        align-items: flex-start
+      &-title
+        line-height: 25px
+
+
+// @media (min-width: 1600px)
+//   .hero
+//     &__subtitle
+//       padding-right: 20
+//     &__slide
+//       // width: 680px
+//       // margin-right: 5px
+//       // &:last-child
+//       //   margin-right: 0
+
+// @media (min-width: 1024px)
+//   .hero
+//     &__slider-arrows
+//       margin-left: auto
+//       // margin-right: 140px
+//       // padding-bottom: 20px
+
+// @media (max-width: 1024px)
+//   .hero
+//     &__title
+//       font-size: 3.5rem
+//     &__slider-arrows
+//       // margin: 20px auto
+
+// @media (max-width: 1024px) and (orientation: landscape)
+//   .hero
+//     &__title
+//       font-size: 3rem
+//       line-height: 1.25
+//       margin-bottom: .5rem
+//     &__subtitle
+//       font-size: 1rem
+//       line-height: 1.5
+
+// @media (max-width: 550px)
+//   .hero
+//     padding-top: 100px
+//     &__slider-arrows
+//       margin: auto auto 10px auto
+//     &__slider
+//       height: unset
+//     &__slide
+//       min-height: 200px
+//       padding: 25px 15px
+//     &__slide-info
+//       padding-top: 0
+//       margin-left: 25px
+//     &__slide-title
+//       font-size: 20px
+//     &__slide-quantity
+//       font-size: 20px
+//       & > span
+//         font-size: 30px
+//     &__title
+//       font-size: 1.75rem
+//       line-height: 1.25
+//       text-align: center
+//     &__subtitle
+//       font-size: 1rem
+//       text-align: center
+
+// @media (max-width: 375px)
+//   .hero
+//     &__title
+//       font-size: 1.45rem
+//       margin-bottom: .5rem
+//     &__subtitle
+//       line-height: 1.5
+//     &__slide-title
+//       font-size: 1rem
+//     &__slide-quantity
+//       font-size: 1rem
+//       & > span
+//         font-size: 1.25rem

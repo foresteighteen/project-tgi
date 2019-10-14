@@ -1,14 +1,16 @@
 import React from 'react';
-import HeroSection from './HeroSection';
+import CertificateHeroSection from './CertificateHeroSection';
 import GallerySection from './GallerySection';
+import { QuestionForm } from '../../components';
 
 import './CertificatesPage.sass';
 
 const CertificatesPage = () => (
-  <div className="cert container">
-    <HeroSection />
+  <main className="main cert-page">
+    <CertificateHeroSection />
     <GallerySection />
-  </div>
+    <QuestionForm />
+  </main>
 );
 
 export default CertificatesPage;

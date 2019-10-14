@@ -1,0 +1,44 @@
+.link-arrow
+  width: 66px
+  height: 66px
+  background-color: #fff
+  border-radius: 100%
+  transition: background-color .55s
+  position: relative
+  cursor: pointer
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    width: 27%
+    height: 2px
+    left: 50%
+    top: 50%
+    background-color: rgba(0,0,0, .2)
+    transform: translate(-50%, -50%)
+    transition: background-color .55s
+  &:after
+    content: ''
+    display: block
+    position: absolute               
+    width: 15%
+    height: 15%
+    transition: border-color .55s
+    transform: rotate(45deg)
+    top: 42%
+  &-right
+    &:after
+      border-top: 2px solid rgba(0,0,0, .2)
+      border-right: 2px solid rgba(0,0,0, .2)
+      left: 49%   
+  &-left
+    &:after
+      border-bottom: 2px solid rgba(0,0,0, .2)
+      border-left: 2px solid rgba(0,0,0, .2)
+      right: 49%
+  &:hover
+    background-color: #EC841C
+    &:after
+      border-color: #ffffff
+    &:before
+      background-color: #fff   
