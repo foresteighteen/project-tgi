@@ -20,6 +20,7 @@ const selectStyles = {
     minHeight: 'inherit',
     height: '100%',
     border: 'none',
+    cursor: 'pointer',
     paddingLeft: '10px',
     paddingRight: '10px',
     borderColor: '#E0E9F1',
@@ -60,7 +61,7 @@ const selectStyles = {
   }),
   option: (provided, state) => ({
     ...provided,
-    padding: '15px 20px',
+    padding: '25px 20px',
     backgroundColor: state.isFocused && '#EE9D35',
     color: state.isFocused && '#fff',
     transition: '.25s',
@@ -69,6 +70,7 @@ const selectStyles = {
 
 const ContactsForm = ({ modal, onCloseModal }) => (
   <form className={modal && 'form--modal'}>
+    <h2 className="contacts__form-title">Напишите Нам</h2>
     <div className="form__row">
       <label htmlFor="department" className="form__label">
         Выберите отдел
@@ -86,7 +88,7 @@ const ContactsForm = ({ modal, onCloseModal }) => (
         // value={controls.payment}
         // onChange={e => onChange.setPayment(e)}
         options={selectOptions}
-        placeholder="Способ оплаты"
+        placeholder="Отдел продаж"
       />
       <input
         tabIndex={-1}
