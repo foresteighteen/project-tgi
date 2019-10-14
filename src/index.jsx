@@ -10,6 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import Modal from 'react-modal';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -26,6 +27,8 @@ import App from './containers/App';
 const MOUNT_NODE = document.getElementById('app');
 
 const store = configureStore({}, history);
+
+Modal.setAppElement(MOUNT_NODE);
 
 library.add(fab);
 
