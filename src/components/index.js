@@ -1,5 +1,5 @@
 import Header from './Header';
-import { ButtonM } from './Buttons';
+import { ButtonM, ArrowBtn } from './Buttons';
 import Time from './Time';
 import NewsItem from './NewsItem';
 import SubscribeForm from './SubscribeForm';
@@ -14,7 +14,10 @@ import HeroBg from './HeroBg';
 import SidePhotoBlock from './SidePhotoBlock';
 import PhotoVideoBlock from './PhotoVideoBlock';
 import Footer from './Footer';
+import Main from './Main';
 export {
+  ArrowBtn,
+  Main,
   Header,
   ButtonM,
   Time,

@@ -3,6 +3,8 @@
   padding-top: 150px
   padding-bottom: 150px
   color: #111111
+  .products__list
+    overflow: visible
   &__title
     font-size: 45px
     font-family: 'ProximaNova', sans-serif
@@ -31,15 +33,22 @@
     position: absolute
     right: -40px
     bottom: 20px
-@media (max-width: 1024px)
+@media (max-width: 1439px)
+  .products
+    &__item
+      &-title
+        padding-left: 30px
+        padding-right: 20px
+        font-size: 29px
+@media (max-width: 991px)
   .products
     &__item
       height: 360px
     &__item-title
       padding-top: 50px
-      padding-left: 25px
-      padding-right: 25px
-      font-size: 26px
+      // padding-left: 25px
+      // padding-right: 25px
+      font-size: 22px
     &__item-image
       max-width: 75%
       max-height: 75%
@@ -53,24 +62,24 @@
       width: 90%!important
       flex-basis: unset
       margin: 0 auto
-@media (max-width: 550px)
-  .products
-    padding-top: 100px
-    padding-bottom: 100px
-    &__title
-      text-align: center
-    &__list
-      flex-direction: column
-    &__item
-      height: 100%
-      flex-basis: 100%
-      margin-bottom: 2rem
-    &__item-title
-      padding: 25px 15px 100px 15px
-      font-size: 1.25rem
-    &__item-image
-      right: 0
-      bottom: 10px
-      max-width: 50%
-      max-height: 50%
+// @media (max-width: 575px)
+//   .products
+//     padding-top: 100px
+//     padding-bottom: 100px
+//     &__title
+//       text-align: center
+//     &__list
+//       flex-direction: column
+//     &__item
+//       height: 100%
+//       flex-basis: 100%
+//       margin-bottom: 2rem
+//     &__item-title
+//       padding: 25px 15px 100px 15px
+//       font-size: 1.25rem
+//     &__item-image
+//       right: 0
+//       bottom: 10px
+//       max-width: 50%
+//       max-height: 50%
 

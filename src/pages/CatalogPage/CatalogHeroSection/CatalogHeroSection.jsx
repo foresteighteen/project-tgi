@@ -5,7 +5,7 @@ import './CatalogHeroSection.sass';
 
 const CatalogHeroSection = () => {
   return (
-    <section id="product-hero">
+    <section id="catalog-hero">
         <Hero classes="hero__catalog hero__full">
           <H1 text="Каталог продукции" />
           <HeroBg bgRightImg="/src/assets/img/hero/ktc1.png" bgLeftImg="/src/assets/img/hero/matrev.png" />

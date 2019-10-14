@@ -1,10 +1,12 @@
 import React from 'react';
 
 import { ButtonM } from '../Buttons';
+import { ModalContext } from '../../containers/ContactsModal/ModalProvider';
 
 import './QuestionForm.sass';
 
 const QuestionForm = () => {
+  const { openModal } = React.useContext(ModalContext);
   return (
     <div className="container">
       <div className="question-form">
@@ -15,7 +17,7 @@ const QuestionForm = () => {
           </p>
         </div>
         <div className="question-form__btn">
-          <ButtonM text={'Задать вопрос'} />
+          <ButtonM text="Задать вопрос" clickF={openModal} />
         </div>
       </div>
     </div>

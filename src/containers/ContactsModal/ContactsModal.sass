@@ -1,0 +1,24 @@
+.modal
+  &__controls
+    display: flex
+    justify-content: flex-end
+    padding-left: 30px
+    padding-right: 30px
+    margin-bottom: 20px
+  &__close-btn
+    cursor: pointer
+    & > svg
+      width: 35px
+      height: 35px
+      transition: all .25s
+      & > g > path
+        fill: #111
+      &:hover
+        transform: rotate(90deg)
+        & > g > path
+          fill: #EC841C
+
+@media (max-width: 575px)
+  .ReactModal__Content
+    margin-top: 150px
+    margin-bottom: 150px

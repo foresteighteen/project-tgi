@@ -2,36 +2,7 @@
   display: flex  
 .slider-arrow
   position: relative
-  width: 66px
-  height: 66px
-  background: #fff
   z-index: 1
   -webkit-backface-visibility: hidden
-  border-radius: 50%
-  display: flex
-  justify-content: center
-  align-items: center
-  color: rgba(0, 0, 0, .25)
-  font-size: 2rem
-  cursor: pointer
   &:first-child
     margin-right: 20px
-  &:after
-    position: absolute
-    content: ''
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    border-radius: inherit
-    background: linear-gradient(to right, #EE9D35 0%, #EC841C 100%)
-    transition: opacity 0.5s ease-out
-    z-index: 2
-    opacity: 0
-  &:hover
-    color: #fff
-    &:after
-      opacity: 1
-  & > span
-    position: relative
-    z-index: 3

@@ -42,6 +42,14 @@ const ProductSection = () => {
               className="products__item-image"
             />
           </div>
+          <div className="products__item">
+            <h3 className="products__item-title">Теплогидроизоляция труб</h3>
+            <img
+              src="/src/assets/img/teplohydro1.png"
+              alt=""
+              className="products__item-image"
+            />
+          </div>
         </Slider>
       </div>
     </section>

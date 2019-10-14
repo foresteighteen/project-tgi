@@ -11,7 +11,7 @@ import SectionNumbers from './SectionNumbers';
 import './MainPage.sass';
 
 const MainPage = () => (
-  <React.Fragment>
+  <main className="main main__page">
     <SectionNumbers>
       <HeroSection />
       <ProductSection />
@@ -20,7 +20,7 @@ const MainPage = () => (
       <PartnersSection />
       <NewsSection />
     </SectionNumbers>
-  </React.Fragment>
+  </main>
 );
 
 export default MainPage;

@@ -8,7 +8,7 @@ const KtcHeroSection = () => {
     <section id="about-hero">
         <Hero classes="hero__ktc">
           <H1 text="KTC-1" />
-          <HeroBg bgRightImg="/src/assets/img/hero/ktc.png" />
+          <HeroBg bgRightImg="/src/assets/img/hero/ktc1.png" />
           <HeroText />
           <ButtonM text="оформить заказ" classes="btn-r" />
         </Hero>
