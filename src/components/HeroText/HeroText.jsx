@@ -2,21 +2,18 @@ import React from 'react';
 
 import './HeroText.sass';
 
-const HeroText = ({ items }) => {
-  return (
-    <div className="hero__text">
-      <p className="hero__text__p">
-        Это специальный элемент веб-дизайна, представляющий собой блок с набором
-        изображений и\или текстовой инф ормации определенной ширины. Главная его
-        фишка в изменяющихся в ручном или автоматическом режиме
-      </p>
-      <p className="hero__text__p">
-        Это специальный элемент веб-дизайна, представляющий собой блок с набором
-        изображений и\или текстовой инф ормации определенной ширины. Главная его
-        фишка в изменяющихся в ручном или автоматическом режиме
-      </p>
-    </div>
-  );
-};
+const HeroText = ({ items }) => (
+  <div className="hero__text">
+    {Array.isArray(items) ? (
+      items.map((item, i) => (
+        <p key={i} className="hero__text__p">
+          {item}
+        </p>
+      ))
+    ) : (
+      <p className="hero__text__p">{items || ''}</p>
+    )}
+  </div>
+);
 
 export default HeroText;
