@@ -1,16 +1,25 @@
 import React from 'react';
+
+import withPageData from '../../containers/withPageData';
+
 import CertificateHeroSection from './CertificateHeroSection';
 import GallerySection from './GallerySection';
 import { QuestionForm } from '../../components';
 
 import './CertificatesPage.sass';
 
-const CertificatesPage = () => (
+const WP_PAGE_ID = 104;
+
+const CertificatesPage = ({ pageData, pageLoaded }) => (
   <main className="main cert-page">
-    <CertificateHeroSection />
-    <GallerySection />
-    <QuestionForm />
+    {pageLoaded ? (
+      <React.Fragment>
+        <CertificateHeroSection title={pageData.acf.title} />
+        <GallerySection gallery={pageData.acf.gallery} />
+        <QuestionForm />
+      </React.Fragment>
+    ) : null}
   </main>
 );
 
-export default CertificatesPage;
+export default withPageData(WP_PAGE_ID)(CertificatesPage);
