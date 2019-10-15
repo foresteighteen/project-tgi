@@ -1,5 +1,7 @@
 import React from 'react';
 
+import withPageData from '../../containers/withPageData';
+
 import HeroSection from './HeroSection';
 import ListSection from './ListSection';
 import FeedbackSection from './FeedbackSection';
@@ -9,25 +11,27 @@ import { QuestionForm } from '../../components';
 
 import './ContactsPage.sass';
 
-const ContactsPage = () => (
-  // const [data, setData] = React.useState({});
-  // React.useEffect(() => {
-  //   const fetchPage = async () => {
-  //     const response = await fetch(
-  //       'https://tgi.thelegacy.com.ua/wp-json/wp/v2/pages/29',
-  //     );
-  //     const responseData = await response.json();
-  //     setData(responseData);
-  //   };
-  //   fetchPage();
-  // }, []);
-  // console.log(data);
+const WP_PAGE_ID = 29;
+
+const ContactsPage = ({ pageData, pageLoaded }) => (
   <main className="contacts">
-    <HeroSection />
-    <ListSection />
-    <Map />
-    <FeedbackSection />
-    <QuestionForm />
+    {pageLoaded ? (
+      <React.Fragment>
+        <HeroSection
+          title={pageData.acf.title}
+          subtitle={pageData.acf.subtitle}
+        />
+        <ListSection addressArray={pageData.acf.address} />
+        <Map
+          apiKey={pageData.acf.map.key}
+          zoom={pageData.acf.map.zoom}
+          markers={pageData.acf.map.markers}
+          center={pageData.acf.map.center}
+        />
+        <FeedbackSection />
+        <QuestionForm />
+      </React.Fragment>
+    ) : null}
   </main>
 );
-export default ContactsPage;
+export default withPageData(WP_PAGE_ID)(ContactsPage);

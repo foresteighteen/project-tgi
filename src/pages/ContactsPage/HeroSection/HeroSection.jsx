@@ -3,15 +3,13 @@ import { Hero, H1, HeroText } from '../../../components';
 
 import './HeroSection.sass';
 
-const HeroSection = () => {
-  return (
-    <section id="contacts-hero">
-      <Hero classes="hero__contacts">
-        <H1 text="Контакты" />
-        <HeroText />
-      </Hero>
-    </section>
-  );
-};
+const HeroSection = ({ title, subtitle }) => (
+  <section id="contacts-hero">
+    <Hero classes="hero__contacts">
+      <H1 text={title} />
+      <HeroText desc={subtitle} />
+    </Hero>
+  </section>
+);
 
 export default HeroSection;
