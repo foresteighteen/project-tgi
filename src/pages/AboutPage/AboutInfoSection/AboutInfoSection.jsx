@@ -9,7 +9,7 @@ const AboutInfoSection = ({ data }) => {
       <div className="container">
         <SidePhotoBlock
           title={title}
-          text_array={text_array}
+          textArray={text_array}
           imgSrc={img.url}
           imgAlt={img.alt}
         />

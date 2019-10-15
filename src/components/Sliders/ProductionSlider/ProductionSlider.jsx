@@ -3,8 +3,7 @@ import Slider from 'react-slick';
 
 import ProductionSliderItem from './ProductionSliderItem';
 
-const ProductionSlider = () => {
-
+const ProductionSlider = ({ slider }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -21,16 +20,19 @@ const ProductionSlider = () => {
         settings: {
           variableWidth: false,
         },
-      }],
+      },
+    ],
   };
 
   return (
     <div className="production-slider">
-    <Slider {...settings}>
-     {[1,2,3,4,5,1,2,3,4,5].map(e => <ProductionSliderItem img={e}/>)} 
-    </Slider>
+      <Slider {...settings}>
+        {slider.map(({ img }, i) => (
+          <ProductionSliderItem key={i} imgSrc={img.url} imgAlt={img.alt} />
+        ))}
+      </Slider>
     </div>
-  )
-}
+  );
+};
 
 export default ProductionSlider;

@@ -4,14 +4,17 @@ import { SidePhotoBlock } from '../../../components';
 
 import './QualityInfoSection.sass';
 
-const QualityInfoSection = () => {
-  return (
-    <section id="quality-info-section">
-      <div className="container">
-        <SidePhotoBlock classes="no-before"/>
-      </div>
-    </section>
-  );
-};
+const QualityInfoSection = ({ description, sectionImg }) => (
+  <section id="quality-info-section">
+    <div className="container">
+      <SidePhotoBlock
+        textArray={description}
+        imgSrc={sectionImg.url}
+        imgAlt={sectionImg.alt}
+        classes="no-before"
+      />
+    </div>
+  </section>
+);
 
 export default QualityInfoSection;
