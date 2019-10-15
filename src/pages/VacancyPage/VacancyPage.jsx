@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { indexBy, prop, pluck } from 'ramda';
 import { QuestionForm } from '../../components';
+import withPageData from '../../containers/withPageData';
 
 import HeroSection from './HeroSection';
 import VacancySection from './VacancySection';
@@ -165,15 +167,27 @@ const myVac = {
   ],
 };
 
-const VacancyPage = () => {
-  const [activeVacancy, changeActive] = useState('Moskov');
-  const [currencySymbol, {}] = useState('₽');
-  const [buttonText, {}] = useState('Откликнуться на вакансию');
-  const [vacancies, {}] = useState(myVac);
+const WP_PAGE_ID = 38;
+
+const VacancyPage = ({ pageData, pageLoaded }) => {
+  if (!pageLoaded) return null;
+  console.log(pageData.acf);
+  const vacanciesParsed = pluck('vacancy', indexBy(prop('city'), pageData.acf.vacancies.city));
+  const [activeVacancy, changeActive] = useState(
+    pageData.acf.vacancies.city[0].city,
+  );
+  const [currencySymbol, {}] = useState(pageData.acf.vacancies.currency);
+  const [buttonText, {}] = useState(pageData.acf.vacancies.btn_text);
+  const [vacancies, {}] = useState(vacanciesParsed);
 
   return (
     <main className="main vacancy-page">
-      <HeroSection {...{ activeVacancy, vacancies, changeActive }} />
+      <HeroSection
+        title={pageData.acf.hero.title}
+        bgImg={pageData.acf.hero.bgImg}
+        desc={pageData.acf.hero.description}
+        {...{ activeVacancy, vacancies, changeActive }}
+      />
       <VacancySection
         buttonText={buttonText}
         currencySymbol={currencySymbol}
@@ -184,5 +198,4 @@ const VacancyPage = () => {
   );
 };
 
-export default VacancyPage;
-
+export default withPageData(WP_PAGE_ID)(VacancyPage);

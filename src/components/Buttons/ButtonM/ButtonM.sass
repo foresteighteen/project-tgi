@@ -10,11 +10,16 @@
   font-family: ProximaNova 
   cursor: pointer
   position: relative
-  transition: color .35s
+  transition: color .35s, border-color .35s
   white-space: nowrap
   overflow: hidden
   font-weight: 400
-  letter-spacing: 1.7px
+  letter-spacing: 1.9px
+  // border: 2px solid transparent
+  border-radius: 5px
+  font-weight: 500
+  box-shadow: 0px 10px 15px rgba(#B45A0B, .2)
+  border: 0!important
   .btn-text
     position: relative
     z-index: 3
@@ -37,15 +42,20 @@
     right: 0 
     background: transparent linear-gradient(180deg, #EE9D35 0%, #EC841C 100%) 0% 0% no-repeat
     z-index: 1
+    // border: 2px solid transparent
   &.btn-bg-deg
     &:before
       background: transparent linear-gradient(74deg, #EE9D35 0%, #EC841C 100%)
   &:after
+    margin: 1px
     background: #fff
     opacity: 0
     z-index: 2
     transition: opacity .35s
+    border: 1px solid #EC841C
+    border-radius: 5px 
   &:hover
-    color: #EE9D35
+    color: #EC841C
+    border-color: #EC841C
     &:after
       opacity: 1
