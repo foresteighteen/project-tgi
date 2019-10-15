@@ -1,11 +1,10 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-import Section from '../Section';
-
 import './ProductSection.sass';
 
-const ProductSection = () => {
+const ProductSection = ({ data }) => {
+  const { title, subtitle, slider } = data;
   const sliderOptions = {
     slidesToShow: 2,
     arrows: false,
@@ -22,34 +21,18 @@ const ProductSection = () => {
   return (
     <section className="products">
       <div className="container left-offset">
-        <h2 className="products__title">Продукция</h2>
+        <h2 className="products__title">{title}</h2>
         <Slider className="products__list" {...sliderOptions}>
-          <div className="products__item">
-            <h3 className="products__item-title">
-              Комплекты теплоизоляции стыков трубопроводов
-            </h3>
-            <img
-              src="/src/assets/img/ktc0106.png"
-              alt=""
-              className="products__item-image"
-            />
-          </div>
-          <div className="products__item">
-            <h3 className="products__item-title">Теплогидроизоляция труб</h3>
-            <img
-              src="/src/assets/img/teplohydro1.png"
-              alt=""
-              className="products__item-image"
-            />
-          </div>
-          <div className="products__item">
-            <h3 className="products__item-title">Теплогидроизоляция труб</h3>
-            <img
-              src="/src/assets/img/teplohydro1.png"
-              alt=""
-              className="products__item-image"
-            />
-          </div>
+          {slider.map(slide => (
+            <div className="products__item">
+              <h3 className="products__item-title">{slide.title}</h3>
+              <img
+                src={slide.img.url}
+                alt={slide.img.alt}
+                className="products__item-image"
+              />
+            </div>
+          ))}
         </Slider>
       </div>
     </section>

@@ -5,31 +5,35 @@ import DiplomaSVG from './DiplomaSVG';
 
 import './ProductionSection.sass';
 
-const ProductionSection = () => (
-  <section className="production">
-    <div className="container left-offset">
-      <h2 className="production__title">Производство</h2>
-      <img
-        src="/src/assets/img/production.png"
-        alt=""
-        className="production__poster"
-      />
-      <div className="production__list">
-        <div className="production__item">
-          <DiplomaSVG />
-          <h3 className="production__item-title">
-            Сертификаты<span className="production__item-arrow"></span>
-          </h3>
-        </div>
-        <div className="production__item production__item--orange">
-          <DiamondSVG />
-          <h3 className="production__item-title">
-            Контроль качества<span className="production__item-arrow"></span>
-          </h3>
+const ProductionSection = ({ data }) => {
+  const { title, bgImg, firstBlock, secondBlock } = data;
+  return (
+    <section className="production">
+      <div className="container left-offset">
+        <h2 className="production__title">{title}</h2>
+        <img src={bgImg.url} alt={bgImg.alt} className="production__poster" />
+        <div className="production__list">
+          <a href={firstBlock.link} className="production__item">
+            <DiplomaSVG />
+            <h3 className="production__item-title">
+              {firstBlock.title}
+              <span className="production__item-arrow"></span>
+            </h3>
+          </a>
+          <a
+            href={secondBlock.link}
+            className="production__item production__item--orange"
+          >
+            <DiamondSVG />
+            <h3 className="production__item-title">
+              {secondBlock.title}
+              <span className="production__item-arrow"></span>
+            </h3>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default ProductionSection;

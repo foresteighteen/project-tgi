@@ -3,8 +3,6 @@ import Slider from 'react-slick';
 
 import { ArrowBtn } from '../../../components';
 
-import Section from '../Section';
-
 import './HeroSection.sass';
 
 class HeroSection extends React.Component {
@@ -12,8 +10,6 @@ class HeroSection extends React.Component {
     sliderRef: null,
     bgSliderRef: null,
   };
-  // const sliderRef = React.useRef(null);
-  // const bgSliderRef = React.useRef(null);
   componentDidMount() {
     this.setupRefs();
   }
@@ -24,8 +20,9 @@ class HeroSection extends React.Component {
       bgSliderRef: this.bgSliderRef,
     });
   };
-
   render() {
+    const { slider } = this.props;
+
     const sliderOptions = {
       arrows: false,
       slidesToShow: 2,
@@ -62,38 +59,17 @@ class HeroSection extends React.Component {
           {...bgSliderOptions}
           asNavFor={this.state.sliderInfoRef}
         >
-          <div className="hero__bg-slide-wrapper">
-            <div
-              className="hero__bg-slide"
-              style={{
-                backgroundImage: 'url(/src/assets/img/mp-hero-bg.png)'
-              }}
-            ></div>
-          </div>
-          <div className="hero__bg-slide-wrapper">
-            <div
-              className="hero__bg-slide"
-              style={{
-                backgroundImage: 'url(/src/assets/img/mp-hero-bg.png)'
-              }}
-            ></div>
-          </div>
-          <div className="hero__bg-slide-wrapper">
-            <div
-              className="hero__bg-slide"
-              style={{
-                backgroundImage: 'url(/src/assets/img/mp-hero-bg.png)'
-              }}
-            ></div>
-          </div>
-          <div className="hero__bg-slide-wrapper">
-            <div
-              className="hero__bg-slide"
-              style={{
-                backgroundImage: 'url(/src/assets/img/mp-hero-bg.png)',
-              }}
-            ></div>
-          </div>
+          {slider.map(slide => (
+            <div className="hero__bg-slide-wrapper">
+              <div
+                className="hero__bg-slide"
+                style={{
+                  backgroundImage: `url(${slide.bgImg.url})`,
+                }}
+              >
+              </div>
+            </div>
+          ))}
         </Slider>
         <div className="container">
           <div className="hero__section__inner">
@@ -103,70 +79,18 @@ class HeroSection extends React.Component {
               {...infoSliderOptions}
               asNavFor={this.state.sliderRef}
             >
-              <div className="hero__info-slide">
-                <div className="row">
-                  <div className="col col-lg-8">
-                    <h2 className="hero__title">завод теплогидроизоляции1</h2>
-                  </div>
-                  <div className="col col-lg-10 col-xl-7">
-                    <p className="hero__subtitle">
-                      Антикоррозионная и теплоизоляционная защита стыков
-                      трубопроводов подземной и надземной прокладки на объектах
-                      нефтегазовой промышленности и жилищно-коммунального
-                      хозяйства.
-                    </p>
+              {slider.map(slide => (
+                <div className="hero__info-slide">
+                  <div className="row">
+                    <div className="col col-lg-8">
+                      <h2 className="hero__title">{slide.title}</h2>
+                    </div>
+                    <div className="col col-lg-10 col-xl-7">
+                      <p className="hero__subtitle">{slide.subtitle}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="hero__info-slide">
-                <div className="row">
-                  <div className="col-lg-8">
-                    <h2 className="hero__title">завод теплогидроизоляции2</h2>
-                  </div>
-                  <div className="col col-lg-10 col-xl-7">
-                    <p className="hero__subtitle">
-                      Антикоррозионная и теплоизоляционная защита стыков
-                      трубопроводов подземной и надземной прокладки на объектах
-                      нефтегазовой промышленности и жилищно-коммунального
-                      хозяйства.
-                    </p>
-                    <p className="hero__subtitle">
-                      Антикоррозионная и теплоизоляционная защита стыков
-                      трубопроводов подземной и надземной прокладки на объектах
-                      нефтегазовой промышленности и жилищно-коммунального
-                      хозяйства.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="hero__info-slide">
-                <div className="row">
-                  <div className="col-lg-8">
-                    <h2 className="hero__title">завод теплогидроизоляции3</h2>
-                  </div>
-                  <div className="col col-lg-10 col-xl-7">
-                    <p className="hero__subtitle">
-                      Антикоррозионная и теплоизоляционная защита стыков
-                      трубопроводов подземной и надземной прокладки на
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="hero__info-slide">
-                <div className="row">
-                  <div className="col-lg-8">
-                    <h2 className="hero__title">завод теплогидроизоляции4</h2>
-                  </div>
-                  <div className="col col-lg-10 col-xl-7">
-                    <p className="hero__subtitle">
-                      Антикоррозионная и теплоизоляционная защита стыков
-                      трубопроводов подземной и надземной прокладки на объектах
-                      нефтегазовой промышленности и жилищно-коммунального
-                      хозяйства.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </Slider>
             <div className="hero__slider-arrows">
               <ArrowBtn
@@ -207,58 +131,22 @@ class HeroSection extends React.Component {
               className="hero__slider"
               {...sliderOptions}
             >
-              <div className="hero__slide">
-                <div className="hero__slide__icon">
-                  <img src="/src/assets/img/oil.svg" alt="" />
+              {slider.map(({ bottomSlide }) => (
+                <div className="hero__slide">
+                  <div className="hero__slide__icon">
+                    <img
+                      src={bottomSlide.icon.url}
+                      alt={bottomSlide.icon.alt}
+                    />
+                  </div>
+                  <div className="hero__slide-info">
+                    <p className="hero__slide-title">{bottomSlide.title}</p>
+                    <p className="hero__slide-quantity">
+                      <span>{bottomSlide.number}</span> {bottomSlide.units}
+                    </p>
+                  </div>
                 </div>
-                <div className="hero__slide-info">
-                  <p className="hero__slide-title">
-                    Реализовано для нефтегазовой отрасли
-                  </p>
-                  <p className="hero__slide-quantity">
-                    <span>480 000</span> комплектов
-                  </p>
-                </div>
-              </div>
-              <div className="hero__slide">
-                <div className="hero__slide__icon">
-                  <img src="/src/assets/img/pipe.svg" alt="" />
-                </div>
-                <div className="hero__slide-info">
-                  <p className="hero__slide-title">
-                    Реализовано для отрасли ЖКХ
-                  </p>
-                  <p className="hero__slide-quantity">
-                    <span>100 000</span> пог.м.
-                  </p>
-                </div>
-              </div>
-              <div className="hero__slide">
-                <div className="hero__slide__icon">
-                  <img src="/src/assets/img/oil.svg" alt="" />
-                </div>
-                <div className="hero__slide-info">
-                  <p className="hero__slide-title">
-                    Реализовано для нефтегазовой отрасли
-                  </p>
-                  <p className="hero__slide-quantity">
-                    <span>480 000</span> комплектов
-                  </p>
-                </div>
-              </div>
-              <div className="hero__slide">
-                <div className="hero__slide__icon">
-                  <img src="/src/assets/img/pipe.svg" alt="" />
-                </div>
-                <div className="hero__slide-info">
-                  <p className="hero__slide-title">
-                    Реализовано для отрасли ЖКХ
-                  </p>
-                  <p className="hero__slide-quantity">
-                    <span>100 000</span> пог.м.
-                  </p>
-                </div>
-              </div>
+              ))}
             </Slider>
           </div>
         </div>
