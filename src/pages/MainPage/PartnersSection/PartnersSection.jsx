@@ -8,7 +8,8 @@ import LogoItem from './LogoItem';
 
 import './PartnersSection.sass';
 
-const PartnersSection = () => {
+const PartnersSection = ({ data }) => {
+  const { title, certificates, logotypes } = data;
   const sliderRef = React.useRef(null);
 
   const [photoIndex, updatePhotoIndex] = useState(0);
@@ -45,22 +46,11 @@ const PartnersSection = () => {
     ],
   };
 
-  const images = [
-    '/src/assets/img/cert-1.png',
-    '/src/assets/img/cert-2.png',
-    '/src/assets/img/cert-3.png',
-    '/src/assets/img/cert-4.png',
-    '/src/assets/img/cert-1.png',
-    '/src/assets/img/cert-2.png',
-    '/src/assets/img/cert-3.png',
-    '/src/assets/img/cert-4.png',
-  ];
-
   return (
     <section className="partners">
       {isOpenLight && (
         <Lightbox
-          mainSrc={images[photoIndex]}
+          mainSrc={certificates[photoIndex].img.url}
           // nextSrc={images[(photoIndex + 1) % images.length]}
           // prevSrc={images[(photoIndex + images.length - 1) % images.length]}
           onCloseRequest={() => updateLight(false)}
@@ -70,7 +60,7 @@ const PartnersSection = () => {
       )}
       <div className="container left-offset">
         <div className="partners__header">
-          <h2 className="partners__title">Партнеры</h2>
+          <h2 className="partners__title">{title}</h2>
           <SliderArrows
             onClickPrev={() => {
               sliderRef.current.slickPrev();
@@ -85,33 +75,20 @@ const PartnersSection = () => {
           className="partners__cert-list"
           {...sliderOptions}
         >
-          {images.map((img, i) => (
-            <CertificateItem src={img} alt="" key={i} click={openLight} index={i} />
+          {certificates.map(({ img }, i) => (
+            <CertificateItem
+              src={img.url}
+              alt={img.alt}
+              key={i}
+              click={openLight}
+              index={i}
+            />
           ))}
-          {/* <CertificateItem src="/src/assets/img/cert-1.png" alt="" />
-          <CertificateItem src="/src/assets/img/cert-2.png" alt="" />
-          <CertificateItem src="/src/assets/img/cert-3.png" alt="" />
-          <CertificateItem src="/src/assets/img/cert-4.png" alt="" />
-          <CertificateItem src="/src/assets/img/cert-1.png" alt="" />
-          <CertificateItem src="/src/assets/img/cert-2.png" alt="" />
-          <CertificateItem src="/src/assets/img/cert-3.png" alt="" />
-          <CertificateItem src="/src/assets/img/cert-4.png" alt="" /> */}
         </Slider>
         <div className="partners__list">
-          <LogoItem src="/src/assets/img/Group 1.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-1.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-2.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-3.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-4.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-5.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-6.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-7.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-8.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-1.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-2.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-3.png" alt="" />
-          <LogoItem src="/src/assets/img/Group 1-4.png" alt="" />
+          {logotypes.map(({ img }) => (
+            <LogoItem key={img.id} src={img.url} alt={img.alt} />
+          ))}
         </div>
       </div>
     </section>

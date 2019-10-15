@@ -2,11 +2,12 @@ import React from 'react';
 
 import { TabsSlider } from '../../../components';
 
-const AboutSliderSection = () => {
+const AboutSliderSection = ({ data }) => {
+  const { items } = data;
   return (
     <section id="about-slider-section">
       <div className="container">
-        <TabsSlider />
+        <TabsSlider slides={items} />
       </div>
     </section>
   );
