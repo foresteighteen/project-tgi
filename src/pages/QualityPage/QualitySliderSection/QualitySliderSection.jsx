@@ -2,14 +2,12 @@ import React from 'react';
 
 import { ProductionSlider } from '../../../components';
 
-const QualitySliderSection = () => {
-  return (
-    <section id="quality-slider-section">
-      <div className="container">
-        <ProductionSlider />
-      </div>
-    </section>
-  );
-};
+const QualitySliderSection = ({ slider }) => (
+  <section id="quality-slider-section">
+    <div className="container">
+      <ProductionSlider slider={slider} />
+    </div>
+  </section>
+);
 
 export default QualitySliderSection;
