@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-
+import uniqid from 'uniqid';
 import './ProductSection.sass';
 
 const ProductSection = ({ data }) => {
@@ -24,7 +24,7 @@ const ProductSection = ({ data }) => {
         <h2 className="products__title">{title}</h2>
         <Slider className="products__list" {...sliderOptions}>
           {slider.map(slide => (
-            <div className="products__item">
+            <div className="products__item" key={uniqid()}>
               <h3 className="products__item-title">{slide.title}</h3>
               <img
                 src={slide.img.url}
