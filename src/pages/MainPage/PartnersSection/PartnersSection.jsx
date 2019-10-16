@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 import Lightbox from 'react-image-lightbox';
-
+import uniqid from 'uniqid';
 import SliderArrows from '../SliderArrows';
 import CertificateItem from './CertificateItem';
 import LogoItem from './LogoItem';
@@ -79,7 +79,7 @@ const PartnersSection = ({ data }) => {
             <CertificateItem
               src={img.url}
               alt={img.alt}
-              key={i}
+              key={uniqid()}
               click={openLight}
               index={i}
             />
@@ -87,7 +87,7 @@ const PartnersSection = ({ data }) => {
         </Slider>
         <div className="partners__list">
           {logotypes.map(({ img }) => (
-            <LogoItem key={img.id} src={img.url} alt={img.alt} />
+            <LogoItem key={uniqid()} src={img.url} alt={img.alt} />
           ))}
         </div>
       </div>

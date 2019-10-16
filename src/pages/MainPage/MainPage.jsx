@@ -18,7 +18,7 @@ const MainPage = ({ pageData, pageLoaded }) => (
   <main className="main main__page">
     {pageLoaded ? (
       <SectionNumbers>
-        <HeroSection slider={pageData.acf.hero.slider} />
+        <HeroSection data={pageData.acf.hero} />
         <ProductSection data={pageData.acf.products} />
         <DeliverySection data={pageData.acf.geography} />
         <ProductionSection data={pageData.acf.production} />

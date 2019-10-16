@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import classnames from 'classnames';
 import {
   ComposableMap,
   ZoomableGroup,
@@ -22,10 +23,66 @@ const immutableMove = (arr, old_index, new_index) => {
   return copy;
 };
 
-const Map = () => {
+const defaultStyles = {
+  default: {
+    // fill: '#F2A857',
+    transition: 'transform .55s',
+    // animation: 'upLift 1.55s reverse',
+    position: 'relative',
+    zIndex: '1',
+    fill: '#F2A857',
+    stroke: '#fff',
+    outline: 'none',
+  },
+  hover: {
+    fill: '#F78B28',
+    stroke: '#fff',
+    outline: 'none',
+    transform: 'translate3d(10px,-10px,0)',
+    animation: 'upLift 1.55s forwards normal',
+    zIndex: '10',
+    transition: 'transform .55s',
+  },
+  pressed: {
+    fill: '#F78B28',
+    stroke: '#fff',
+    outline: 'none',
+    // animation: 'upLift 1.55s forwards normal',
+  },
+};
+const randomStyles = {
+  default: {
+    // fill: '#F2A857',
+    transition: 'transform .55s',
+    // animation: 'upLift 1.55s reverse',
+    position: 'relative',
+    zIndex: '1',
+    fill: '#E0E0E0',
+    stroke: '#fff',
+    outline: 'none',
+    pointerEvents: 'none',
+  },
+  hover: {
+    fill: '#F78B28',
+    stroke: '#fff',
+    outline: 'none',
+    transform: 'translate3d(10px,-10px,0)',
+    animation: 'upLift 1.55s forwards normal',
+    zIndex: '10',
+    transition: 'transform .55s',
+  },
+  pressed: {
+    fill: '#F78B28',
+    stroke: '#fff',
+    outline: 'none',
+    // animation: 'upLift 1.55s forwards normal',
+  },
+};
+
+const Map = ({ activeData }) => {
   const [data, setData] = useState(null);
   const [mapCompiled, setCompiled] = useState(false);
-
+  const [activePath, {}] = useState(activeData);
   useEffect(() => {
     async function fetchData() {
       const result = await fetch('/src/gadm36.json');
@@ -37,14 +94,26 @@ const Map = () => {
 
   const rerenderFunc = index => {
     const oldItems = data.objects.m.geometries;
-    const newItems = immutableMove(oldItems, index, oldItems.length - 1);
+    if (index === oldItems.length - 1) return;
+    // const left = oldItems.slice(0, index);
+    // const right = oldItems.slice(index + 1);
+    // const current = oldItems.slice(index, index + 1);
+    // const newItems = [...left, ...right, ...current];
+    const newItems = [
+      ...oldItems.slice(0, index),
+      ...oldItems.slice(index + 1),
+      ...oldItems.slice(index, index + 1),
+    ];
+    // const test = data.objects.m.geometries.slice(index, index + 1);
+    // const oldItems = data.objects.m.geometries;
+    // const newItems = immutableMove(oldItems, index, oldItems.length - 1);
     const newData = {
       ...data,
       objects: { m: { ...data.objects.m, geometries: newItems } },
     };
     setData(newData);
   };
-  if (!data) return null;
+  if (!data || !activePath) return null;
   return (
     <div className="delivery__map-container">
       <ComposableMap
@@ -88,40 +157,11 @@ const Map = () => {
                     key={geography.properties.GID_1}
                     geography={geography}
                     projection={projection}
-                    style={{
-                      default: {
-                        // fill: '#F2A857',
-                        transition: 'transform .55s',
-                        // animation: 'upLift 1.55s reverse',
-                        position: 'relative',
-                        zIndex: '1',
-                        fill:
-                          geography.properties.NL_NAME_1 === 'Республика Саха'
-                            ? '#E0E0E0'
-                            : '#F2A857',
-                        stroke: '#fff',
-                        outline: 'none',
-                        pointerEvents:
-                          geography.properties.NL_NAME_1 === 'Республика Саха'
-                            ? 'none'
-                            : 'all',
-                      },
-                      hover: {
-                        fill: '#F78B28',
-                        stroke: '#fff',
-                        outline: 'none',
-                        transform: 'translate3d(10px,-10px,0)',
-                        animation: 'upLift 1.55s forwards normal',
-                        zIndex: '10',
-                        transition: 'transform .55s',
-                      },
-                      pressed: {
-                        fill: '#F78B28',
-                        stroke: '#fff',
-                        outline: 'none',
-                        // animation: 'upLift 1.55s forwards normal',
-                      },
-                    }}
+                    style={
+                      activePath[geography.properties.NL_NAME_1]
+                        ? defaultStyles
+                        : randomStyles
+                    }
                   />
                 );
               });
@@ -172,30 +212,44 @@ const Map = () => {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
+
       <ReactTooltip
         id="country-tooltip"
         getContent={data => {
           // const parsed = JSON.parse(data);
-          const parsed = true;
-          return parsed ? (
-            <div className="tooltip">
+          // const parsed = activePath[data];
+          return activePath[data] ? (
+            <div
+              className={classnames({
+                tooltip: true,
+                'tooltip-single': !activePath[data].oil || !activePath[data].water,
+              })}
+            >
               {/* <div className="tooltip__title">{parsed.countryName}</div> */}
-              <div className="tooltip__title">{data}</div>
+              <div className="tooltip__title">{activePath[data].active}</div>
               <div className="tooltip__list">
-                <div className="tooltip__item">
-                  <WaterDropSVG className="water-drop" />
-                  <div className="tooltip__item-info">
-                    <p className="tooltip__item-title">56 666</p>
-                    <p className="tooltip__item-subtitle">КОМПЛЕКТОВ</p>
+                {activePath[data].oil ? (
+                  <div className="tooltip__item">
+                    <WaterDropSVG className="water-drop" />
+                    <div className="tooltip__item-info">
+                      <p className="tooltip__item-title">
+                        {activePath[data].oil}
+                      </p>
+                      <p className="tooltip__item-subtitle">КОМПЛЕКТОВ</p>
+                    </div>
                   </div>
-                </div>
-                <div className="tooltip__item">
-                  <WaterDropSVG className="water-drop water-drop--blue" />
-                  <div className="tooltip__item-info">
-                    <p className="tooltip__item-title">56 666</p>
-                    <p className="tooltip__item-subtitle">КОМПЛЕКТОВ</p>
+                ) : null}
+                {activePath[data].water ? (
+                  <div className="tooltip__item">
+                    <WaterDropSVG className="water-drop water-drop--blue" />
+                    <div className="tooltip__item-info">
+                      <p className="tooltip__item-title">
+                        {activePath[data].water}
+                      </p>
+                      <p className="tooltip__item-subtitle">КОМПЛЕКТОВ</p>
+                    </div>
                   </div>
-                </div>
+                ) : null}
               </div>
             </div>
           ) : null;
