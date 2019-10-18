@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Slider from 'react-slick';
+import withPostsData from '../../../containers/withPostsData';
 import { NewsItem, QuestionForm } from '../../../components';
 
 import SliderArrows from '../SliderArrows';
 import './NewsSection.sass';
 
-const NewsSection = () => {
+const NewsSection = ({ postsData, postsLoaded }) => {
   const sliderRef = React.useRef(null);
+  const [activeSlide, setActiveSlide] = React.useState(0);
+  const [sliderLength, setSliderLength] = React.useState(0);
 
+  useEffect(() => {
+    if (postsData) setSliderLength(postsData.length - 1);
+  }, [postsData]);
+
+  const renderNews = item => <NewsItem className="news__item" key={item.id} {...item} />;
   const sliderOptions = {
     arrows: false,
     slidesToShow: 2,
     infinite: false,
     lazyLoad: true,
+    swipe: false,
+    beforeChange: (current, next) => setActiveSlide(next),
+    responsive: [
+      {
+        breakpoint: 575,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+    ]
   };
+  if (!postsLoaded) return null;
   return (
     <section className="news">
       <div className="container left-offset">
@@ -26,13 +46,13 @@ const NewsSection = () => {
             onClickNext={() => {
               sliderRef.current.slickNext();
             }}
+            activeSlide={activeSlide}
+            sliderLength={sliderLength}
           />
         </div>
         <Slider ref={sliderRef} className="news__list" {...sliderOptions}>
-          <NewsItem className="news__item" />
-          <NewsItem className="news__item" />
-          <NewsItem className="news__item" />
-          <NewsItem className="news__item" />
+          {postsData.map(renderNews)}
+          <div></div>
         </Slider>
       </div>
       <QuestionForm />
@@ -40,4 +60,4 @@ const NewsSection = () => {
   );
 };
 
-export default NewsSection;
+export default withPostsData('news')(NewsSection);

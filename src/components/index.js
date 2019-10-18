@@ -14,10 +14,8 @@ import HeroBg from './HeroBg';
 import SidePhotoBlock from './SidePhotoBlock';
 import PhotoVideoBlock from './PhotoVideoBlock';
 import Footer from './Footer';
-import Main from './Main';
 export {
   ArrowBtn,
-  Main,
   Header,
   ButtonM,
   Time,

@@ -1,4 +1,6 @@
 .hero__catalog
+  .hero__text
+    max-width: 575px
   .hero-bg 
     .img-left
       display: block
@@ -15,3 +17,23 @@
     .img-right
       right: 10%
       top: 50%
+
+@media (max-width: 1199px)
+  .hero__catalog
+    .hero__text
+      max-width: 100%
+    .hero-bg
+      max-height: 300px
+      .hero-bg-img
+        object-fit: contain
+        width: initial
+
+@media (max-width: 991px)
+  .hero__catalog
+    .hero-bg
+      max-height: 350px
+
+@media (max-width: 575px)
+  .hero__catalog
+    .hero-bg
+      max-height: 200px

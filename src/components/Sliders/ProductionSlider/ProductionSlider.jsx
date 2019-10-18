@@ -23,7 +23,6 @@ const ProductionSlider = ({ slider }) => {
       },
     ],
   };
-
   return (
     <div className="production-slider">
       <Slider {...settings}>

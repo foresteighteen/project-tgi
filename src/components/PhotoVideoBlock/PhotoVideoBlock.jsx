@@ -9,8 +9,7 @@ import ModalVideo from 'react-modal-video';
 import './PhotoVideo.sass';
 
 const PhotoVideoBlock = props => {
-  const { video } = props;
-
+  const { video, data:{ data, title } } = props;
   const [isOpen, openModal] = useState(false);
   // const video = true;
 
@@ -31,7 +30,7 @@ const PhotoVideoBlock = props => {
           channel="youtube"
           showinfo="0"
           isOpen={isOpen}
-          videoId="HchoJcYNYlU"
+          videoId={data.video}
           onClose={() => openModal(false)}
         />
       ) : null}
@@ -44,29 +43,13 @@ const PhotoVideoBlock = props => {
                 className="btn-video"
               ></button>
               <div className="video-desc__text">
-                Смотреть видео-процесс установки КТС-2
+                {data.btn_video} {title}
               </div>
             </div>
           ) : null}
         </div>
       </div>
-      <div className="photo-video__block__desc">
-        <p className="photo-video__block__text">
-          ППУ – один из эффективных полимерную утеплителей, способный
-          значительно снизить теплопотери и не допустить проникновения воды,
-          вызывающей коррозию, к коммуникациям. Секрет герметичности таков:
-          теплоизоляция для труб подбирается по их диаметру, что обеспечивает
-          плотно прилегание «половинок» изделия. Жёсткий «чехол» не сползает и
-          способен полноценно функционировать при диапазоне - 60˚…+140˚С.
-        </p>
-        <p className="photo-video__block__text">
-          ППУ – один из эффективных полимерную утеплителей, способный
-          значительно снизить теплопотери и не допустить проникновения воды,
-          вызывающей коррозию, к коммуникациям. Секрет герметичности таков:
-          теплоизоляция для труб подбирается по их диаметру, что обеспечивает
-          плотно прилегание «половинок» изделия. Жёсткий «чехол» не сползает и
-          способен полноценно функционировать при диапазоне - 60˚…+140˚С.
-        </p>
+      <div className="photo-video__block__desc" dangerouslySetInnerHTML={{ __html: data.text}}>
       </div>
     </div>
   );

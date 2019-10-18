@@ -3,17 +3,14 @@ import { ArrowBtn } from '../../../components';
 
 import './SliderArrows.sass';
 
-const SliderArrows = ({ onClickPrev, onClickNext }) => (
+const SliderArrows = ({ onClickPrev, onClickNext, activeSlide, sliderLength }) => {  
+  const disabledLeft = activeSlide === 0;
+  const disabledRight = activeSlide === sliderLength; 
+  return ( 
   <div className="slider-arrows">
-    <ArrowBtn click={onClickPrev} left sliderBtn />
-    <ArrowBtn click={onClickNext} right sliderBtn />
-    {/* <button onClick={onClickPrev} type="button" className="slider-arrow">
-      <span>{'<'}</span>
-    </button>
-    <button onClick={onClickNext} type="button" className="slider-arrow">
-      <span>{'>'}</span>
-    </button> */}
+    <ArrowBtn click={onClickPrev} left sliderBtn disabled={disabledLeft} />
+    <ArrowBtn click={onClickNext} right sliderBtn disabled={disabledRight} />
   </div>
-);
+)};
 
 export default SliderArrows;
