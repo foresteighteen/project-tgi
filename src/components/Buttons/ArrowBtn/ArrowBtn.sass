@@ -6,6 +6,9 @@
   transition: background-color .55s
   position: relative
   cursor: pointer
+  &.disabled
+    pointer-events: none
+    opacity: .7
   &:before
     content: ''
     display: block

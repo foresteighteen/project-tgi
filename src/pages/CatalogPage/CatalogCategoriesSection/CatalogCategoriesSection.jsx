@@ -2,11 +2,11 @@ import React from 'react'
 
 import CatalogCategories from './CatalogCategories';
 
-const CatalogCategoriesSection = () => {
+const CatalogCategoriesSection = ({ data }) => {
   return (
     <section id="catalog-categories-section">
       <div className="container">
-        <CatalogCategories />
+        <CatalogCategories data={data} />
       </div>
     </section>
   )

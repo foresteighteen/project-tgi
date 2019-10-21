@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Header, Footer, Main } from '../components';
+import { Header, Footer } from '../components';
+import Main from './Main';
 import ScrollToTop from '../utils/ScrollToTop';
 import { ModalProvider } from '../containers/ContactsModal/ModalProvider';
 import ContactsModal from '../containers/ContactsModal';

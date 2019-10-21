@@ -1,49 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import classnames from 'classnames';
 
 import './CatalogProductMain.sass';
 
-const CatalogProductMain = () => {
+const CatalogProductMain = ({ item }) => {
+  const { img, title, vertical, products } = item;
+  const renderLi = ({ name, product }) => (
+    <li className="catalog-product__grid__list-item" key={product.ID}>
+      <Link to={`/catalog/${product.post_name}`}>
+        <span className="link-arrow"></span>
+        <span className="fill-text" data-text={name}>
+          {name}
+        </span>
+      </Link>
+    </li>
+  );
   return (
     <React.Fragment>
-    <div className="catalog-product__grid grid-left">
-      <div className="flip-text">
-        <h2>Теплогидроизоляция труб</h2>
+      <div className="catalog-product__grid">
+        <div className="flip-text">
+          <h2>{vertical}</h2>
+        </div>
+        <div className="catalog-product__grid__title">
+          <h3 dangerouslySetInnerHTML={{ __html:title }}></h3>
+        </div>
+        <div className="catalog-product__grid__items">
+          <ul className="catalog-product__grid__list">
+            {products.map(renderLi)}
+          </ul>
+        </div>
+        <div className="catalog-product__grid__img">
+          <img src={img} alt="" />
+          <div className="white-bg"></div>
+        </div>
       </div>
-      <div className="catalog-product__grid__title">
-        <h3>Скорлупа</h3>
-      </div>
-      <div className="catalog-product__grid__items">
-        <ul className="catalog-product__grid__list">
-          <li className="catalog-product__grid__list-item">
-            <Link to="/product">
-              <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
-            </Link>
-          </li>
-          <li className="catalog-product__grid__list-item">
-            <Link to="/product">
-              <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
-            </Link>
-          </li>
-          <li className="catalog-product__grid__list-item">
-            <Link to="/product">
-              <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
-            </Link>
-          </li>
-          <li className="catalog-product__grid__list-item">
-            <Link to="/product">
-              <span className="link-arrow"></span><span className="fill-text" data-text="Пенополиуретан">Пенополиуретан</span>
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div className="catalog-product__grid__img">
-        <img src="/src/assets/img/catalog/scorlupa.png" />
-        <div className="white-bg"></div>
-      </div>
-    </div>
-    <div className="catalog-product__grid grid-reverse">
+      {/* <div className="catalog-product__grid grid-reverse">
       <div className="flip-text">
         <h2>Теплогидроизоляция труб</h2>
       </div>
@@ -110,6 +101,7 @@ const CatalogProductMain = () => {
         <div className="white-bg"></div>
       </div>
     </div>
+     */}
     </React.Fragment>
   );
 };

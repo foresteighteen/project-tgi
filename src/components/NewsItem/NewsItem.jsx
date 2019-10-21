@@ -5,21 +5,20 @@ import Time from '../Time';
 
 import './NewsItem.sass';
 
-const NewsItem = ({ className }) => (
+const NewsItem = ({ title, date, className, acf, slug, id }) => (
   <article className={`news-item ${className}`}>
     <div className="news-item__img">
-      <Link to="/">
-        <img src="/src/assets/img/news/1.png" alt="" />
+      <Link
+        to={`/news/${slug}`}
+      >
+        <img src={acf.img} alt="" />
       </Link>
     </div>
     <div className="news-item__date">
-      <Time />
+      <Time date={date} />
     </div>
     <div className="news-item__title">
-      <h3>
-        Компания «Завод Теплогидроизоляции» внесла вклад в реализацию
-        масштабного проекта ООО «Тулачермет-Сталь»
-      </h3>
+      <h3>{title.rendered}</h3>
     </div>
   </article>
 );

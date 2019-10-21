@@ -2,12 +2,29 @@ import React from 'react';
 
 import './Time.sass';
 
-const Time = () => {
+const Time = ({ date }) => {
+  const monthNames = [
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря',
+  ];
+
+  const d = new Date(date);
+
   return (
     <time dateTime="2019-02-14 20:00" className="time-block">
-      <span className="time-block__day">21</span>
-      <span className="time-block__month">июля</span>
-      <span className="time-block__year">2019</span>
+      <span className="time-block__day">{d.getUTCDate()}</span>
+      <span className="time-block__month">{monthNames[d.getMonth()]}</span>
+      <span className="time-block__year">{d.getFullYear()}</span>
     </time>
   );
 };

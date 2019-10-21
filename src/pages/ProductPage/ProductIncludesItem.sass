@@ -1,12 +1,12 @@
-.ktc-includes
+.product-includes
   padding: 0 8.6%
    
-.ktc-item
+.product-item
   display: flex
   justify-content: space-between
   align-items: center
   margin-bottom: 20px
-  .ktc-item-left
+  .product-item-left
     $left-width: 292px
     width: $left-width
     height: $left-width
@@ -18,7 +18,7 @@
       height: auto
       object-fit: fill
       display: block
-  .ktc-item-right
+  .product-item-right
     $right-width: 250px
     width: $right-width
     height: $right-width
@@ -29,7 +29,7 @@
     max-width: 100%
     height: auto
     display: block
-  .ktc-item-text
+  .product-item-text
     max-width: 580px
     font-size: 15px
     line-height: 30px
@@ -37,28 +37,28 @@
     // padding: 0 50px
 
 @media (max-width: 1439px)
-  .ktc-includes
-    .ktc-item-text
+  .product-includes
+    .product-item-text
       padding: 0 50px
 
 @media (max-width: 1199px)
-  .ktc-includes
+  .product-includes
     padding: 0
-    .ktc-item-text
+    .product-item-text
       padding: 0 50px
 
 @media (max-width: 1199px)
-  .ktc-item
+  .product-item
     flex-wrap: wrap
     margin-bottom: 65px
     justify-content: space-evenly
-    .ktc-item-text
+    .product-item-text
       order: -1
       width: 100%
       max-width: 100%
       margin-bottom: 25px
 
 @media (max-width: 767px)
-  .ktc-item
-    .ktc-item-left
+  .product-item
+    .product-item-left
       margin-bottom: 35px

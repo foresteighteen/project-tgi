@@ -3,12 +3,13 @@ import classnames from 'classnames';
 
 import './ArrowBtn.sass';
 
-const ArrowBtn = ({ right, left, sliderBtn, click = () => false }) => {
+const ArrowBtn = ({ right, left, sliderBtn, disabled, click = () => false }) => {
   const btnClass = classnames({
     'link-arrow': true,
     'link-arrow-right': right,
     'link-arrow-left': left,
     'slider-arrow': sliderBtn,
+    disabled,
   });
   return (
     // <span className={btnClass}></span>

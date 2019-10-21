@@ -27,6 +27,27 @@ export async function getPage(id) {
   return response;
 }
 
+export async function getPosts(id) {
+  const url = `${BASE_URI}/wp/v2/${id}?per_page=99`;
+  const response = await getRequest(url);
+  
+  return response;
+}
+
+export async function getFilteredPosts(category, ids) {
+  const url = `${BASE_URI}/wp/v2/${category}?include=${ids.join(',')}`;
+  const response = await getRequest(url);
+
+  return response;
+}
+
+export async function getPost(postType, slug) {
+  const url = `${BASE_URI}/wp/v2/${postType}?slug=${slug}`;
+  const response = await getRequest(url);
+
+  return response;
+}
+
 // async function postRequest(url) {
 //   try {
 //     const response = await fetch(url, {

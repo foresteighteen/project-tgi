@@ -4,25 +4,11 @@ import NewsItem from '../NewsItem';
 
 import './NewsRow.sass';
 
-const NewsRow = props => {
-  const { first } = props;
+const NewsRow = ({ data }) => {
+  const renderNews = item => <NewsItem key={item.id} {...item} />;
   return (
     <div className="news-grid news-grid__bottom">
-      {first ? (
-        <React.Fragment>
-          <NewsItem />
-          <NewsItem />
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
-        </React.Fragment>
-      )}
+      {data.map(renderNews)}
     </div>
   );
 };

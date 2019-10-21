@@ -1,73 +1,43 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-import 'react-modal-video/css/modal-video.min.css';
-
-// import ModalVideoComponent from './ModalVideoComponent';
-
-import ModalVideo from 'react-modal-video';
+import {useSpring, animated} from 'react-spring';
+import YouTubePlayer from './YouTubePlayer';
 
 import './PhotoVideo.sass';
 
-const PhotoVideoBlock = props => {
-  const { video } = props;
-
-  const [isOpen, openModal] = useState(false);
-  // const video = true;
+const PhotoVideoBlock = ({ data }) => {
+  const { video, type, bgImg, btn_video, title } = data;
+  const [isOpen, openPlayer] = useState(false);
+  const isVideo = type === 'video';
+  
+  const animation = useSpring({transform: `translate3d(0,${isOpen ? 100 : 0}px, 0)`});
 
   const coverClass = classnames({
     'photo-video__block__cover': true,
-    isVideo: video,
+    isVideo,
   });
 
-  const style = {
-    backgroundImage: 'url(/src/assets/img/ktc/photo/image1.png)',
-  };
   return (
-    <div className="photo-video__block">
-      {video ? (
-        <ModalVideo
-          autoplay="1"
-          modestbranding="1"
-          channel="youtube"
-          showinfo="0"
-          isOpen={isOpen}
-          videoId="HchoJcYNYlU"
-          onClose={() => openModal(false)}
-        />
-      ) : null}
+    <div className="photo-video__block">        
       <div className="photo-video__block__wrapp">
-        <div className={coverClass} style={style}>
-          {video ? (
+        <div className={coverClass} >
+          <img className="coverImage" src={isVideo? `https://img.youtube.com/vi/${video}/maxresdefault.jpg` : bgImg} alt="" />
+          {isVideo && isOpen ? <YouTubePlayer video={video} /> : null}
+          {isVideo ? (
             <div className="video-info">
               <button
-                onClick={() => openModal(true)}
+                onClick={() => {openPlayer(true)}}
                 className="btn-video"
               ></button>
               <div className="video-desc__text">
-                Смотреть видео-процесс установки КТС-2
+                {btn_video} {title}
               </div>
             </div>
           ) : null}
         </div>
       </div>
-      <div className="photo-video__block__desc">
-        <p className="photo-video__block__text">
-          ППУ – один из эффективных полимерную утеплителей, способный
-          значительно снизить теплопотери и не допустить проникновения воды,
-          вызывающей коррозию, к коммуникациям. Секрет герметичности таков:
-          теплоизоляция для труб подбирается по их диаметру, что обеспечивает
-          плотно прилегание «половинок» изделия. Жёсткий «чехол» не сползает и
-          способен полноценно функционировать при диапазоне - 60˚…+140˚С.
-        </p>
-        <p className="photo-video__block__text">
-          ППУ – один из эффективных полимерную утеплителей, способный
-          значительно снизить теплопотери и не допустить проникновения воды,
-          вызывающей коррозию, к коммуникациям. Секрет герметичности таков:
-          теплоизоляция для труб подбирается по их диаметру, что обеспечивает
-          плотно прилегание «половинок» изделия. Жёсткий «чехол» не сползает и
-          способен полноценно функционировать при диапазоне - 60˚…+140˚С.
-        </p>
-      </div>
+      <animated.div style={animation} className="photo-video__block__desc" dangerouslySetInnerHTML={{ __html: data.text}}>
+      </animated.div>
     </div>
   );
 };

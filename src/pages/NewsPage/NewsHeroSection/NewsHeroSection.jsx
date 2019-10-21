@@ -3,12 +3,13 @@ import { Hero, H1, HeroText, ButtonM, HeroBg } from '../../../components';
 
 import './NewsHeroSection.sass';
 
-const NewsHeroSection = () => {
+const NewsHeroSection = ({data}) => {
+  const {title, description} = data;
   return (
     <section id="news-hero">
         <Hero classes="hero__news">
-          <H1 text="Новости" />
-          <HeroText />
+          <H1 text={title} />
+          <HeroText desc={description} />
         </Hero>
     </section>
   );

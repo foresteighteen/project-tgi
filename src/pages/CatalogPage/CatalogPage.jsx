@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
+import withPageData from '../../containers/withPageData';
 import CatalogHeroSection from './CatalogHeroSection';
 import CatalogGridSection from './CatalogGridSection';
 import CatalogProductsSection from './CatalogProductsSection';
@@ -8,18 +9,18 @@ import { QuestionForm } from '../../components';
 
 import './CatalogPage.sass';
 
-class CatalogPage extends Component {
-  render() {
-    return (
-      <main className="main catalog-page">
-        <CatalogHeroSection />
-        <CatalogGridSection />
-        <CatalogProductsSection />
-        <CatalogCategoriesSection />
+const CatalogPage = ({ pageData, pageLoaded }) => (
+  <main className="main catalog-page">
+    {pageLoaded ? (
+      <React.Fragment>
+        <CatalogHeroSection data={pageData.acf.hero} />
+        <CatalogGridSection {...pageData.acf.complects} />
+        <CatalogProductsSection data={pageData.acf.isolation} />
+        <CatalogCategoriesSection data={pageData.acf.products} />
         <QuestionForm />
-      </main>
-    );
-  }
-}
+      </React.Fragment>
+    ) : null}
+  </main>
+);
 
-export default CatalogPage;
+export default withPageData(43)(CatalogPage);

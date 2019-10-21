@@ -1,20 +1,19 @@
 import React from 'react';
-
-import { NewsRow, SubscribeForm } from '../../components';
+import withPageData from '../../containers/withPageData';
 
 import NewsHeroSection from './NewsHeroSection';
+import NewsRowSection from './NewsRowSection';
 
 import './NewsPage.sass';
 
-const NewsPage = () => (
-  <main className="main news-page">
-    <NewsHeroSection />
-    <div className="container">
-      <NewsRow first />
-      <SubscribeForm />
-      <NewsRow />
-    </div>
-  </main>
-);
+const NewsPage = ({ pageData, pageLoaded }) => {
+  if (!pageLoaded) return null;
+  return (
+    <main className="main news-page">
+      <NewsHeroSection data={pageData.acf} />
+      <NewsRowSection />
+    </main>
+  );
+};
 
-export default NewsPage;
+export default withPageData(100)(NewsPage);
