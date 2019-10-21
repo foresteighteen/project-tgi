@@ -1,10 +1,12 @@
 import React from 'react';
 import uniqid from 'uniqid';
 import { Link } from 'react-router-dom';
+import { LangContext } from '../../../../containers/LangProvider';
 
 import './CatalogGridItem.sass';
 
 const CatalogGridItem = ({ complect, fields }) => {
+  const { state } = React.useContext(LangContext);
   const { img, post_name } = complect;
   const renderItems = ({ title, info }) => (
     <li key={uniqid()}>
@@ -16,7 +18,7 @@ const CatalogGridItem = ({ complect, fields }) => {
   );
   return (
     <div className="catalog__grid__item">
-      <Link to={`/catalog/${post_name}`}>
+      <Link to={`/${state.lang}/catalog/${post_name}`}>
         <img src={img} alt="" className="img-responsive" />
       </Link>
       <ul className="catalog__grid__item__list">{fields.map(renderItems)}</ul>

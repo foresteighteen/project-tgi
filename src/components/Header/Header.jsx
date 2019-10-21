@@ -1,13 +1,18 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { LangContext } from '../../containers/LangProvider';
 
 import Burger from './Burger';
 
 import './Header.sass';
 
-const Header = () => {
-
+const Header = ({ history }) => {
+  const { state, dispatch } = React.useContext(LangContext);
+  const currentUrl = history.location.pathname
+    .split('/')
+    .slice(2)
+    .join('/');
   const fade = useSpring({
     from: {
       opacity: 0,
@@ -33,22 +38,22 @@ const Header = () => {
             <nav className="header__nav">
               <ul>
                 <li>
-                  <Link to="/about">О компании</Link>
+                  <Link to={`/${state.lang}/about`}>О компании</Link>
                 </li>
                 <li>
-                  <Link to="/catalog">Продукция</Link>
+                  <Link to={`/${state.lang}/catalog`}>Продукция</Link>
                 </li>
                 <li>
-                  <Link to="/certificates">Сертификаты</Link>
+                  <Link to={`/${state.lang}/certificates`}>Сертификаты</Link>
                 </li>
                 <li>
-                  <Link to="/vacancy">Вакансии</Link>
+                  <Link to={`/${state.lang}/vacancy`}>Вакансии</Link>
                 </li>
                 <li>
-                  <Link to="/news">Новости</Link>
+                  <Link to={`/${state.lang}/news`}>Новости</Link>
                 </li>
                 <li>
-                  <Link to="/contacts">Контакты</Link>
+                  <Link to={`/${state.lang}/contacts`}>Контакты</Link>
                 </li>
               </ul>
             </nav>
@@ -69,7 +74,27 @@ const Header = () => {
             </div>
             <ul className="lang-list">
               <li>
-                <Link to="/">
+                <Link
+                  to="#"
+                  onClick={() => {
+                    dispatch({ type: 'changeLang', lang: 'ru' });
+                    history.replace(`/ru/${currentUrl}`);
+                  }}
+                >
+                  <svg width="20" height="26">
+                    <use
+                      xlinkHref="/src/assets/img/sprite.svg#lang-ru"
+                      className="lang-svg"
+                    />
+                  </svg>
+                </Link>
+                <Link
+                  to="#"
+                  onClick={() => {
+                    dispatch({ type: 'changeLang', lang: 'en' });
+                    history.replace(`/en/${currentUrl}`);
+                  }}
+                >
                   <svg width="20" height="26">
                     <use
                       xlinkHref="/src/assets/img/sprite.svg#lang-ru"
@@ -89,4 +114,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);

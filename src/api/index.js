@@ -20,8 +20,8 @@ async function getRequest(url) {
   }
 }
 
-export async function getPage(id) {
-  const url = `${BASE_URI}/wp/v2/pages/${id}`;
+export async function getPage(id, lang = 'ru') {
+  const url = `${BASE_URI}/wp/v2/pages/${id}?lang=${lang}`;
   const response = await getRequest(url);
 
   return response;

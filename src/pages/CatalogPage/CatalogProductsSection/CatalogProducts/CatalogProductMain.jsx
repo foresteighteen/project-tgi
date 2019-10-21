@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { LangContext } from '../../../../containers/LangProvider';
 
 import './CatalogProductMain.sass';
 
 const CatalogProductMain = ({ item }) => {
+  const { state } = React.useContext(LangContext);
   const { img, title, vertical, products } = item;
   const renderLi = ({ name, product }) => (
     <li className="catalog-product__grid__list-item" key={product.ID}>
-      <Link to={`/catalog/${product.post_name}`}>
+      <Link to={`/${state.lang}/catalog/${product.post_name}`}>
         <span className="link-arrow"></span>
         <span className="fill-text" data-text={name}>
           {name}
@@ -22,7 +24,7 @@ const CatalogProductMain = ({ item }) => {
           <h2>{vertical}</h2>
         </div>
         <div className="catalog-product__grid__title">
-          <h3 dangerouslySetInnerHTML={{ __html:title }}></h3>
+          <h3 dangerouslySetInnerHTML={{ __html: title }}></h3>
         </div>
         <div className="catalog-product__grid__items">
           <ul className="catalog-product__grid__list">
