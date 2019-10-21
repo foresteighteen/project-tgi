@@ -14,9 +14,9 @@ const CatalogPage = ({ pageData, pageLoaded }) => (
     {pageLoaded ? (
       <React.Fragment>
         <CatalogHeroSection data={pageData.acf.hero} />
-        <CatalogGridSection data={pageData.acf.complects} />
-        <CatalogProductsSection />
-        <CatalogCategoriesSection />
+        <CatalogGridSection {...pageData.acf.complects} />
+        <CatalogProductsSection data={pageData.acf.isolation} />
+        <CatalogCategoriesSection data={pageData.acf.products} />
         <QuestionForm />
       </React.Fragment>
     ) : null}

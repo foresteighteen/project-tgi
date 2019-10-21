@@ -3,13 +3,12 @@ import React from 'react';
 import CatalogGrid from './CatalogGrid';
 import { H2 } from '../../../components';
 
-const CatalogGridSection = ({data}) => {
-  const { title, category } = data;
+const CatalogGridSection = ({ complects, title }) => {
   return (
     <section id="catalog-grid-section">
       <div className="container">
         <H2 text={title} classes="side font-nova" />
-        <CatalogGrid data={category} />
+        <CatalogGrid complects={complects} />
       </div>
     </section>
   );

@@ -2,10 +2,10 @@ import React from 'react';
 
 import { ProductionSlider, H2 } from '../../components';
 
-const AboutSliderSection = ({ data }) => {
+const ProductSliderSection = ({ data }) => {
   const {title, slider } = data;
   return (
-    <section id="ktc-slider-section">
+    <section id="product-slider-section">
       <div className="container">
         <H2 text={title} classes="side font-nova" />
         <ProductionSlider slider={slider} />
@@ -14,4 +14,4 @@ const AboutSliderSection = ({ data }) => {
   );
 };
 
-export default AboutSliderSection;
+export default ProductSliderSection;

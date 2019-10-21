@@ -28,9 +28,9 @@ export async function getPage(id) {
 }
 
 export async function getPosts(id) {
-  const url = `${BASE_URI}/wp/v2/${id}`;
+  const url = `${BASE_URI}/wp/v2/${id}?per_page=99`;
   const response = await getRequest(url);
-
+  
   return response;
 }
 

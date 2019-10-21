@@ -4,23 +4,22 @@ import { Link } from 'react-router-dom';
 
 import './CatalogGridItem.sass';
 
-const CatalogGridItem = ({ slug, title, acf }) => {
-  const { catalog_data } = acf;
-  const { img, info } = catalog_data;
-  const renderItems = ({ title, desc }) => (
+const CatalogGridItem = ({ complect, fields }) => {
+  const { img, post_name } = complect;
+  const renderItems = ({ title, info }) => (
     <li key={uniqid()}>
       <dl>
         <dt className="list__title">{title}</dt>
-        <dd className="list__text">{desc}</dd>
+        <dd className="list__text">{info}</dd>
       </dl>
     </li>
   );
   return (
     <div className="catalog__grid__item">
-      <Link to={`/catalog/${slug}`}>
+      <Link to={`/catalog/${post_name}`}>
         <img src={img} alt="" className="img-responsive" />
       </Link>
-      <ul className="catalog__grid__item__list">{info.map(renderItems)}</ul>
+      <ul className="catalog__grid__item__list">{fields.map(renderItems)}</ul>
     </div>
   );
 };

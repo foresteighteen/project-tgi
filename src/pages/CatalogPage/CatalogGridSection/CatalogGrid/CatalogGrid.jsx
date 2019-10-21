@@ -1,19 +1,15 @@
 import React from 'react';
-import { indexBy, prop } from 'ramda';
-import withFilteredPostsData from '../../../../containers/withFilteredPostsData';
 import CatalogGridItem from './CatalogGridItem';
 
 import './CatalogGrid.sass';
 
-const CatalogGrid = ({ data, postsData, postsLoaded }) => {
-  if (!postsLoaded) return null;
-  const indexedPosts = indexBy(prop('id'), postsData);
-  const posts = data.map(id => <CatalogGridItem key={id} {...indexedPosts[id]} />);
+const CatalogGrid = ({ complects }) => {
+  const items = complects.map(item => <CatalogGridItem key={item.complect.ID} {...item} />);
   return (
     <div className="catalog__grid">
-      {posts}
+      {items}
     </div>
   );
 };
 
-export default withFilteredPostsData('coils')(CatalogGrid);
+export default CatalogGrid;
