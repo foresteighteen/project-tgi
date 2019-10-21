@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { LangContext } from '../../../../containers/LangProvider';
 
 import './CatalogGridItem.sass';
 
 const CatalogGridItem = ({ img, tags }) => {
+  const { state } = React.useContext(LangContext);
   return (
     <div className="catalog__grid__item">
-      <Link to="/ktc">
+      <Link to={`/${state.lang}/ktc`}>
         <img src={img} alt="" className="img-responsive" />
       </Link>
       <ul className="catalog__grid__item__list">

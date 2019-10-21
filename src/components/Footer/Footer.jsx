@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import './Footer.sass';
@@ -12,40 +12,40 @@ const Footer = () => {
           <div className="footer__copy">
             <p>Все права защищены ©2019 - ООО «Завод ТеплоГидроИзоляции»</p>
             <div className="footer__copy__map">
-              <a href="">Карта сайта</a>
-              <a href="">Пользовательское соглашение</a>
-              <a href="">Правовая информация</a>
+              <Link href="#">Карта сайта</Link>
+              <Link href="#">Пользовательское соглашение</Link>
+              <Link href="#">Правовая информация</Link>
             </div>
           </div>
           <div className="footer__contacts">
             <div className="footer__contacts__item">
               <h5 className="footer__subtitle">Телефон</h5>
-              <a href="">+7 (495) 980-10-91</a>
+              <a href="#">+7 (495) 980-10-91</a>
             </div>
             <div className="footer__contacts__item">
               <h5 className="footer__subtitle">Фактический адрес</h5>
-              <a href="">127238 г.Москва, Дмитровское шоссе д.71Б</a>
+              <a href="#">127238 г.Москва, Дмитровское шоссе д.71Б</a>
             </div>
             <div className="footer__contacts__item">
               <h5 className="footer__subtitle">Почта</h5>
-              <a href="">info@z-tgi.ru</a>
+              <a href="#">info@z-tgi.ru</a>
             </div>
           </div>
           <div className="footer__social">
             <div className="footer__social__icons">
-              <a href="" className="footer__social__icon">
+              <a href="#" className="footer__social__icon">
                 <FontAwesomeIcon icon={['fab', 'telegram-plane']} />
               </a>
-              <a href="" className="footer__social__icon">
+              <a href="#" className="footer__social__icon">
                 <FontAwesomeIcon icon={['fab', 'facebook-f']} />
               </a>
-              <a href="" className="footer__social__icon">
+              <a href="#" className="footer__social__icon">
                 <FontAwesomeIcon icon={['fab', 'instagram']} />
               </a>
             </div>
             <div className="footer__developer">
               <span>
-                Разработка сайта <a href="">TheLegacy</a>
+                Разработка сайта <a href="#">TheLegacy</a>
               </span>
             </div>
           </div>

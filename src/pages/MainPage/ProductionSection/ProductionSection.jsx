@@ -1,6 +1,7 @@
 import React from 'react';
 import uniqid from 'uniqid';
 import { Link } from 'react-router-dom';
+import { LangContext } from '../../../containers/LangProvider';
 
 import DiamondSVG from './DiamondSVG';
 import DiplomaSVG from './DiplomaSVG';
@@ -8,10 +9,19 @@ import DiplomaSVG from './DiplomaSVG';
 import './ProductionSection.sass';
 
 const ProductionSection = ({ data }) => {
+  const { state } = React.useContext(LangContext);
   const { title, bgImg, blocks } = data;
   const renderBlocks = ({ block }) => (
-    <Link to={block.link} className="production__item" key={uniqid()}>
-      <svg type="image/svg+xml" className="production__item-icon" dangerouslySetInnerHTML={{ __html:block.icon }} />
+    <Link
+      to={`/${state.lang}${block.link}`}
+      className="production__item"
+      key={uniqid()}
+    >
+      <svg
+        type="image/svg+xml"
+        className="production__item-icon"
+        dangerouslySetInnerHTML={{ __html: block.icon }}
+      />
       <h3 className="production__item-title">
         {block.title}
         <span className="production__item-arrow"></span>
