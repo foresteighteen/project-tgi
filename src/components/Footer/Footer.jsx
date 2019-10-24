@@ -19,7 +19,7 @@ const Footer = ({ pageData, pageLoaded }) => {
               <p>{copyrights}</p>
               <div className="footer__copy__map">
                 {menu.map(({ item }) => (
-                  <Link href={item.link}>Карта сайта</Link>
+                  <Link to={item.link}>{item.title}</Link>
                 ))}
               </div>
             </div>
@@ -33,15 +33,11 @@ const Footer = ({ pageData, pageLoaded }) => {
             </div>
             <div className="footer__social">
               <div className="footer__social__icons">
-                <a href={socials.telegram} className="footer__social__icon">
-                  <FontAwesomeIcon icon={['fab', 'telegram-plane']} />
-                </a>
-                <a href={socials.facebook} className="footer__social__icon">
-                  <FontAwesomeIcon icon={['fab', 'facebook-f']} />
-                </a>
-                <a href={socials.instagram} className="footer__social__icon">
-                  <FontAwesomeIcon icon={['fab', 'instagram']} />
-                </a>
+                {socials.map(({ item }) => (
+                  <a href={item.link} className="footer__social__icon">
+                    <FontAwesomeIcon icon={['fab', item.icon]} />
+                  </a>
+                ))}
               </div>
               <div className="footer__developer">
                 <span>

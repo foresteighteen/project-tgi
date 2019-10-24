@@ -3,11 +3,11 @@ import { Hero, H1, HeroText } from '../../../components';
 
 import './HeroSection.sass';
 
-const HeroSection = ({ title, desc }) => (
+const HeroSection = ({ title, subtitle }) => (
   <section id="certificate-hero">
     <Hero classes="hero__single-news">
       <H1 text={title} />
-      <HeroText desc={desc} />
+      <HeroText desc={subtitle} />
     </Hero>
   </section>
 );
