@@ -20,6 +20,13 @@ async function getRequest(url) {
   }
 }
 
+export async function getMenu(lang = 'ru') {
+  const url = `${BASE_URI}/menus/v1/menus/Main?lang=${lang}`;
+  const response = await getRequest(url);
+
+  return response;
+}
+
 export async function getPage(id, lang = 'ru') {
   const url = `${BASE_URI}/wp/v2/pages/${id}?lang=${lang}`;
   const response = await getRequest(url);
