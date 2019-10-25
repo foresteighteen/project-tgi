@@ -69,10 +69,10 @@ const selectStyles = {
   }),
 };
 
-const ContactsForm = ({ modal, onCloseModal }) => (
-  <form className={modal && 'form--modal'}>
+const ContactsForm = ({ modal, onCloseModal, className }) => (
+  <form className={`form ${className}`}>
     <h2 className="form__title">Напишите Нам</h2>
-    <CloseModalBtn onClick={onCloseModal} />
+    {modal ? <CloseModalBtn onClick={onCloseModal} /> : null}
     <div className="form__row">
       <label htmlFor="department" className="form__label">
         Выберите отдел

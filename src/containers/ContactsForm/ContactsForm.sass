@@ -1,9 +1,4 @@
 .form
-  &--modal
-    & > .form__row
-      min-height: 65px
-    & > .form__input
-      min-height: 65px
   &__title
     font-family: ProximaNova
     font-weight: 800
@@ -18,7 +13,7 @@
     align-self: center
     flex-basis: 33.5%
   &__input
-    min-height: 90px
+    min-height: inherit
     flex: 1
     border: 1px solid rgba(#707070, .2)
     color: rgba(#111, .5)
@@ -71,22 +66,12 @@ textarea.form__input
   border-width: 9px 5px 0 5px
   border-color: #111111 transparent transparent transparent
 
-@media (min-width: 1199px)
-  .form
-    &--modal
-      padding-left: 30px
-      padding-right: 30px
 
 @media (max-width: 1199px)
   .form
-    &__title
-      text-align: center
     &__row
       font-size: 16px
-      flex-direction: column
     &__label
-      flex-basis: auto
-      align-self: flex-start
       margin-bottom: 10px
     // &__controls
     //   flex-flow: column nowrap
@@ -95,16 +80,21 @@ textarea.form__input
     //   & > button:nth-child(2n)
     //     margin-left: 0
     &__btn-sub
-      margin-left: 0
       font-size: 14px
 
 @media (max-width: 999px)
   .form
+    &__row
+      font-size: 16px
+      flex-direction: column
+      min-height: unset
+    &__label
+      flex-basis: auto
+      align-self: flex-start
+      margin-bottom: 10px
     &__title
       font-size: 35px
-      margin-top: 35px
-      margin-bottom: 35px
-    &__row
-      min-height: unset
     &__input
       min-height: 40px
+    &__btn-sub
+      margin-left: 0

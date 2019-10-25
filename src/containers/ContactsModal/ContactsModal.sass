@@ -1,4 +1,9 @@
 .modal
+  padding: 35px 45px 25px 45px
+  & > .form__row
+    min-height: 60px
+  & > .form__title
+    margin-bottom: 60px
   &__controls
     display: flex
     justify-content: flex-end
@@ -8,21 +13,54 @@
   &__close-btn
     cursor: pointer
     position: absolute
-    top: 15px
-    right: 15px
+    top: 35px
+    right: 45px
     & > svg
       width: 35px
       height: 35px
-      transition: all .25s
+      // transition: all .25s
       & > g > path
-        fill: #767676
+        fill: #111
+        opacity: .5
       &:hover
-        transform: rotate(90deg)
         & > g > path
+          opacity: 1
           fill: #EC841C
 
-@media (max-width: 575px)
+@media (max-width: 1399px)
   .ReactModal__Content
+    width: 60%
+    
+@media (max-width: 1399px) and (max-height: 799px)
+  .modal
+    zoom: .8
+    & > .form__row
+      min-height: 50px
+
+@media (max-width: 1199px) and (orientation: landscape)
+  .modal
+    padding: 25px 45px 15px 45px
+    & > .form__title
+      margin-bottom: 30px
+    &__close-btn
+      top: 25px
+
+@media (max-width: 1199px)
+  .ReactModal__Content
+    width: 80%
+
+@media (max-width: 575px)
+  .modal
+    padding: 10px
+    & > .form__title
+      font-size: 24px
+      margin-bottom: 40px
+      margin-top: 20px
+    &__close-btn
+      top: 20px
+      right: 10px
+  .ReactModal__Content
+    width: 100%
     margin-top: 150px
     margin-bottom: 25px
   .ReactModal__Overlay
@@ -31,3 +69,5 @@
     left: 10px!important
     right: 10px!important
     bottom: 10px!important
+
+
