@@ -56,10 +56,10 @@ const Header = ({ history }) => {
                   ? menu.map(({ title, url, ID }) => (
                       <li key={ID}>
                         <Link
-                          to={url
+                          to={`/${url
                             .split('/')
                             .slice(3)
-                            .join('/')}
+                            .join('/')}`}
                         >
                           {title}
                         </Link>
