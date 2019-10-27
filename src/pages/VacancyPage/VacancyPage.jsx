@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { indexBy, prop, pluck } from 'ramda';
+import { indexBy, prop, pluck, map, assoc } from 'ramda';
+import uniqid from 'uniqid';
 import { QuestionForm } from '../../components';
 import withPageData from '../../containers/withPageData';
 
@@ -170,15 +171,13 @@ const myVac = {
 const WP_PAGE_ID = 38;
 
 const VacancyPage = ({ pageData, pageLoaded }) => {
-  if (!pageLoaded) return null;
-  console.log(pageData.acf);
-  const vacanciesParsed = pluck('vacancy', indexBy(prop('city'), pageData.acf.vacancies.city));
+  if (!pageLoaded) return <main className="main vacancy-page"></main>;
   const [activeVacancy, changeActive] = useState(
     pageData.acf.vacancies.city[0].city,
   );
   const [currencySymbol, {}] = useState(pageData.acf.vacancies.currency);
   const [buttonText, {}] = useState(pageData.acf.vacancies.btn_text);
-  const [vacancies, {}] = useState(vacanciesParsed);
+  const [vacancies, {}] = useState(map(item => map( item => assoc('id', uniqid(), item), item), pluck('vacancy', indexBy(prop('city'), pageData.acf.vacancies.city))));
 
   return (
     <main className="main vacancy-page">
@@ -192,6 +191,7 @@ const VacancyPage = ({ pageData, pageLoaded }) => {
         buttonText={buttonText}
         currencySymbol={currencySymbol}
         vacancies={vacancies[activeVacancy]}
+        activeVacancy={activeVacancy}
       />
       <QuestionForm />
     </main>

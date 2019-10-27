@@ -1,39 +1,48 @@
-import React from 'react';
-import Slider from 'react-slick';
+import React, { useState } from 'react';
 import uniqid from 'uniqid';
+import { animated, useSpring, config } from 'react-spring';
+import { Waypoint } from 'react-waypoint';
+import { RevealByWord } from '../../../containers/Animations';
 import './ProductSection.sass';
 
 const ProductSection = ({ data }) => {
   const { title, subtitle, slider } = data;
-  const sliderOptions = {
-    slidesToShow: 2,
-    arrows: false,
-    infinite: false,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
+  const [animB, setAnimB] = useState(false);
+  const blockAnimation = useSpring({
+    opacity: animB ? 1 : 0,
+    transform: animB ? 'translate3d(0,0,0)' : 'translate3d(0,20%,0)',
+    config: config.molasses,
+  });
   return (
     <section className="products">
       <div className="container left-offset">
-        <h2 className="products__title">{title}</h2>
-        <Slider className="products__list" {...sliderOptions}>
-          {slider.map(slide => (
-            <div className="products__item" key={uniqid()}>
-              <h3 className="products__item-title">{slide.title}</h3>
-              <img
-                src={slide.img.url}
-                alt={slide.img.alt}
-                className="products__item-image"
-              />
-            </div>
-          ))}
-        </Slider>
+        <RevealByWord>
+          <h2 className="products__title">{title}</h2>
+        </RevealByWord>
+        <Waypoint
+          bottomOffset="30%"
+          onEnter={() => setAnimB(true)}
+          onLeave={() => setAnimB(false)}
+        >
+          <div className="products__list">
+            {slider.map(slide => (
+              <animated.div
+                style={blockAnimation}
+                className="products__item"
+                key={uniqid()}
+              >
+                <h3 className="products__item-title">
+                  <span className="animated-span">{slide.title}</span>
+                </h3>
+                <img
+                  src={slide.img.url}
+                  alt={slide.img.alt}
+                  className="products__item-image"
+                />
+              </animated.div>
+            ))}
+          </div>
+        </Waypoint>
       </div>
     </section>
   );

@@ -26,7 +26,7 @@ const App = () => {
           <ModalProvider>
             <ContactsModal />
             <Header />
-            {/* <ScrollToTop /> */}
+            <ScrollToTop />
             <Main />
             <Footer />
           </ModalProvider>

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { Link, withRouter } from 'react-router-dom';
+import { debounce } from 'throttle-debounce';
 import { LangContext } from '../../containers/LangProvider';
 import { getMenu } from '../../api';
 
@@ -34,9 +35,20 @@ const Header = ({ history }) => {
     },
     opacity: 1,
   });
+  const [fillHeader, setfillHeader] = useState(false);
+  const handleScroll = debounce(50, () => {
+      setfillHeader(window['page-wrap'].scrollTop >= 93);
+    });
 
+  useEffect(() => {
+    window['page-wrap'].addEventListener('scroll', handleScroll);
+
+    // return () => {
+    //   window['page-wrap'].removeEventListener('scroll', () => handleScroll);
+    // };
+  }, []);
   return (
-    <animated.header style={fade} className="header">
+    <animated.header style={fade} className={`header white-header${fillHeader ? ' header-filled' : ''}`} >
       <div className="container">
         <div className="row justify-content-between align-items-center">
           <div className="col-auto col-xl-2 header__logo">
@@ -117,7 +129,9 @@ const Header = ({ history }) => {
                     />
                   </svg>
                 </Link>
-                <Link
+              </li>
+              <li>
+              <Link
                   to="#"
                   onClick={() => {
                     dispatch({ type: 'changeLang', lang: 'en' });
@@ -134,7 +148,7 @@ const Header = ({ history }) => {
               </li>
             </ul>
           </div>
-          <div className="col-auto">
+          <div className="col-auto burger-wrap">
             <Burger />
           </div>
         </div>

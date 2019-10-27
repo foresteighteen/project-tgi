@@ -2,6 +2,14 @@
   width: 83%
   margin: auto
   position: relative
+  .overlay-block
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    background-color: #fff
+    z-index: -1
   &__img
     position: absolute
     right: 0
@@ -9,6 +17,13 @@
     // width: 675px
     width: 50%
     height: 900px
+    overflow: hidden
+  &__wrap
+    position: relative
+    width: 100%
+    height: 100%
+    .overlay-block
+      z-index: 2
   img
     width: 100%
     height: 100%
@@ -16,11 +31,12 @@
   &__before
     width: 100%
     height: 100%
-    background-color: #EC841C
+    // background-color: #EC841C
     display: block
     position: absolute
     z-index: -1
     top: -6px
+    border-top: 6px solid #EC841C
   &__after
     width: 71%
     height: 20px
@@ -30,8 +46,8 @@
     z-index: -1
     bottom: -15px
     margin: auto
-    left: 50%
-    transform: translateX(-50%)
+    left: 15%
+    // transform: translateX(-50%)
   &.no-before
     .side-photo__block
       &__before, &__after
@@ -43,7 +59,8 @@
     padding: 50px 70px
     padding-top: 0
     padding-right: 54.6%
-    background-color: #ffffff
+    z-index: 1
+    // background-color: #ffffff
     h2
       font-size: 19px
       margin-bottom: 30px
