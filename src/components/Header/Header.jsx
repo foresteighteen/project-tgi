@@ -3,6 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { Link, withRouter } from 'react-router-dom';
 import { debounce } from 'throttle-debounce';
 import { LangContext } from '../../containers/LangProvider';
+import { getMenu } from '../../api';
 
 import Burger from './Burger';
 
@@ -10,6 +11,20 @@ import './Header.sass';
 
 const Header = ({ history }) => {
   const { state, dispatch } = React.useContext(LangContext);
+  const [menu, setMenu] = React.useState([]);
+  const [menuLoaded, setMenuLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    const fetchMenu = async () => {
+      const response = await getMenu(state.lang);
+      if (response.success) {
+        setMenu(response.data.items);
+        setMenuLoaded(true);
+      }
+    };
+    fetchMenu();
+  }, [state.lang]);
+
   const currentUrl = history.location.pathname
     .split('/')
     .slice(2)
@@ -49,7 +64,21 @@ const Header = ({ history }) => {
           <div className="mr-auto col-auto nav__menu">
             <nav className="header__nav">
               <ul>
-                <li>
+                {menuLoaded
+                  ? menu.map(({ title, url, ID }) => (
+                      <li key={ID}>
+                        <Link
+                          to={`/${url
+                            .split('/')
+                            .slice(3)
+                            .join('/')}`}
+                        >
+                          {title}
+                        </Link>
+                      </li>
+                    ))
+                  : null}
+                {/* <li>
                   <Link to={`/${state.lang}/about`}>О компании</Link>
                 </li>
                 <li>
@@ -66,7 +95,7 @@ const Header = ({ history }) => {
                 </li>
                 <li>
                   <Link to={`/${state.lang}/contacts`}>Контакты</Link>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>

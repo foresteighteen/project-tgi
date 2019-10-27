@@ -3,8 +3,10 @@ import { useSpring, animated, config } from 'react-spring';
 import Slider from 'react-slick';
 import { Waypoint } from 'react-waypoint';
 import withPostsData from '../../../containers/withPostsData';
-import { NewsItem } from '../../../components';
 import { RevealByWord } from '../../../containers/Animations';
+import { NewsItem} from '../../../components';
+import { LangContext } from '../../../containers/LangProvider';
+
 
 import SliderArrows from '../SliderArrows';
 import './NewsSection.sass';
@@ -25,12 +27,19 @@ const NewsSection = ({ postsData, postsLoaded }) => {
       : 'matrix(1, 0, 0, 1.4, 0, 280)',
     config: config.slow,
   });
+  const { state } = React.useContext(LangContext);
 
   useEffect(() => {
     if (postsData) setSliderLength(postsData.length - 1);
   }, [postsData]);
+
   const renderNews = item => (
-    <NewsItem className="news__item" key={item.id} {...item} />
+    <NewsItem
+      className="news__item"
+      key={item.id}
+      lang={state.lang}
+      {...item}
+    />
   );
   const sliderOptions = {
     arrows: false,
