@@ -1,10 +1,12 @@
+.burger-wrap
+  display: none
 .burger-menu
   position: relative
   z-index: 1001
   width: 39px
   height: 39px
   cursor: pointer
-  mix-blend-mode: exclusion   
+  // mix-blend-mode: exclusion   
   display: none
   &__line 
     &-top,
@@ -14,5 +16,5 @@
       stroke-width: 1px
 
 @media (max-width: 991px)
-  .burger-menu
+  .burger-menu, .burger-wrap
     display: initial

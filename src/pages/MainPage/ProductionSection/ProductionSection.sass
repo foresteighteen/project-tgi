@@ -9,41 +9,58 @@
     font-family: 'ProximaNova', sans-serif
     font-weight: bold
     margin-bottom: 2rem
+    overflow: hidden
   &__poster
-    width: auto
-    height: auto
-    max-width: 100%
-    max-height: 100%
+    position: relative
+    overflow: hidden
+    &__wrap
+      position: relative
+      width: 100%
+      height: 100%
+    &__img
+      width: auto
+      height: auto
+      max-width: 100%
+      max-height: 100%
+    .overlay-block
+      position: absolute
+      left: 0
+      top: 0
+      height: 100%
+      width: 100%
+      background-color: #fff 
+      z-index: 2
   &__list
     display: flex
     margin-top: -200px
     justify-content: flex-end
     padding-right: 4%
   &__item
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    max-width: 613px
-    width: 100%
-    padding: 50px 20px 50px 90px
-    height: 286px
-    background: #F5FAFC
-    box-shadow: 0px 20px 30px rgba(51, 51, 51, 0.03)
-    cursor: pointer
-    transition: all .55s
     &:first-child
       margin-right: 20px
-    &:hover
-      background: #EE9D35
-      box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.07)
-      & .production__item-arrow
-        background: #fff
-        &:before, &:after
+    a
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      max-width: 613px
+      width: 100%
+      padding: 50px 20px 50px 90px
+      height: 286px
+      box-shadow: 0px 20px 30px rgba(51, 51, 51, 0.03)
+      cursor: pointer
+      background-color: #F5FAFC
+      transition: background-color .55s
+      &:hover
+        background-color: #EE9D35
+        box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.07)
+        & .production__item-arrow
           background: #fff
-      & > .production__item-title
-        color: #ffffff
-      & > .production__item-icon
-        fill: #fff
+          &:before, &:after
+            background: #fff
+        & > .production__item-title
+          color: #ffffff
+        & > .production__item-icon
+          fill: #fff
     // &--orange
     //   background: #EE9D35
     //   & .production__item-arrow
@@ -109,7 +126,8 @@
 @media (max-width: 1440px)
   .production
     &__list
-      padding-left: 4%
+      padding-left: 2%
+      padding-right: 2%
     &__item
       padding-left: 20px
       &-title
@@ -137,9 +155,12 @@
       flex-direction: column
       margin-left: 0
     &__item
-      padding: 15px 25px
-      height: auto
       width: 100%
-      margin: 10px 0
+      height: auto
+      a
+        padding: 15px 25px
+        height: auto
+        width: 100%
+        margin: 10px 0
       &-title
         margin-top: 20px

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import {
   ComposableMap,
@@ -10,18 +10,6 @@ import ReactTooltip from 'react-tooltip';
 import WaterDropSVG from '../../../assets/img/water-drop.svg';
 
 import './Map.sass';
-
-const immutableMove = (arr, old_index, new_index) => {
-  const copy = Object.assign([], arr);
-  if (new_index >= copy.length) {
-    let k = new_index - copy.length;
-    while (k-- + 1) {
-      copy.push(undefined);
-    }
-  }
-  copy.splice(new_index, 0, copy.splice(old_index, 1)[0]);
-  return copy;
-};
 
 const defaultStyles = {
   default: {
@@ -79,7 +67,7 @@ const randomStyles = {
   },
 };
 
-const Map = ({ activeData }) => {
+const Map = ({ activeData, texts }) => {
   const [data, setData] = useState(null);
   const [mapCompiled, setCompiled] = useState(false);
   const [activePath, {}] = useState(activeData);
@@ -95,18 +83,11 @@ const Map = ({ activeData }) => {
   const rerenderFunc = index => {
     const oldItems = data.objects.m.geometries;
     if (index === oldItems.length - 1) return;
-    // const left = oldItems.slice(0, index);
-    // const right = oldItems.slice(index + 1);
-    // const current = oldItems.slice(index, index + 1);
-    // const newItems = [...left, ...right, ...current];
     const newItems = [
       ...oldItems.slice(0, index),
       ...oldItems.slice(index + 1),
       ...oldItems.slice(index, index + 1),
     ];
-    // const test = data.objects.m.geometries.slice(index, index + 1);
-    // const oldItems = data.objects.m.geometries;
-    // const newItems = immutableMove(oldItems, index, oldItems.length - 1);
     const newData = {
       ...data,
       objects: { m: { ...data.objects.m, geometries: newItems } },
@@ -173,6 +154,7 @@ const Map = ({ activeData }) => {
       <ComposableMap
         width={1600}
         height={1000}
+        className="bottom-map"
         viewBox="0 0 1670 1000"
         style={{
           width: '100%',
@@ -225,6 +207,7 @@ const Map = ({ activeData }) => {
                 'tooltip-single': !activePath[data].oil || !activePath[data].water,
               })}
             >
+              <div className="tooltip-cross"></div>
               {/* <div className="tooltip__title">{parsed.countryName}</div> */}
               <div className="tooltip__title">{activePath[data].active}</div>
               <div className="tooltip__list">
@@ -235,7 +218,7 @@ const Map = ({ activeData }) => {
                       <p className="tooltip__item-title">
                         {activePath[data].oil}
                       </p>
-                      <p className="tooltip__item-subtitle">КОМПЛЕКТОВ</p>
+                      <p className="tooltip__item-subtitle">{texts.oil_text}</p>
                     </div>
                   </div>
                 ) : null}
@@ -246,7 +229,7 @@ const Map = ({ activeData }) => {
                       <p className="tooltip__item-title">
                         {activePath[data].water}
                       </p>
-                      <p className="tooltip__item-subtitle">КОМПЛЕКТОВ</p>
+                      <p className="tooltip__item-subtitle">{texts.water_text}</p>
                     </div>
                   </div>
                 ) : null}
