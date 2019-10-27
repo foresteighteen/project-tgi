@@ -16,8 +16,9 @@ const modalStyles = {
     left: '50%',
     right: 'auto',
     bottom: 'auto',
-    marginRight: '-50%',
+    // marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    padding: 0,
   },
 };
 
@@ -30,7 +31,7 @@ const ContactsModal = () => {
       contentLabel="Напишите нам"
       style={modalStyles}
     >
-      <ContactsForm onCloseModal={closeModal} modal />
+      <ContactsForm onCloseModal={closeModal} className="modal" modal />
     </Modal>
   );
 };

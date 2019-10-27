@@ -1,7 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import withPostsData from '../../../containers/withPostsData';
 import { NewsItem, QuestionForm } from '../../../components';
+import { LangContext } from '../../../containers/LangProvider';
 
 import SliderArrows from '../SliderArrows';
 import './NewsSection.sass';
@@ -10,12 +11,20 @@ const NewsSection = ({ postsData, postsLoaded }) => {
   const sliderRef = React.useRef(null);
   const [activeSlide, setActiveSlide] = React.useState(0);
   const [sliderLength, setSliderLength] = React.useState(0);
+  const { state } = React.useContext(LangContext);
 
   useEffect(() => {
     if (postsData) setSliderLength(postsData.length - 1);
   }, [postsData]);
 
-  const renderNews = item => <NewsItem className="news__item" key={item.id} {...item} />;
+  const renderNews = item => (
+    <NewsItem
+      className="news__item"
+      key={item.id}
+      lang={state.lang}
+      {...item}
+    />
+  );
   const sliderOptions = {
     arrows: false,
     slidesToShow: 2,
@@ -28,10 +37,10 @@ const NewsSection = ({ postsData, postsLoaded }) => {
         breakpoint: 575,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
+          slidesToScroll: 1,
+        },
       },
-    ]
+    ],
   };
   if (!postsLoaded) return null;
   return (

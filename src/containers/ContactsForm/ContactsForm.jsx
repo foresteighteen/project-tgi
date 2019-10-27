@@ -1,5 +1,6 @@
 import React from 'react';
 import Select, { components } from 'react-select';
+import CloseModalBtn from '../ContactsModal/CloseModalBtn';
 
 import './ContactsForm.sass';
 
@@ -68,9 +69,10 @@ const selectStyles = {
   }),
 };
 
-const ContactsForm = ({ modal, onCloseModal }) => (
-  <form className={modal && 'form--modal'}>
-    <h2 className="contacts__form-title">Напишите Нам</h2>
+const ContactsForm = ({ modal, onCloseModal, className }) => (
+  <form className={`form ${className}`}>
+    <h2 className="form__title">Напишите Нам</h2>
+    {modal ? <CloseModalBtn onClick={onCloseModal} /> : null}
     <div className="form__row">
       <label htmlFor="department" className="form__label">
         Выберите отдел
@@ -148,11 +150,11 @@ const ContactsForm = ({ modal, onCloseModal }) => (
       />
     </div>
     <div className="form__row">
-      <div className="form__controls">
-        <button type="submit" className="form__btn">
-          отправить
-        </button>
-        {modal && (
+      {/* <div className="form__controls"> */}
+      <button type="submit" className="form__btn mx-auto">
+        отправить
+      </button>
+      {/* {modal && (
           <button
             type="button"
             className="form__btn form__btn--gray"
@@ -160,8 +162,8 @@ const ContactsForm = ({ modal, onCloseModal }) => (
           >
             Закрыть
           </button>
-        )}
-      </div>
+        )} */}
+      {/* </div> */}
     </div>
     <div className="form__row">
       <p className="form__btn-sub col-md-8">

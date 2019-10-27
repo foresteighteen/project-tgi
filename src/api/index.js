@@ -20,6 +20,13 @@ async function getRequest(url) {
   }
 }
 
+export async function getMenu(lang = 'ru') {
+  const url = `${BASE_URI}/menus/v1/menus/Main?lang=${lang}`;
+  const response = await getRequest(url);
+
+  return response;
+}
+
 export async function getPage(id, lang = 'ru') {
   const url = `${BASE_URI}/wp/v2/pages/${id}?lang=${lang}`;
   const response = await getRequest(url);
@@ -27,22 +34,30 @@ export async function getPage(id, lang = 'ru') {
   return response;
 }
 
-export async function getPosts(id) {
-  const url = `${BASE_URI}/wp/v2/${id}?per_page=99`;
-  const response = await getRequest(url);
-  
-  return response;
-}
-
-export async function getFilteredPosts(category, ids) {
-  const url = `${BASE_URI}/wp/v2/${category}?include=${ids.join(',')}`;
+export async function getPosts(id, lang = 'ru') {
+  const url =
+    id === 'news'
+      ? `${BASE_URI}/tgi/v1/${id}?per_page=99&lang=${lang}`
+      : `${BASE_URI}/wp/v2/${id}?per_page=99&lang=${lang}`;
   const response = await getRequest(url);
 
   return response;
 }
 
-export async function getPost(postType, slug) {
-  const url = `${BASE_URI}/wp/v2/${postType}?slug=${slug}`;
+export async function getFilteredPosts(category, ids, lang = 'ru') {
+  const url = `${BASE_URI}/wp/v2/${category}?include=${ids.join(
+    ',',
+  )}&lang=${lang}`;
+  const response = await getRequest(url);
+
+  return response;
+}
+
+export async function getPost(postType, slug, lang = 'ru') {
+  const url =
+    postType === 'news'
+      ? `${BASE_URI}/tgi/v1/${postType}/${slug}?lang=${lang}`
+      : `${BASE_URI}/tgi/v1/${postType}?slug=${slug}&lang=${lang}`;
   const response = await getRequest(url);
 
   return response;
