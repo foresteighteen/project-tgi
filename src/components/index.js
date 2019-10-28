@@ -14,7 +14,9 @@ import HeroBg from './HeroBg';
 import SidePhotoBlock from './SidePhotoBlock';
 import PhotoVideoBlock from './PhotoVideoBlock';
 import Footer from './Footer';
+import Spinner from './Spinner';
 export {
+  Spinner,
   ArrowBtn,
   Header,
   ButtonM,

@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 // import GoogleMapReact from 'google-map-react';
+import {
+  animated,
+  useSpring,
+  useChain,
+  useTransition,
+  config,
+} from 'react-spring';
+
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
+
+import { Spinner } from '../../components';
 
 const MapContainer = ({
   zoom = 17,
@@ -19,14 +29,27 @@ const MapContainer = ({
   //       }),
   //   );
   // };
+
+  const [animate, play] = useState(false);
+
+  const springOverlay = useSpring({
+    backgroundColor: animate ? '#fff' : '#EE9D35',
+    width: animate ? '0px' : '100%',
+    left: animate ? '100%' : '0%',
+  });
+
   const defaultState = {
     center: [Number(center.lat), Number(center.lng)],
     zoom: Number(zoom),
   };
   return (
+    <div className="container">
     <div className="contacts__map">
+      <animated.div style={springOverlay} className="overlay-block" />
+  {!animate && <div className="contacts__map__spinner"><Spinner /></div>}
       <YMaps>
         <Map
+          onLoad={()=>{play(true)}}
           defaultState={defaultState}
           style={{ width: '100%', height: '100%' }}
         >
@@ -43,6 +66,7 @@ const MapContainer = ({
         onGoogleApiLoaded={({ map, maps }) => renderMarker(map, maps)}
       >
       </GoogleMapReact> */}
+    </div>
     </div>
   );
 };

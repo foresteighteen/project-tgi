@@ -57,7 +57,7 @@ export async function getPost(postType, slug, lang = 'ru') {
   const url =
     postType === 'news'
       ? `${BASE_URI}/tgi/v1/${postType}/${slug}?lang=${lang}`
-      : `${BASE_URI}/tgi/v1/${postType}?slug=${slug}&lang=${lang}`;
+      : `${BASE_URI}/wp/v2/${postType}?slug=${slug}&lang=${lang}`;
   const response = await getRequest(url);
 
   return response;

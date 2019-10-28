@@ -1,5 +1,5 @@
 .modal
-  padding: 35px 45px 25px 45px
+  padding: 65px 45px 25px 45px
   & > .form__row
     min-height: 60px
   & > .form__title
@@ -13,19 +13,26 @@
   &__close-btn
     cursor: pointer
     position: absolute
-    top: 35px
+    top: 65px
     right: 45px
-    & > svg
-      width: 35px
-      height: 35px
-      // transition: all .25s
-      & > g > path
-        fill: #111
-        opacity: .5
-      &:hover
-        & > g > path
-          opacity: 1
-          fill: #EC841C
+    width: 35px
+    height: 35px
+    transition: opacity .35s
+    &:before, &:after
+      content: ''
+      width: 2px
+      height: 100%
+      position: absolute
+      background-color: rgb(204, 204, 204)     
+      left: 20px
+      top: 0
+    &:before
+      transform: rotate(45deg)
+    &:after
+      transform: rotate(-45deg)
+    &:hover
+      opacity: .7      
+
 
 @media (max-width: 1399px)
   .ReactModal__Content
@@ -59,15 +66,15 @@
     &__close-btn
       top: 20px
       right: 10px
-  .ReactModal__Content
-    width: 100%
-    margin-top: 150px
-    margin-bottom: 25px
-  .ReactModal__Overlay
-    position: relative
-    top: 30px!important
-    left: 10px!important
-    right: 10px!important
-    bottom: 10px!important
+  // .ReactModal__Content
+  //   width: 100%
+  //   margin-top: 150px
+  //   margin-bottom: 25px
+  // .ReactModal__Overlay
+  //   position: relative
+  //   top: 30px!important
+  //   left: 10px!important
+  //   right: 10px!important
+  //   bottom: 10px!important
 
 

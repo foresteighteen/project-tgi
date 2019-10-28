@@ -1,4 +1,12 @@
 .photo-video__block
+  .overlay-block
+    position: absolute
+    width: 100%
+    height: 100%
+    z-index: 3
+    background: #fff
+    top: 0
+    left: 0
   .yt-container
     width: 100%
     height: 100%
@@ -16,15 +24,18 @@
     width: 100%
     height: 680px
     position: relative
-    &:before
+    &__before
       position: absolute
-      content: ''
-      left: 50%
-      transform: translateX(-50%)
+      left: 5%
+      // transform: translateX(-50%)
       height: 100%
       width: 90%
       bottom: -20px
       background-color: #EC841C
+    &__inner
+      position: relative
+      width: 100%
+      height: 100%
   &__cover
     width: 100%
     height: 100%
@@ -98,18 +109,19 @@
     width: 58%
     margin-top: -100px
     z-index: 2
-    padding-top: 55px
-    padding-left: 70px
-    padding-right: 95px
-    padding-bottom: 45px
-    min-height: 400px
-    background: #fff
     // width: 950px
     font-family: Roboto
     font-size: 15px
     line-height: 30px
     margin-left: auto
     margin-right: 8.5%
+    &__wrap
+      background: #fff
+      padding-top: 55px
+      padding-left: 70px
+      padding-right: 95px
+      padding-bottom: 45px
+      min-height: 400px
     p
       margin-bottom: 40px
       &:last-of-type
@@ -132,8 +144,9 @@
 @media (max-width: 1439px)
   .photo-video__block
     &__desc
-      padding-right: 50px
-      padding-left: 50px
+      &__wrap
+        padding-right: 50px
+        padding-left: 50px
 
 @media (max-width: 1199px)
   .photo-video__block
@@ -156,18 +169,20 @@
         left: 13%
         top: 150px
     &__desc
-      padding: 40px
-      text-align: justify
+      &__wrap
+        padding: 40px
+        text-align: justify
       p
         margin-bottom: 20px
 
 @media (max-width: 575px)
   .photo-video__block
     &__desc
-      padding: 25px
-      text-align: justify
-      width: 100%
-      margin-top: 20px
+      &__wrap
+        padding: 25px
+        text-align: justify
+        width: 100%
+        margin-top: 20px
       p 
         line-height: 25px
     &__cover
