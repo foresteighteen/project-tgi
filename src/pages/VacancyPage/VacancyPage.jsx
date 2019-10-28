@@ -3,6 +3,7 @@ import { indexBy, prop, pluck, map, assoc } from 'ramda';
 import uniqid from 'uniqid';
 import { QuestionForm } from '../../components';
 import withPageData from '../../containers/withPageData';
+import { HeaderContext } from '../../containers/HeaderProvider';
 
 import HeroSection from './HeroSection';
 import VacancySection from './VacancySection';
@@ -172,12 +173,24 @@ const WP_PAGE_ID = 38;
 
 const VacancyPage = ({ pageData, pageLoaded }) => {
   if (!pageLoaded) return <main className="main vacancy-page"></main>;
+
+  const { setHeaderTheme } = React.useContext(HeaderContext);
+
+  React.useEffect(() => {
+    setHeaderTheme('light');
+  }, []);
+
   const [activeVacancy, changeActive] = useState(
     pageData.acf.vacancies.city[0].city,
   );
   const [currencySymbol, {}] = useState(pageData.acf.vacancies.currency);
   const [buttonText, {}] = useState(pageData.acf.vacancies.btn_text);
-  const [vacancies, {}] = useState(map(item => map( item => assoc('id', uniqid(), item), item), pluck('vacancy', indexBy(prop('city'), pageData.acf.vacancies.city))));
+  const [vacancies, {}] = useState(
+    map(
+      item => map(item => assoc('id', uniqid(), item), item),
+      pluck('vacancy', indexBy(prop('city'), pageData.acf.vacancies.city)),
+    ),
+  );
 
   return (
     <main className="main vacancy-page">

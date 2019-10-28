@@ -7,6 +7,8 @@ import ScrollToTop from '../utils/ScrollToTop';
 import { ModalProvider } from '../containers/ContactsModal/ModalProvider';
 import ContactsModal from '../containers/ContactsModal';
 import LangProvider from './LangProvider';
+import { HeaderProvider } from './HeaderProvider';
+
 // import Header from '../components/Header';
 // import Footer from '../components/Footer';
 
@@ -23,13 +25,15 @@ const App = () => {
     >
       <BrowserRouter>
         <LangProvider>
-          <ModalProvider>
-            <ContactsModal />
-            <Header />
-            <ScrollToTop />
-            <Main />
-            <Footer />
-          </ModalProvider>
+          <HeaderProvider>
+            <ModalProvider>
+              <ContactsModal />
+              <Header />
+              <ScrollToTop />
+              <Main />
+              <Footer />
+            </ModalProvider>
+          </HeaderProvider>
         </LangProvider>
       </BrowserRouter>
     </div>

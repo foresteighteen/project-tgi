@@ -88,9 +88,9 @@ const Main = () => {
     // from: { opacity: 1, transformOrigin: 'center left', transform: 'perspective(0) scale3d(1,1,1)'},
     // enter: { opacity: 1, transformOrigin: 'center left', transform: 'perspective(0) scale3d(1,1,1)' },
     // leave: { opacity: 0, transformOrigin: 'center left', transform: 'perspective(0) scale3d(-1,1,1)', position: 'absolute' },
-    // 
+    //
     from: { opacity: 0 },
-    enter: { opacity: 1},
+    enter: { opacity: 1 },
     leave: { opacity: 0 },
     // from: { opacity: 1, width: 0 },
     // enter: { opacity: 1, width: 1000 },
