@@ -3,6 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { Link, withRouter } from 'react-router-dom';
 import { debounce } from 'throttle-debounce';
 import { LangContext } from '../../containers/LangProvider';
+import { HeaderContext } from '../../containers/HeaderProvider';
 import { getMenu } from '../../api';
 
 import Burger from './Burger';
@@ -11,6 +12,7 @@ import './Header.sass';
 
 const Header = ({ history }) => {
   const { state, dispatch } = React.useContext(LangContext);
+  const { theme } = React.useContext(HeaderContext);
   const [menu, setMenu] = React.useState([]);
   const [menuLoaded, setMenuLoaded] = React.useState(false);
 
@@ -37,8 +39,8 @@ const Header = ({ history }) => {
   });
   const [fillHeader, setfillHeader] = useState(false);
   const handleScroll = debounce(50, () => {
-      setfillHeader(window['page-wrap'].scrollTop >= 93);
-    });
+    setfillHeader(window['page-wrap'].scrollTop >= 93);
+  });
 
   useEffect(() => {
     window['page-wrap'].addEventListener('scroll', handleScroll);
@@ -48,7 +50,12 @@ const Header = ({ history }) => {
     // };
   }, []);
   return (
-    <animated.header style={fade} className={`header white-header${fillHeader ? ' header-filled' : ''}`} >
+    <animated.header
+      style={fade}
+      className={`header ${theme === 'light' ? 'white-header' : ''}${
+        fillHeader ? ' header-filled' : ''
+      }`}
+    >
       <div className="container">
         <div className="row justify-content-between align-items-center">
           <div className="col-auto col-xl-2 header__logo">
@@ -131,7 +138,7 @@ const Header = ({ history }) => {
                 </Link>
               </li>
               <li>
-              <Link
+                <Link
                   to="#"
                   onClick={() => {
                     dispatch({ type: 'changeLang', lang: 'en' });

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import withPostData from '../../containers/withPostData';
+import { HeaderContext } from '../../containers/HeaderProvider';
 
 import HeroSection from './HeroSection';
 import BodySection from './BodySection';
@@ -10,6 +11,12 @@ import { QuestionForm } from '../../components';
 import './SingleNewsPage.sass';
 
 const SingleNewsPage = ({ postData, postLoaded }) => {
+  const { setHeaderTheme } = React.useContext(HeaderContext);
+
+  React.useEffect(() => {
+    setHeaderTheme('dark');
+  }, []);
+
   return (
     <main className="main single-news-page">
       {postLoaded ? (
