@@ -151,7 +151,7 @@ const ContactsForm = ({ modal, onCloseModal, className }) => (
     </div>
     <div className="form__row">
       {/* <div className="form__controls"> */}
-      <button type="submit" className="form__btn mx-auto">
+      <button type="submit" className="form__btn mx-auto" onClick={onCloseModal} >
         отправить
       </button>
       {/* {modal && (

@@ -1,0 +1,23 @@
+.mobile__menu
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: #fff
+  color: #111
+  align-items: center
+  justify-content: center
+  z-index: 999
+  display: none
+  padding-top: 80px
+  &__list
+    text-align: center
+    li
+      margin-bottom: 25px
+      a
+        font-size: 24px
+
+@media (max-width: 991px)
+  .mobile__menu
+    display: flex

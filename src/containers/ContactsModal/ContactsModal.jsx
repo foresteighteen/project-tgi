@@ -10,16 +10,17 @@ const modalStyles = {
   overlay: {
     zIndex: 9999,
     position: 'absolute',
+    backgroundColor: 'transparent',
   },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    // marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    padding: 0,
-  },
+  // content: {
+  //   top: '50%',
+  //   left: '50%',
+  //   right: 'auto',
+  //   bottom: 'auto',
+  //   // marginRight: '-50%',
+  //   transform: 'translate(-50%, -50%)',
+  //   padding: 0,
+  // },
 };
 
 const ContactsModal = () => {
@@ -30,8 +31,11 @@ const ContactsModal = () => {
       onRequestClose={closeModal}
       contentLabel="Напишите нам"
       style={modalStyles}
+      className="modal-form-open"
     >
-      <ContactsForm onCloseModal={closeModal} className="modal" modal />
+      <div className="modal-wrap">
+       <ContactsForm onCloseModal={closeModal} className="modal" modal />
+      </div>
     </Modal>
   );
 };

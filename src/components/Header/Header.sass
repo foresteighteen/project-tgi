@@ -8,6 +8,10 @@
   padding-bottom: 20px
   color: #000000
   transition: background-color .35s padding .35s
+  &.opened-menu
+    color: #111111!important
+    use.header-logo-icon
+      fill: #DC7D43!important
   &.header-filled
     color: #111!important
     background-color: #ffffff
@@ -114,4 +118,12 @@ use.header-logo-icon
   .header
     .svg-logo
       width: 70px
+      height: 50px
+
+@media (max-width: 359px)
+  .header
+    a
+      font-size: 13px
+    .svg-logo
+      width: 40px
       height: 50px

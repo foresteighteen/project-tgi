@@ -3,6 +3,8 @@ import { Waypoint } from 'react-waypoint';
 import { animated, useSpring, useChain, config } from 'react-spring';
 import './ProductIncludesItem.sass';
 
+import RevealBlock from '../../containers/Animations/RevealBlock';
+
 const ProductIncludesItem = ({ img_big, img_sm, text }) => {
   const [animate, play] = useState(false);
 
@@ -39,37 +41,39 @@ const ProductIncludesItem = ({ img_big, img_sm, text }) => {
   useChain(animate ? [springRef1, springRef2, springRef3] : [], [0, 0.7, 0]);
 
   return (
-    <Waypoint bottomOffset="30%" onEnter={() => play(true)}>
+    // <Waypoint bottomOffset="30%" onEnter={() => play(true)}>
+    <RevealBlock>
       <div className="product-item">
         <div className="product-item-left">
-          <animated.div className="product-item__wrap" style={springPhotoBLock}>
+          {/* <animated.div className="product-item__wrap" style={springPhotoBLock}>
             <animated.div
               style={springOverlay}
               className="product-item__overlay-block"
-            />
+            /> */}
             <img src={`${img_big}`} alt="" />
-          </animated.div>
+          {/* </animated.div> */}
         </div>
         <div style={spring3} className="product-item-text">
-        <animated.div className="product-item__wrap" style={springPhotoBLock}>
+        {/* <animated.div className="product-item__wrap" style={springPhotoBLock}>
             <animated.div
               style={springOverlay}
               className="product-item__overlay-block"
-            />
+            /> */}
             {text}
-          </animated.div>
+          {/* </animated.div> */}
         </div>
         <div className="product-item-right">
-          <animated.div className="product-item__wrap" style={springPhotoBLock}>
+          {/* <animated.div className="product-item__wrap" style={springPhotoBLock}>
             <animated.div
               style={springOverlay}
               className="product-item__overlay-block"
-            />
+            /> */}
             <img src={`${img_sm}`} alt="" />
-          </animated.div>
+          {/* </animated.div> */}
         </div>
       </div>
-    </Waypoint>
+      </RevealBlock>
+    // </Waypoint>
   );
 };
 

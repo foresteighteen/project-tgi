@@ -23,7 +23,7 @@
     cursor: pointer
   &__list
     display: grid
-    grid-template: 95px / repeat(auto-fill, minmax(190px, 1fr))
+    grid-template: 95px / repeat(auto-fill, minmax(190px, 18%))
     grid-gap: 20px 29px
     grid-auto-rows: 95px
   &__item
@@ -38,8 +38,10 @@
       height: 100%
   
 
-@media (min-width: 1600px)
+@media (max-width: 1439px)
   .partners
+    &__list
+      grid-template: 95px / repeat(auto-fill, minmax(173px, 15%))
     // &__cert-list
     //   justify-content: space-between
     //   margin-left: -25px
@@ -50,7 +52,10 @@
       width: 100%
     &__cert-item
       width: 100%
-@media (max-width: 768px)
+@media (max-width: 991px)
+  .partners
+    &__list
+      grid-template: 95px / repeat(auto-fill, minmax(190px, 1fr))
   // .partners
   //   &__item
   //     width: 32%

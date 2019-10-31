@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import uniqid from 'uniqid';
+import { Link } from 'react-router-dom';
 import { animated, useSpring, config } from 'react-spring';
 import { Waypoint } from 'react-waypoint';
 import { RevealByWord } from '../../../containers/Animations';
@@ -26,6 +27,7 @@ const ProductSection = ({ data }) => {
         >
           <div className="products__list">
             {slider.map(slide => (
+              <Link to={`${slide.link}`}>
               <animated.div
                 style={blockAnimation}
                 className="products__item"
@@ -40,6 +42,7 @@ const ProductSection = ({ data }) => {
                   className="products__item-image"
                 />
               </animated.div>
+              </Link>
             ))}
           </div>
         </Waypoint>

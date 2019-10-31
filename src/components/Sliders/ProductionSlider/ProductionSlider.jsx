@@ -24,15 +24,15 @@ const ProductionSlider = ({ slider }) => {
     ],
   };
   return (
-    <div className="production-slider">
-      <RevealBlock>
-      <Slider {...settings}>
-        {slider.map(({ img }, i) => (
-          <ProductionSliderItem key={i} imgSrc={img.url} imgAlt={img.alt} />
-        ))}
-      </Slider>
-      </RevealBlock>
-    </div>
+    <RevealBlock>
+      <div className="production-slider">
+        <Slider {...settings}>
+          {slider.map(({ img }, i) => (
+            <ProductionSliderItem key={i} imgSrc={img.url} imgAlt={img.alt} />
+          ))}
+        </Slider>
+      </div>
+    </RevealBlock>
   );
 };
 

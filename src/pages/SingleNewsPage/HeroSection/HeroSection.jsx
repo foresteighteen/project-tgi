@@ -5,7 +5,7 @@ import './HeroSection.sass';
 
 const HeroSection = ({ title, subtitle }) => (
   <section id="certificate-hero">
-    <Hero classes="hero__single-news">
+    <Hero classes="hero__single-news" brdcrmb={{path:'news', title:'Новости'}}>
       <H1 text={title} />
       <HeroText desc={subtitle} />
     </Hero>

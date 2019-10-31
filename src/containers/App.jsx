@@ -24,12 +24,12 @@ const App = () => {
       }}
     >
       <BrowserRouter>
+        <ScrollToTop />
         <LangProvider>
           <HeaderProvider>
             <ModalProvider>
               <ContactsModal />
               <Header />
-              <ScrollToTop />
               <Main />
               <Footer />
             </ModalProvider>

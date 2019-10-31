@@ -11,12 +11,20 @@ import { QuestionForm } from '../../components';
 
 import './CatalogPage.sass';
 
-const CatalogPage = ({ pageData, pageLoaded }) => {
+const CatalogPage = ({ pageData, pageLoaded, location:{ hash } }) => {
   const { setHeaderTheme } = React.useContext(HeaderContext);
 
   React.useEffect(() => {
     setHeaderTheme('dark');
   }, []);
+
+  // const scrollTo = window.location.href.indexOf('#');
+
+  if (pageLoaded && hash) {
+    setTimeout(()=>{
+      window['page-wrap'].scrollTo({ top: document.querySelector(hash).offsetTop - 85, left: 0, behavior: 'smooth' });
+    }, 300);
+  };
 
   return (
     <main className="main catalog-page">

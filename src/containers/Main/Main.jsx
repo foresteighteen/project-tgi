@@ -98,17 +98,18 @@ const Main = () => {
     config: config.stiff,
     unique: true,
   });
-  // return (
-  //   <Switch>
-  return transitions.map(({ item, props, key }) => (
-    <animated.div key={key} style={props}>
-      <Switch location={item}>
-        {/* <RootRouter
+
+  // return transitions.map(({ item, props, key }) => (
+  //   <animated.div key={key} style={props}>
+  //     <Switch location={item}>
+    return (
+    <Switch>
+        <RootRouter
           exact
           path={'/:lang(en|ru)?'}
           lang={state.lang}
           component={MainPage}
-        /> */}
+        />
         <Route exact path="/:lang(en|ru)?/" component={MainPage} />
         <Route exact path="/:lang(en|ru)?/catalog" component={CatalogPage} />
         <Route
@@ -135,9 +136,9 @@ const Main = () => {
         <Route exact path="/:lang(en|ru)?/vacancy" component={VacancyPage} />
         <Route render={() => <div className="container">404</div>} />
       </Switch>
-    </animated.div>
-  ));
-  // );
+  //   </animated.div>
+  // ));
+  );
   // return transitions.map(({ item, props, key }) => (
   //   <animated.div key={key} style={props}>
   //     <Switch location={item}>

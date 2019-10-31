@@ -1,11 +1,15 @@
 .catalog__grid__item
   min-height: 535px
   background: #fff
-  padding-top: 45px
+  padding-top: 60px
+  display: flex
+  flex-direction: column
+  justify-content: space-between
   img
     margin-top: 30px
     max-height: 270px
     margin: 0 auto
+    max-width: 360px
 
 ul.catalog__grid__item__list
   margin-top: 80px
@@ -29,10 +33,12 @@ ul.catalog__grid__item__list
 
 @media (max-width: 1439px)
   .catalog__grid__item
-    min-height: auto
+    // min-height: auto
   ul.catalog__grid__item__list
     padding-left: 5%
 @media (max-width: 991px)
+  .catalog__grid__item
+    min-height: auto
   ul.catalog__grid__item__list
     padding-left: 16%
 

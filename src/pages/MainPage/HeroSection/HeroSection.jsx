@@ -42,7 +42,7 @@ class HeroSection extends React.Component {
         <div className="container">
           <div className="hero__section__inner">
             <div className="row hero__info">
-              <div className="col col-lg-8">
+              <div className="col-12 col-lg-8">
                 <h2 className="hero__title">{title}</h2>
               </div>
               <div className="col col-lg-10 col-xl-7">

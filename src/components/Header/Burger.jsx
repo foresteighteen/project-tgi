@@ -23,6 +23,7 @@ export default class Burger extends Component {
   TWEENS = {};
 
   componentDidMount() {
+    this.setState({isActive: this.props.isOpen});
     this.TWEENS = {
       top: TweenMax.to(this.DOM.top.current, this.SETTINGS.duration, {
         scaleX: 1.2,
@@ -76,6 +77,9 @@ export default class Burger extends Component {
     this.setState(prevState => ({ isActive: !prevState.isActive }));
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if(this.props.isOpen !== this.state.isActive) {this.onClickHandler()};   
+  };
   render() {
     return (
       <svg
@@ -83,7 +87,10 @@ export default class Burger extends Component {
         viewBox="0 0 39 39"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
-        onClick={this.onClickHandler}
+        onClick={()=>{
+          this.onClickHandler();
+          this.props.toggleMenu(!this.state.isActive);
+        }}
       >
         <path
           className="burger-menu__line-top"

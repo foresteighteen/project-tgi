@@ -10,7 +10,7 @@ import { HeaderContext } from '../../containers/HeaderProvider';
 import './ProductPage.sass';
 
 const ProductPage = ({ postData, postLoaded }) => {
-  if (!postLoaded) return null;
+  if (!postLoaded) return <main className="main product-page"></main>;
   const { setHeaderTheme } = React.useContext(HeaderContext);
 
   React.useEffect(() => {

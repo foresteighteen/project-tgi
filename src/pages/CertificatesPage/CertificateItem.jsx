@@ -19,7 +19,7 @@ const CertificateItem = ({ url, alt, index, click }) => {
         onEnter={() => {
           if (!animate) play(true);
         }}
-        bottomOffset="30%"
+        bottomOffset="20%"
         scrollableAncestor={document.getElementById('page-wrap')}
       >
         <animated.div
@@ -29,10 +29,12 @@ const CertificateItem = ({ url, alt, index, click }) => {
             click(index);
           }}
         >
+          <div className="cert__gallery-item__img">
           <img
             src={url}
             alt={alt}
           />
+          </div>
         </animated.div>
       </Waypoint>
     </React.Fragment>

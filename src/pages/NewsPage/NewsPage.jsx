@@ -8,7 +8,7 @@ import NewsRowSection from './NewsRowSection';
 import './NewsPage.sass';
 
 const NewsPage = ({ pageData, pageLoaded }) => {
-  if (!pageLoaded) return null;
+  if (!pageLoaded) return <main className="main news-page"></main>;
   const { setHeaderTheme } = React.useContext(HeaderContext);
 
   React.useEffect(() => {

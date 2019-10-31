@@ -5,6 +5,7 @@ import { debounce } from 'throttle-debounce';
 import { LangContext } from '../../containers/LangProvider';
 import { HeaderContext } from '../../containers/HeaderProvider';
 import { getMenu } from '../../api';
+import MobileMenu from './MobileMenu';
 
 import Burger from './Burger';
 
@@ -15,6 +16,8 @@ const Header = ({ history }) => {
   const { theme } = React.useContext(HeaderContext);
   const [menu, setMenu] = React.useState([]);
   const [menuLoaded, setMenuLoaded] = React.useState(false);
+  const [menuOpen, setMenuMobile] = useState(false);
+
 
   React.useEffect(() => {
     const fetchMenu = async () => {
@@ -50,11 +53,12 @@ const Header = ({ history }) => {
     // };
   }, []);
   return (
+    <React.Fragment>
     <animated.header
       style={fade}
       className={`header ${theme === 'light' ? 'white-header' : ''}${
         fillHeader ? ' header-filled' : ''
-      }`}
+      }${menuOpen ? ' opened-menu' : ''}`}
     >
       <div className="container">
         <div className="row justify-content-between align-items-center">
@@ -107,7 +111,7 @@ const Header = ({ history }) => {
             </nav>
           </div>
           <div className="col-auto">
-            <a href="tel()" className="roboto-m">
+            <a href="tel:+8 800 777 10 91" className="roboto-m">
               8 800 777 10 91
             </a>
           </div>
@@ -115,7 +119,7 @@ const Header = ({ history }) => {
             <div className="header__lang-cur">
               <svg width="20" height="26">
                 <use
-                  xlinkHref="/src/assets/img/sprite.svg#lang-ru"
+                  xlinkHref={`/src/assets/img/sprite.svg#lang-${state.lang}`}
                   className="lang-svg"
                 />
               </svg>
@@ -147,7 +151,7 @@ const Header = ({ history }) => {
                 >
                   <svg width="20" height="26">
                     <use
-                      xlinkHref="/src/assets/img/sprite.svg#lang-ru"
+                      xlinkHref="/src/assets/img/sprite.svg#lang-en"
                       className="lang-svg"
                     />
                   </svg>
@@ -156,11 +160,32 @@ const Header = ({ history }) => {
             </ul>
           </div>
           <div className="col-auto burger-wrap">
-            <Burger />
+            <Burger toggleMenu={setMenuMobile} isOpen={menuOpen}/>
           </div>
         </div>
       </div>
     </animated.header>
+          <MobileMenu isOpen={menuOpen} >
+              {menuLoaded
+                ? menu.map(({ title, url, ID }) => (
+                    <li key={ID}
+                      onClick={()=>{
+                      setMenuMobile(false);
+                      console.log(setMenuMobile);
+                    }}>
+                      <Link
+                        to={`/${url
+                          .split('/')
+                          .slice(3)
+                          .join('/')}`}
+                      >
+                        {title}
+                      </Link>
+                    </li>
+                  ))
+                : null}
+            </MobileMenu>
+    </React.Fragment>
   );
 };
 
