@@ -1,7 +1,7 @@
 import React from 'react';
 import { animated, useTrail } from 'react-spring';
 
-const ListSection = ({ addressArray }) => {
+const ListSection = ({ addressArray, setMapCenter }) => {
   const spring = useTrail(addressArray.length, {
     from: { opacity: 0, transform: 'translate3d(0, 80px, 0)' },
     to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
@@ -14,6 +14,9 @@ const ListSection = ({ addressArray }) => {
           const address = addressArray[i];
           return (
             <animated.div
+              onClick={
+                address.coords ? () => setMapCenter(address.coords) : null
+              }
               style={animation}
               key={i}
               className={`contacts__list-item col-md-6 ${

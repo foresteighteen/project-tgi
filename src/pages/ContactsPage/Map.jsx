@@ -29,7 +29,6 @@ const MapContainer = ({
   //       }),
   //   );
   // };
-
   const [animate, play] = useState(false);
 
   const springOverlay = useSpring({
@@ -42,23 +41,30 @@ const MapContainer = ({
     center: [Number(center.lat), Number(center.lng)],
     zoom: Number(zoom),
   };
+
   return (
     <div className="container">
-    <div className="contacts__map">
-      <animated.div style={springOverlay} className="overlay-block" />
-  {!animate && <div className="contacts__map__spinner"><Spinner /></div>}
-      <YMaps>
-        <Map
-          onLoad={()=>{play(true)}}
-          defaultState={defaultState}
-          style={{ width: '100%', height: '100%' }}
-        >
-          {markers.map(marker => (
-            <Placemark geometry={[Number(marker.lat), Number(marker.lng)]} />
-          ))}
-        </Map>
-      </YMaps>
-      {/* <GoogleMapReact
+      <div className="contacts__map">
+        <animated.div style={springOverlay} className="overlay-block" />
+        {!animate && (
+          <div className="contacts__map__spinner">
+            <Spinner />
+          </div>
+        )}
+        <YMaps>
+          <Map
+            onLoad={() => {
+              play(true);
+            }}
+            state={defaultState}
+            style={{ width: '100%', height: '100%' }}
+          >
+            {markers.map(marker => (
+              <Placemark geometry={[Number(marker.lat), Number(marker.lng)]} />
+            ))}
+          </Map>
+        </YMaps>
+        {/* <GoogleMapReact
         bootstrapURLKeys={{ key: apiKey }}
         defaultCenter={{ lat: Number(center.lat), lng: Number(center.lng) }}
         defaultZoom={Number(zoom)}
@@ -66,7 +72,7 @@ const MapContainer = ({
         onGoogleApiLoaded={({ map, maps }) => renderMarker(map, maps)}
       >
       </GoogleMapReact> */}
-    </div>
+      </div>
     </div>
   );
 };
