@@ -27,6 +27,12 @@ export async function getMenu(lang = 'ru') {
   return response;
 }
 
+export async function getFullMenu(lang = 'ru') {
+  const url = `${BASE_URI}/tgi/v1/products-nav?lang=${lang}`;
+  const [menu, products] = await Promise.all([getMenu(lang), getRequest(url)]);
+  return [menu, products];
+}
+
 export async function getPage(id, lang = 'ru') {
   const url = `${BASE_URI}/wp/v2/pages/${id}?lang=${lang}`;
   const response = await getRequest(url);
@@ -58,7 +64,7 @@ export async function getPost(postType, slug, lang = 'ru') {
     postType === 'news'
       ? `${BASE_URI}/tgi/v1/${postType}/${slug}?lang=${lang}`
       : `${BASE_URI}/wp/v2/${postType}?slug=${slug}&lang=${lang}`;
-      console.log(url)
+  console.log(url);
   // const url = `${BASE_URI}/wp/v2/${postType}?slug=${slug}&lang=${lang}`;
   const response = await getRequest(url);
 
