@@ -4,6 +4,7 @@ import CatalogGridItem from './CatalogGridItem';
 import './CatalogGrid.sass';
 
 const CatalogGrid = ({ complects }) => {
+  console.log(complects)
   const items = complects.map(item => <CatalogGridItem key={item.complect.ID} {...item} />);
   return (
     <div className="catalog__grid">
