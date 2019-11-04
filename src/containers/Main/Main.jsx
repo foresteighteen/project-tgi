@@ -102,42 +102,42 @@ const Main = () => {
   // return transitions.map(({ item, props, key }) => (
   //   <animated.div key={key} style={props}>
   //     <Switch location={item}>
-    return (
+  return (
     <Switch>
-        <RootRouter
-          exact
-          path={'/:lang(en|ru)?'}
-          lang={state.lang}
-          component={MainPage}
-        />
-        <Route exact path="/:lang(en|ru)?/" component={MainPage} />
-        <Route exact path="/:lang(en|ru)?/catalog" component={CatalogPage} />
-        <Route
-          exact
-          path="/:lang(en|ru)?/catalog/:slug"
-          component={ProductPage}
-        />
-        {/* <Redirect from="/:lang(en|ru)?/products/:slug" to="/:lang(en|ru)?/catalog/:slug" /> */}
-        {/* <Route exact path="/:lang(en|ru)?/ktc" component={KtcPage} /> */}
-        <Route exact path="/:lang(en|ru)?/about" component={AboutPage} />
-        <Route exact path="/:lang(en|ru)?/news" component={NewsPage} />
-        <Route
-          exact
-          path="/:lang(en|ru)?/news/:slug"
-          component={SingleNewsPage}
-        />
-        <Route exact path="/:lang(en|ru)?/quality" component={QualityPage} />
-        <Route exact path="/:lang(en|ru)?/contacts" component={ContactsPage} />
-        <Route
-          exact
-          path="/:lang(en|ru)?/certificates"
-          component={CertificatesPage}
-        />
-        <Route exact path="/:lang(en|ru)?/vacancy" component={VacancyPage} />
-        <Route render={() => <div className="container">404</div>} />
-      </Switch>
-  //   </animated.div>
-  // ));
+      <RootRouter
+        exact
+        path={'/:lang(en|ru)?'}
+        lang={state.lang}
+        component={MainPage}
+      />
+      <Route exact path="/:lang(en|ru)?/" component={MainPage} />
+      <Route exact path="/:lang(en|ru)?/catalog" component={CatalogPage} />
+      <Route
+        exact
+        path="/:lang(en|ru)?/catalog/:slug"
+        component={ProductPage}
+      />
+      {/* <Redirect from="/:lang(en|ru)?/products/:slug" to="/:lang(en|ru)?/catalog/:slug" /> */}
+      {/* <Route exact path="/:lang(en|ru)?/ktc" component={KtcPage} /> */}
+      <Route exact path="/:lang(en|ru)?/about" component={AboutPage} />
+      <Route exact path="/:lang(en|ru)?/news" component={NewsPage} />
+      <Route
+        exact
+        path="/:lang(en|ru)?/news/:slug"
+        component={SingleNewsPage}
+      />
+      <Route exact path="/:lang(en|ru)?/quality" component={QualityPage} />
+      <Route exact path="/:lang(en|ru)?/contacts" component={ContactsPage} />
+      <Route
+        exact
+        path="/:lang(en|ru)?/certificates"
+        component={CertificatesPage}
+      />
+      <Route exact path="/:lang(en|ru)?/vacancy" component={VacancyPage} />
+      <Route render={() => <div className="container">404</div>} />
+    </Switch>
+    //   </animated.div>
+    // ));
   );
   // return transitions.map(({ item, props, key }) => (
   //   <animated.div key={key} style={props}>

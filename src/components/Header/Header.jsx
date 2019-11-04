@@ -22,7 +22,7 @@ const Header = ({ history }) => {
   const [productsMenu, setProductsMenu] = React.useState([]);
   const [menuLoaded, setMenuLoaded] = React.useState(false);
   const [menuOpen, setMenuMobile] = useState(false);
-  console.log(menu);
+
   React.useEffect(() => {
     const fetchMenu = async () => {
       const [menuResp, productsResp] = await getFullMenu(state.lang);
