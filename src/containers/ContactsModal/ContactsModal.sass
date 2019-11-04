@@ -12,9 +12,9 @@
   background-color: rgba(255, 255, 255, 0.75)
   // background-color: red
 .modal-wrap
-  padding-top: 20vh
-  padding-bottom: 20vh
+  padding-top: 5rem
 .modal
+  box-shadow: 2px 2px 5px rgba(0,0,0,.1)
   padding: 65px 45px 25px 45px
   width: 1060px
   max-width: 100%
@@ -55,13 +55,16 @@
       opacity: .7      
 
 
+@media (min-width: 1299px)
+  .modal
+    zoom: .8
+
 @media (max-width: 1399px)
   .modal
     width: 60%
     
 @media (max-width: 1399px) and (max-height: 799px)
   .modal
-    zoom: .8
     & > .form__row
       min-height: 50px
 

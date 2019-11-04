@@ -2,12 +2,14 @@ import React from 'react';
 import Select, { components } from 'react-select';
 import CloseModalBtn from '../ContactsModal/CloseModalBtn';
 
+import withPageData from '../../containers/withPageData';
+
 import './ContactsForm.sass';
 
-const selectOptions = [
-  { value: 1, label: 'Отдел продаж #1' },
-  { value: 2, label: 'Отдел продаж #2' },
-];
+// const selectOptions = [
+//   { value: 1, label: 'Отдел продаж #1' },
+//   { value: 2, label: 'Отдел продаж #2' },
+// ];
 
 const DropdownIndicator = props => (
   <components.DropdownIndicator {...props}>
@@ -69,92 +71,111 @@ const selectStyles = {
   }),
 };
 
-const ContactsForm = ({ modal, onCloseModal, className }) => (
-  <form className={`form ${className}`}>
-    <h2 className="form__title">Напишите Нам</h2>
-    {modal ? <CloseModalBtn onClick={onCloseModal} /> : null}
-    <div className="form__row">
-      <label htmlFor="department" className="form__label">
-        Выберите отдел
-      </label>
-      {/* <select name="department" id="department" className="form__input">
+const WP_PAGE_ID = 772;
+
+const ContactsForm = ({
+  modal,
+  onCloseModal,
+  className,
+  pageData,
+  pageLoaded,
+}) => {
+  if (!pageLoaded) return null;
+  const { acf: formData } = pageData;
+  const selectOptions = formData.salesDepartment.items.map((item, i) => ({
+    value: i,
+    label: item.title,
+  }));
+  return (
+    <form className={`form ${className}`}>
+      <h2 className="form__title">{formData.title}</h2>
+      {modal ? <CloseModalBtn onClick={onCloseModal} /> : null}
+      <div className="form__row">
+        <label htmlFor="department" className="form__label">
+          {formData.salesDepartment.title}
+        </label>
+        {/* <select name="department" id="department" className="form__input">
         <option value="Отдел продаж" className="form__option">
           Отдел продаж
         </option>
       </select> */}
-      <Select
-        components={{ DropdownIndicator }}
-        isSearchable={false}
-        className="form__input form__input--select"
-        styles={selectStyles}
-        // value={controls.payment}
-        // onChange={e => onChange.setPayment(e)}
-        options={selectOptions}
-        placeholder="Отдел продаж"
-      />
-      <input
-        tabIndex={-1}
-        autoComplete="off"
-        style={{ opacity: 0, height: 0, position: 'absolute' }}
-        // value={controls.payment}
-        required
-      />
-    </div>
-    <div className="form__row">
-      <label htmlFor="name" className="form__label">
-        Как вас зовут
-      </label>
-      <input
-        type="text"
-        name="name"
-        id="name"
-        className="form__input"
-        placeholder="Василий Петрушкин"
-      />
-    </div>
-    <div className="form__row">
-      <label htmlFor="tel" className="form__label">
-        Телефон
-      </label>
-      <input
-        type="text"
-        name="tel"
-        id="tel"
-        className="form__input"
-        placeholder="+7 (___) ___-__-__"
-      />
-    </div>
-    <div className="form__row">
-      <label htmlFor="email" className="form__label">
-        Электронная почта
-      </label>
-      <input
-        type="text"
-        name="email"
-        id="email"
-        className="form__input"
-        placeholder="vasiliypetrushkin@gmail.com"
-      />
-    </div>
-    <div className="form__row">
-      <label htmlFor="comment" className="form__label">
-        Комментарий
-      </label>
-      <textarea
-        rows="6"
-        type="text"
-        name="comment"
-        id="comment"
-        className="form__input"
-        placeholder="Ваше сообщение"
-      />
-    </div>
-    <div className="form__row">
-      {/* <div className="form__controls"> */}
-      <button type="submit" className="form__btn mx-auto" onClick={onCloseModal} >
-        отправить
-      </button>
-      {/* {modal && (
+        <Select
+          components={{ DropdownIndicator }}
+          isSearchable={false}
+          className="form__input form__input--select"
+          styles={selectStyles}
+          // value={controls.payment}
+          // onChange={e => onChange.setPayment(e)}
+          options={selectOptions}
+          placeholder={formData.salesDepartment.placeholder}
+        />
+        <input
+          tabIndex={-1}
+          autoComplete="off"
+          style={{ opacity: 0, height: 0, position: 'absolute' }}
+          // value={controls.payment}
+          required
+        />
+      </div>
+      <div className="form__row">
+        <label htmlFor="name" className="form__label">
+          {formData.fio.title}
+        </label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          className="form__input"
+          placeholder={formData.fio.placeholder}
+        />
+      </div>
+      <div className="form__row">
+        <label htmlFor="tel" className="form__label">
+          {formData.tel.title}
+        </label>
+        <input
+          type="text"
+          name="tel"
+          id="tel"
+          className="form__input"
+          placeholder={formData.tel.placeholder}
+        />
+      </div>
+      <div className="form__row">
+        <label htmlFor="email" className="form__label">
+          {formData.email.title}
+        </label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          className="form__input"
+          placeholder={formData.email.placeholder}
+        />
+      </div>
+      <div className="form__row">
+        <label htmlFor="comment" className="form__label">
+          {formData.comment.title}
+        </label>
+        <textarea
+          rows="6"
+          type="text"
+          name="comment"
+          id="comment"
+          className="form__input"
+          placeholder={formData.comment.placeholder}
+        />
+      </div>
+      <div className="form__row">
+        {/* <div className="form__controls"> */}
+        <button
+          type="submit"
+          className="form__btn mx-auto"
+          onClick={onCloseModal}
+        >
+          отправить
+        </button>
+        {/* {modal && (
           <button
             type="button"
             className="form__btn form__btn--gray"
@@ -163,15 +184,13 @@ const ContactsForm = ({ modal, onCloseModal, className }) => (
             Закрыть
           </button>
         )} */}
-      {/* </div> */}
-    </div>
-    <div className="form__row">
-      <p className="form__btn-sub col-md-8">
-        Нажимая на кнопку «Отправить», я даю свое согласие с политикой обработки
-        персональных данных
-      </p>
-    </div>
-  </form>
-);
+        {/* </div> */}
+      </div>
+      <div className="form__row">
+        <p className="form__btn-sub col-md-8">{formData.policy}</p>
+      </div>
+    </form>
+  );
+};
 
-export default ContactsForm;
+export default withPageData(WP_PAGE_ID)(ContactsForm);

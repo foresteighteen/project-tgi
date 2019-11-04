@@ -30,6 +30,75 @@
     a     
       &:hover
         color: #EC841C
+    &--dropdown
+      position: relative
+      & > ul
+          color: #000
+          padding-top: 30px
+          min-width: 300px
+          // background: #fff
+          position: absolute
+          top: 15px
+          left: 0
+          display: none !important
+          &:after
+            z-index: 1
+            content: ''
+            background: #fff
+            width: 100%
+            height: calc(100% - 30px)
+            position: absolute
+            top: 30px
+            right: 0
+          & > li
+            padding: 15px
+            position: relative
+            margin-right: 0 !important
+            z-index: 2
+            cursor: pointer
+            &:before
+              content: ''
+              position: absolute
+              top: 14px
+              right: 20px
+              width: 1px
+              height: 10px
+              background-color: #000
+              transform: rotate(-45deg)
+            &:after
+              content: ''
+              position: absolute
+              bottom: 14px
+              right: 20px
+              width: 1px
+              height: 10px
+              background-color: #000
+              transform: rotate(45deg)
+            &.no-arrow
+              &:before, &:after
+                display: none
+            &:hover, &:focus
+              background-color: #eee
+              & > ul
+                display: block
+            & > ul
+              position: absolute
+              left: 100%
+              top: 0
+              display: none
+              background: #fff
+              & > li
+                margin-right: 0
+                min-width: 300px
+                & > a
+                  padding: 15px
+                  height: 100%
+                  display: block
+                &:hover, &:focus
+                  background-color: #eee
+      &:hover, &:focus
+        & > ul
+            display: block !important
   .svg-logo
     width: 95px
     height: 70px

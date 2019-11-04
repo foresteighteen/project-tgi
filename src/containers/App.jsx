@@ -8,6 +8,7 @@ import { ModalProvider } from '../containers/ContactsModal/ModalProvider';
 import ContactsModal from '../containers/ContactsModal';
 import LangProvider from './LangProvider';
 import { HeaderProvider } from './HeaderProvider';
+import ScrollRestoration from './ScrollRestoration';
 
 // import Header from '../components/Header';
 // import Footer from '../components/Footer';
@@ -25,6 +26,7 @@ const App = () => {
     >
       <BrowserRouter>
         <ScrollToTop />
+        <ScrollRestoration />
         <LangProvider>
           <HeaderProvider>
             <ModalProvider>

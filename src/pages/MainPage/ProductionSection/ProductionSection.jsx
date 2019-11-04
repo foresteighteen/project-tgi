@@ -5,7 +5,6 @@ import { animated, useTrail, useSpring, useChain } from 'react-spring';
 import { LangContext } from '../../../containers/LangProvider';
 import { RevealByWord } from '../../../containers/Animations';
 
-
 import './ProductionSection.sass';
 
 const ProductionSection = ({ data }) => {
@@ -81,7 +80,9 @@ const ProductionSection = ({ data }) => {
             </animated.div>
           </div>
           <div className="production__list">
-            {itemsTrail.map(({ ...animation }, index) => renderBlocks(index, animation))}
+            {itemsTrail.map(({ ...animation }, index) =>
+              renderBlocks(index, animation),
+            )}
           </div>
         </div>
       </Waypoint>
