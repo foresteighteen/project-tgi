@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { LangContext } from '../../containers/LangProvider';
 
 import withPageData from '../../containers/withPageData';
 
@@ -9,6 +10,7 @@ import './Footer.sass';
 const WP_PAGE_ID = 537;
 
 const Footer = ({ pageData, pageLoaded }) => {
+  const { state } = React.useContext(LangContext);
   const { copyrights, menu, address, socials } = pageLoaded && pageData.acf;
   return (
     <footer className="footer-wrap">
@@ -19,7 +21,7 @@ const Footer = ({ pageData, pageLoaded }) => {
               <p>{copyrights}</p>
               <div className="footer__copy__map">
                 {menu.map(({ item }) => (
-                  <Link to={item.link}>{item.title}</Link>
+                  <Link to={`/${state.lang}/${item.link}`}>{item.title}</Link>
                 ))}
               </div>
             </div>
