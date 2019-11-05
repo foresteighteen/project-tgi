@@ -5,23 +5,23 @@
   .slick-list
     overflow: unset
   &__title
-    font-size: 45px
+    font-size: 38px
     font-family: 'ProximaNova', sans-serif
     font-weight: bold
-    margin-bottom: 2rem
+    margin-bottom: 40px
     overflow: hidden
   &__poster
     position: relative
     overflow: hidden
+    height: 545px
     &__wrap
       position: relative
       width: 100%
       height: 100%
     &__img
-      width: auto
-      height: auto
-      max-width: 100%
-      max-height: 100%
+      width: 100%
+      height: 100%
+      object-fit: cover
     .overlay-block
       position: absolute
       left: 0
@@ -32,7 +32,7 @@
       z-index: 2
   &__list
     display: flex
-    margin-top: -200px
+    margin-top: -170px
     justify-content: flex-end
     padding-right: 4%
   &__item
@@ -42,10 +42,10 @@
       display: flex
       flex-direction: column
       justify-content: space-between
-      max-width: 613px
+      max-width: 521px
       width: 100%
-      padding: 50px 20px 50px 90px
-      height: 286px
+      padding: 42px 17px 42px 76px
+      height: 243px
       box-shadow: 0px 20px 30px rgba(51, 51, 51, 0.03)
       cursor: pointer
       background-color: #F5FAFC
@@ -80,13 +80,13 @@
     //     & > .production__item-icon
     //       fill: #EE9D35
   &__item-arrow
-    width: 120px
+    width: 102px
     height: 2px
     background: #111
     opacity: 0.2
     display: inline-block
     margin-bottom: 8px
-    margin-left: 50px
+    margin-left: 42px
     position: relative
     transition: background-color .55s
     &:after
@@ -115,16 +115,19 @@
     fill: #EE9D35
     width: 90px
     height: 90px
+    transform: scale(.85) translateX(-10px)
     transition: .55s
     &:hover
       fill: #fff
   &__item-title
-    font-size: 31px
+    font-size: 26px
     font-family: 'Roboto', sans-serif
     font-weight: 500
     transition: color .55s
-@media (max-width: 1440px)
+@media (max-width: 1439px)
   .production
+    &__poster
+      height: 420px
     &__list
       padding-left: 2%
       padding-right: 2%
@@ -138,12 +141,19 @@
         margin-bottom: 11px
 @media (max-width: 991px)
   .production
+    &__poster
+      height: auto
+      &__img
+        position: relative
     &__list
       padding: 0
       justify-content: space-between
       margin-top: 0
     &__item
       width: 49%
+      margin-right: 0
+      margin-left: 0
+      padding-left: 0
       &:first-child
         margin-right: 0
       &-title

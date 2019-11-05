@@ -23,10 +23,10 @@ const CatalogGridItem = ({ complect, fields }) => {
   return (
     <RevealBlock>
       <div className="catalog__grid__item">
+        <h3 className="catalog__grid__item__title">{post_title}</h3>
         <Link to={`/${state.lang}/catalog/${post_name}`}>
           <img src={`${img}`} alt="" className="img-responsive" />
         </Link>
-        <h3 className="catalog__grid__item__title">{post_title}</h3>
         <ul className="catalog__grid__item__list">{fields.map(renderItems)}</ul>
       </div>
     </RevealBlock>

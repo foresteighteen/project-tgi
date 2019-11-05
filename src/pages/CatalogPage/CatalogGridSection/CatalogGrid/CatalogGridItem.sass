@@ -1,42 +1,43 @@
 .catalog__grid__item
-  min-height: 535px
+  min-height: 455px
   background: #fff
-  padding-top: 60px
+  padding-top: 25.5px
   display: flex
   flex-direction: column
   justify-content: space-between
   height: 100%
   img
-    margin-top: 30px
+    margin-top: 25.5px
     max-height: 270px
     margin: 0 auto
-    max-width: 360px
+    max-width: 306px
   &__title
-    margin-top: auto
-    font-size: 24px
+    // margin-top: auto
+    margin-bottom: 17px
+    font-size: 20.4px
     padding-left: 16%
     font-family: "ProximaNova", sans-serif
     font-weight: 600
 
 ul.catalog__grid__item__list
-  margin-top: 20px
+  margin-top: 17px
   padding-left: 16%
   font-family: "ProximaNova", sans-serif
   display: flex
   flex-wrap: wrap
   li
-    margin-bottom: 30px
+    margin-bottom: 25.5px
     &:nth-child(odd)
       width: 50%
   dt
     &.list__title
       font-weight: 600
-      font-size: 16px
-      margin-bottom: 10px
+      font-size: 13.6px
+      margin-bottom: 8.5px
   dd
     &.list__text
       font-weight: 400
-      font-size: 17px
+      font-size: 14.45px
 
 @media (max-width: 1439px)
   .catalog__grid__item
@@ -57,9 +58,12 @@ ul.catalog__grid__item__list
 
 @media (max-width: 575px)
   .catalog__grid__item
+    padding-left: 30px
+    padding-right: 30px
     &__title
       padding-left: 0
       text-align: center
+      margin-bottom: 40px
     img
       max-width: 100%
   ul.catalog__grid__item__list
