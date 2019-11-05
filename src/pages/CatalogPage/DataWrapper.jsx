@@ -10,7 +10,7 @@ const DataWrapper = ({ children, postsData, postsLoaded }) => {
       posts,
     });
   });
-  console.log(newChildren);
+
   return <div>{newChildren}</div>;
 };
 
