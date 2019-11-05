@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import withPageData from '../../containers/withPageData';
 import { HeaderContext } from '../../containers/HeaderProvider';
@@ -22,6 +23,9 @@ const CertificatesPage = ({ pageData, pageLoaded }) => {
     <main className="main cert-page">
       {pageLoaded ? (
         <React.Fragment>
+          <Helmet>
+            <title>{pageData.title.rendered}</title>
+          </Helmet>
           <CertificateHeroSection title={pageData.acf.title} />
           <GallerySection gallery={pageData.acf.gallery} />
           <QuestionForm />

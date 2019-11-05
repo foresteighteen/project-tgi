@@ -1,4 +1,6 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
+
 import withPostData from '../../containers/withPostData';
 import ProductInfoSection from './ProductInfoSection';
 import ProductIncludesSection from './ProductIncludesSection';
@@ -20,6 +22,9 @@ const ProductPage = ({ postData, postLoaded }) => {
   // console.log(postData);
   return (
     <main className="main product-page">
+      <Helmet>
+        <title>{postData.title.rendered}</title>
+      </Helmet>
       <ProductHeroSection data={postData.acf.hero} />
       <ProductInfoSection
         data={postData.acf.info}

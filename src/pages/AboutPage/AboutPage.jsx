@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import withPageData from '../../containers/withPageData';
 import { HeaderContext } from '../../containers/HeaderProvider';
@@ -23,6 +24,9 @@ const AboutPage = ({ pageData, pageLoaded }) => {
     <main className="main about-page">
       {pageLoaded ? (
         <React.Fragment>
+          <Helmet>
+            <title>{pageData.title.rendered}</title>
+          </Helmet>
           <AboutHeroSection
             title={pageData.acf.title}
             bgImg={pageData.acf.bgImg.url}

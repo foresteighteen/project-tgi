@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import withPageData from '../../containers/withPageData';
 import { HeaderContext } from '../../containers/HeaderProvider';
@@ -11,7 +12,7 @@ import { QuestionForm } from '../../components';
 
 import './CatalogPage.sass';
 
-const CatalogPage = ({ pageData, pageLoaded, location:{ hash } }) => {
+const CatalogPage = ({ pageData, pageLoaded, location: { hash } }) => {
   const { setHeaderTheme } = React.useContext(HeaderContext);
 
   React.useEffect(() => {
@@ -21,15 +22,22 @@ const CatalogPage = ({ pageData, pageLoaded, location:{ hash } }) => {
   // const scrollTo = window.location.href.indexOf('#');
 
   if (pageLoaded && hash) {
-    setTimeout(()=>{
-      window['page-wrap'].scrollTo({ top: document.querySelector(hash).offsetTop - 85, left: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      window['page-wrap'].scrollTo({
+        top: document.querySelector(hash).offsetTop - 85,
+        left: 0,
+        behavior: 'smooth',
+      });
     }, 300);
-  };
+  }
 
   return (
     <main className="main catalog-page">
       {pageLoaded ? (
         <React.Fragment>
+          <Helmet>
+            <title>{pageData.title.rendered}</title>
+          </Helmet>
           <CatalogHeroSection data={pageData.acf.hero} />
           <CatalogGridSection {...pageData.acf.complects} />
           <CatalogProductsSection data={pageData.acf.isolation} />
