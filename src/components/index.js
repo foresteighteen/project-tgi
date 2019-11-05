@@ -15,7 +15,9 @@ import SidePhotoBlock from './SidePhotoBlock';
 import PhotoVideoBlock from './PhotoVideoBlock';
 import Footer from './Footer';
 import Spinner from './Spinner';
+import ErrorBoundary from './ErrorBoundary';
 export {
+  ErrorBoundary,
   Spinner,
   ArrowBtn,
   Header,

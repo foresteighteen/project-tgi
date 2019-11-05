@@ -9,7 +9,7 @@ import ProductionSection from './ProductionSection';
 import PartnersSection from './PartnersSection';
 import NewsSection from './NewsSection';
 import SectionNumbers from './SectionNumbers';
-import { QuestionForm } from '../../components';
+import { QuestionForm, ErrorBoundary } from '../../components';
 import { HeaderContext } from '../../containers/HeaderProvider';
 
 import './MainPage.sass';
@@ -22,21 +22,40 @@ const MainPage = ({ pageData, pageLoaded }) => {
     setHeaderTheme('light');
   }, []);
   return (
-    <main className="main main__page">
-      {pageLoaded ? (
-        <>
-          <SectionNumbers>
-            <HeroSection data={pageData.acf.hero} />
-            <ProductSection data={pageData.acf.products} />
-            <DeliverySection data={pageData.acf.geography} />
-            <ProductionSection data={pageData.acf.production} />
-            <PartnersSection data={pageData.acf.partners} />
-            <NewsSection />
-          </SectionNumbers>
-          <QuestionForm />
-        </>
-      ) : null}
-    </main>
+    <ErrorBoundary>
+      <main className="main main__page">
+        {pageLoaded ? (
+          <ErrorBoundary>
+            <SectionNumbers>
+              <ErrorBoundary>
+                <HeroSection data={pageData.acf.hero} />
+              </ErrorBoundary>
+
+              <ErrorBoundary>
+                <ProductSection data={pageData.acf.products} />
+              </ErrorBoundary>
+
+              <ErrorBoundary>
+                <DeliverySection data={pageData.acf.geography} />
+              </ErrorBoundary>
+
+              <ErrorBoundary>
+                <ProductionSection data={pageData.acf.production} />
+              </ErrorBoundary>
+
+              <ErrorBoundary>
+                <PartnersSection data={pageData.acf.partners} />
+              </ErrorBoundary>
+
+              <ErrorBoundary>
+                <NewsSection />
+              </ErrorBoundary>
+            </SectionNumbers>
+            <QuestionForm />
+          </ErrorBoundary>
+        ) : null}
+      </main>
+    </ErrorBoundary>
   );
 };
 

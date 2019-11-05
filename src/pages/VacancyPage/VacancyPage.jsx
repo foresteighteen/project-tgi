@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { indexBy, prop, pluck, map, assoc } from 'ramda';
 import uniqid from 'uniqid';
-import { QuestionForm } from '../../components';
 import withPageData from '../../containers/withPageData';
 import { HeaderContext } from '../../containers/HeaderProvider';
-
+import { QuestionForm, ErrorBoundary } from '../../components';
 import HeroSection from './HeroSection';
 import VacancySection from './VacancySection';
 
@@ -193,21 +192,27 @@ const VacancyPage = ({ pageData, pageLoaded }) => {
   );
 
   return (
-    <main className="main vacancy-page">
-      <HeroSection
-        title={pageData.acf.hero.title}
-        bgImg={pageData.acf.hero.bgImg}
-        desc={pageData.acf.hero.description}
-        {...{ activeVacancy, vacancies, changeActive }}
-      />
-      <VacancySection
-        buttonText={buttonText}
-        currencySymbol={currencySymbol}
-        vacancies={vacancies[activeVacancy]}
-        activeVacancy={activeVacancy}
-      />
-      <QuestionForm />
-    </main>
+    <ErrorBoundary>
+      <main className="main vacancy-page">
+        <ErrorBoundary>
+          <HeroSection
+            title={pageData.acf.hero.title}
+            bgImg={pageData.acf.hero.bgImg}
+            desc={pageData.acf.hero.description}
+            {...{ activeVacancy, vacancies, changeActive }}
+          />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <VacancySection
+            buttonText={buttonText}
+            currencySymbol={currencySymbol}
+            vacancies={vacancies[activeVacancy]}
+            activeVacancy={activeVacancy}
+          />
+        </ErrorBoundary>
+        <QuestionForm />
+      </main>
+    </ErrorBoundary>
   );
 };
 

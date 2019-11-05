@@ -7,8 +7,7 @@ import QualityHeroSection from './QualityHeroSection';
 import QualityInfoSection from './QualityInfoSection';
 import QualitySliderSection from './QualitySliderSection';
 
-import { QuestionForm } from '../../components';
-
+import { QuestionForm, ErrorBoundary } from '../../components';
 import './QualityPage.sass';
 
 const WP_PAGE_ID = 102;
@@ -19,22 +18,33 @@ const QualityPage = ({ pageData, pageLoaded }) => {
     setHeaderTheme('light');
   }, []);
   return (
-    <main className="main quality-page">
-      {pageLoaded ? (
-        <React.Fragment>
-          <QualityHeroSection
-            title={pageData.acf.title}
-            bgImg={pageData.acf.bgImg}
-          />
-          <QualityInfoSection
-            description={pageData.acf.description}
-            sectionImg={pageData.acf.sectionImg}
-          />
-          <QualitySliderSection slider={pageData.acf.gallery} />
-          <QuestionForm />
-        </React.Fragment>
-      ) : null}
-    </main>
+    <ErrorBoundary>
+      <main className="main quality-page">
+        {pageLoaded ? (
+          <React.Fragment>
+            <ErrorBoundary>
+              <QualityHeroSection
+                title={pageData.acf.title}
+                bgImg={pageData.acf.bgImg}
+              />
+            </ErrorBoundary>
+
+            <ErrorBoundary>
+              <QualityInfoSection
+                description={pageData.acf.description}
+                sectionImg={pageData.acf.sectionImg}
+              />
+            </ErrorBoundary>
+
+            <ErrorBoundary>
+              <QualitySliderSection slider={pageData.acf.gallery} />
+            </ErrorBoundary>
+
+            <QuestionForm />
+          </React.Fragment>
+        ) : null}
+      </main>
+    </ErrorBoundary>
   );
 };
 

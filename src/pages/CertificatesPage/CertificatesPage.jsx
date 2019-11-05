@@ -5,8 +5,7 @@ import { HeaderContext } from '../../containers/HeaderProvider';
 
 import CertificateHeroSection from './CertificateHeroSection';
 import GallerySection from './GallerySection';
-import { QuestionForm } from '../../components';
-
+import { QuestionForm, ErrorBoundary } from '../../components';
 import './CertificatesPage.sass';
 
 const WP_PAGE_ID = 104;
@@ -19,15 +18,23 @@ const CertificatesPage = ({ pageData, pageLoaded }) => {
   }, []);
 
   return (
-    <main className="main cert-page">
-      {pageLoaded ? (
-        <React.Fragment>
-          <CertificateHeroSection title={pageData.acf.title} />
-          <GallerySection gallery={pageData.acf.gallery} />
-          <QuestionForm />
-        </React.Fragment>
-      ) : null}
-    </main>
+    <ErrorBoundary>
+      <main className="main cert-page">
+        {pageLoaded ? (
+          <React.Fragment>
+            <ErrorBoundary>
+              <CertificateHeroSection title={pageData.acf.title} />
+            </ErrorBoundary>
+            
+            <ErrorBoundary>
+              <GallerySection gallery={pageData.acf.gallery} />
+            </ErrorBoundary>
+
+            <QuestionForm />
+          </React.Fragment>
+        ) : null}
+      </main>
+    </ErrorBoundary>
   );
 };
 export default withPageData(WP_PAGE_ID)(CertificatesPage);
