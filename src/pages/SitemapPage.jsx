@@ -12,7 +12,9 @@ const SitemapPage = ({ pageData, pageLoaded }) => {
     setHeaderTheme('dark');
   }, []);
 
-  if (!pageLoaded) return null;
+  if (!pageLoaded) {
+    return <main className="sitemap" />;
+  }
   const updatedData = pageData.content.rendered.replace(
     /(\/products\/)/g,
     '/catalog/',
