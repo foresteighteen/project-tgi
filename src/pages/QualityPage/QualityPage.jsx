@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import withPageData from '../../containers/withPageData';
 import { HeaderContext } from '../../containers/HeaderProvider';
@@ -22,6 +23,9 @@ const QualityPage = ({ pageData, pageLoaded }) => {
     <main className="main quality-page">
       {pageLoaded ? (
         <React.Fragment>
+          <Helmet>
+            <title>{pageData.title.rendered}</title>
+          </Helmet>
           <QualityHeroSection
             title={pageData.acf.title}
             bgImg={pageData.acf.bgImg}

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { indexBy, prop, pluck, map, assoc } from 'ramda';
 import uniqid from 'uniqid';
+import { Helmet } from 'react-helmet';
+
 import { QuestionForm } from '../../components';
 import withPageData from '../../containers/withPageData';
 import { HeaderContext } from '../../containers/HeaderProvider';
@@ -194,6 +196,9 @@ const VacancyPage = ({ pageData, pageLoaded }) => {
 
   return (
     <main className="main vacancy-page">
+      <Helmet>
+        <title>{pageData.title.rendered}</title>
+      </Helmet>
       <HeroSection
         title={pageData.acf.hero.title}
         bgImg={pageData.acf.hero.bgImg}

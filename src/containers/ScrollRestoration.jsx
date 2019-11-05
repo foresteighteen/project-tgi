@@ -43,11 +43,14 @@ class ScrollRestoration extends Component {
       const { key } = this.props.location;
       const top = window.sessionStorage.getItem(key);
 
-      if (top) {
+      if (
+        top &&
+        document.getElementById('page-wrap').getBoundingClientRect().top >= top
+      ) {
         setTimeout(() => {
           document.getElementById('page-wrap').scrollTo({
             top,
-            behavior: 'smooth',
+            // behavior: 'smooth',
           });
         }, 1000);
       }
@@ -60,9 +63,8 @@ class ScrollRestoration extends Component {
     }
   }
   updateScroll = () => {
-    const scrollY = document
-      .getElementsByTagName('main')[0]
-      .getBoundingClientRect().top;
+    const scrollY = document.getElementById('page-wrap').getBoundingClientRect()
+      .top;
 
     this.setState({ scrollY: Math.abs(scrollY) });
   };
