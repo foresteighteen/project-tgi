@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 import withPageData from '../../containers/withPageData';
 import { HeaderContext } from '../../containers/HeaderProvider';
-
+import { ErrorBoundary } from '../../components';
 import NewsHeroSection from './NewsHeroSection';
 import NewsRowSection from './NewsRowSection';
 
@@ -18,13 +18,15 @@ const NewsPage = ({ pageData, pageLoaded }) => {
   }, []);
 
   return (
-    <main className="main news-page">
-      <Helmet>
+    <ErrorBoundary>
+       <Helmet>
         <title>{pageData.title.rendered}</title>
       </Helmet>
-      <NewsHeroSection data={pageData.acf} />
-      <NewsRowSection />
-    </main>
+      <main className="main news-page">
+        <NewsHeroSection data={pageData.acf} />
+        <NewsRowSection />
+      </main>
+    </ErrorBoundary>
   );
 };
 

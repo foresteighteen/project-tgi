@@ -1,15 +1,16 @@
 import React from 'react';
 import CatalogGridItem from './CatalogGridItem';
-
+import { ErrorBoundary } from '../../../../components';
 import './CatalogGrid.sass';
 
 const CatalogGrid = ({ complects }) => {
-  console.log(complects)
-  const items = complects.map(item => <CatalogGridItem key={item.complect.ID} {...item} />);
+  const items = complects.map(item => (
+    <CatalogGridItem key={item.complect.ID} {...item} />
+  ));
   return (
-    <div className="catalog__grid">
-      {items}
-    </div>
+    <ErrorBoundary>
+      <div className="catalog__grid">{items}</div>
+    </ErrorBoundary>
   );
 };
 

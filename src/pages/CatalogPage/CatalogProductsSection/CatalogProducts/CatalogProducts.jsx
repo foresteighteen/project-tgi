@@ -1,10 +1,10 @@
 import React from 'react';
-import uniqid from 'uniqid';
 import CatalogProductMain from './CatalogProductMain';
+import { ErrorBoundary } from '../../../../components';
 
 const CatalogProducts = ({ block }) => {
   const renderedItems = block.map((item, i) => <CatalogProductMain key={i} item={item} index={i}/>);
-  return renderedItems;
+  return <ErrorBoundary>{renderedItems}</ErrorBoundary>;
 };
 
 export default CatalogProducts;

@@ -8,7 +8,7 @@ import AboutInfoSection from './AboutInfoSection';
 import AboutSliderSection from './AboutSliderSection';
 import AboutHeroSection from './AboutHeroSection';
 
-import { QuestionForm } from '../../components';
+import { QuestionForm, ErrorBoundary } from '../../components';
 
 import './AboutPage.sass';
 
@@ -21,22 +21,30 @@ const AboutPage = ({ pageData, pageLoaded }) => {
     setHeaderTheme('light');
   }, []);
   return (
-    <main className="main about-page">
-      {pageLoaded ? (
-        <React.Fragment>
+    <ErrorBoundary>
+      <main className="main about-page">
+        {pageLoaded ? (
+          <React.Fragment>
           <Helmet>
             <title>{pageData.title.rendered}</title>
           </Helmet>
-          <AboutHeroSection
-            title={pageData.acf.title}
-            bgImg={pageData.acf.bgImg.url}
-          />
-          <AboutInfoSection data={pageData.acf.about} />
-          <AboutSliderSection data={pageData.acf.benefits} />
-          <QuestionForm />
-        </React.Fragment>
-      ) : null}
-    </main>
+            <ErrorBoundary>
+              <AboutHeroSection
+                title={pageData.acf.title}
+                bgImg={pageData.acf.bgImg.url}
+              />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <AboutInfoSection data={pageData.acf.about} />
+            </ErrorBoundary>        
+            <ErrorBoundary>
+              <AboutSliderSection data={pageData.acf.benefits} />
+            </ErrorBoundary>
+            <QuestionForm />
+          </React.Fragment>
+        ) : null}
+      </main>
+    </ErrorBoundary>
   );
 };
 export default withPageData(WP_PAGE_ID)(AboutPage);

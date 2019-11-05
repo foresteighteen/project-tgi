@@ -6,7 +6,7 @@ import ProductInfoSection from './ProductInfoSection';
 import ProductIncludesSection from './ProductIncludesSection';
 import ProductSliderSection from './ProductSliderSection';
 import ProductHeroSection from './ProductHeroSection';
-import { QuestionForm } from '../../components';
+import { QuestionForm, ErrorBoundary } from '../../components';
 import { HeaderContext } from '../../containers/HeaderProvider';
 
 import './ProductPage.sass';
@@ -21,19 +21,29 @@ const ProductPage = ({ postData, postLoaded }) => {
 
   // console.log(postData);
   return (
-    <main className="main product-page">
-      <Helmet>
+    <ErrorBoundary>
+            <Helmet>
         <title>{postData.title.rendered}</title>
       </Helmet>
-      <ProductHeroSection data={postData.acf.hero} />
-      <ProductInfoSection
-        data={postData.acf.info}
-        title={postData.title.rendered}
-      />
-      <ProductIncludesSection data={postData.acf.complects} />
-      <ProductSliderSection data={postData.acf.production} />
-      <QuestionForm />
-    </main>
+      <main className="main product-page">
+        <ErrorBoundary>
+          <ProductHeroSection data={postData.acf.hero} />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ProductInfoSection
+            data={postData.acf.info}
+            title={postData.title.rendered}
+          />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ProductIncludesSection data={postData.acf.complects} />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ProductSliderSection data={postData.acf.production} />
+        </ErrorBoundary>
+        <QuestionForm />
+      </main>
+    </ErrorBoundary>
   );
 };
 

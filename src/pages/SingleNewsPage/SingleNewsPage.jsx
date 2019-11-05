@@ -6,8 +6,7 @@ import { HeaderContext } from '../../containers/HeaderProvider';
 import HeroSection from './HeroSection';
 import BodySection from './BodySection';
 
-import { QuestionForm } from '../../components';
-
+import { QuestionForm, ErrorBoundary } from '../../components';
 import './SingleNewsPage.sass';
 
 const SingleNewsPage = ({ postData, postLoaded }) => {
@@ -18,21 +17,29 @@ const SingleNewsPage = ({ postData, postLoaded }) => {
   }, []);
 
   return (
-    <main className="main single-news-page">
-      {postLoaded ? (
-        <React.Fragment>
-          <Helmet>
+    <ErrorBoundary>
+      <main className="main single-news-page">
+        {postLoaded ? (
+          <React.Fragment>
+                      <Helmet>
             <title>{postData.meta.title}</title>
           </Helmet>
-          <HeroSection
-            title={postData.meta.title}
-            desc={postData.meta.subtitle}
-          />
-          <BodySection body={postData.meta.body} img={postData.meta.img} />
-          <QuestionForm />
-        </React.Fragment>
-      ) : null}
-    </main>
+            <ErrorBoundary>
+              <HeroSection
+                title={postData.meta.title}
+                desc={postData.meta.subtitle}
+              />
+            </ErrorBoundary>
+            
+            <ErrorBoundary>
+              <BodySection body={postData.meta.body} img={postData.meta.img} />
+            </ErrorBoundary>
+
+            <QuestionForm />
+          </React.Fragment>
+        ) : null}
+      </main>
+    </ErrorBoundary>
   );
 };
 

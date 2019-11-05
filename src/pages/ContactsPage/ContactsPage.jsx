@@ -9,8 +9,7 @@ import ListSection from './ListSection';
 import FeedbackSection from './FeedbackSection';
 import Map from './Map';
 
-import { QuestionForm } from '../../components';
-
+import { QuestionForm, ErrorBoundary } from '../../components';
 import './ContactsPage.sass';
 
 const WP_PAGE_ID = 29;
@@ -24,31 +23,37 @@ const ContactsPage = ({ pageData, pageLoaded }) => {
   }, []);
 
   return (
-    <main className="contacts">
-      {pageLoaded ? (
-        <React.Fragment>
-          <Helmet>
+    <ErrorBoundary>
+      <main className="contacts">
+        {pageLoaded ? (
+          <React.Fragment>
+                      <Helmet>
             <title>{pageData.title.rendered}</title>
           </Helmet>
-          <HeroSection
-            title={pageData.acf.title}
-            subtitle={pageData.acf.subtitle}
-          />
-          <ListSection
-            addressArray={pageData.acf.address}
-            setMapCenter={setMapCenter}
-          />
-          <Map
-            apiKey={pageData.acf.map.key}
-            zoom={pageData.acf.map.zoom}
-            markers={pageData.acf.map.markers}
-            center={mapCenter || pageData.acf.map.center}
-          />
-          <FeedbackSection />
-          <QuestionForm />
-        </React.Fragment>
-      ) : null}
-    </main>
+            <HeroSection
+              title={pageData.acf.title}
+              subtitle={pageData.acf.subtitle}
+            />
+            <ListSection
+              addressArray={pageData.acf.address}
+              setMapCenter={setMapCenter}
+            />
+            <ErrorBoundary>
+              <Map
+                apiKey={pageData.acf.map.key}
+                zoom={pageData.acf.map.zoom}
+                markers={pageData.acf.map.markers}
+                center={mapCenter || pageData.acf.map.center}
+              />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <FeedbackSection />
+            </ErrorBoundary>
+            <QuestionForm />
+          </React.Fragment>
+        ) : null}
+      </main>
+    </ErrorBoundary>
   );
 };
 export default withPageData(WP_PAGE_ID)(ContactsPage);
