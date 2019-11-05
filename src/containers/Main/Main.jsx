@@ -14,6 +14,7 @@ import CertificatesPage from '../../pages/CertificatesPage';
 import MainPage from '../../pages/MainPage';
 import VacancyPage from '../../pages/VacancyPage';
 import ProductPage from '../../pages/ProductPage';
+import SitemapPage from '../../pages/SitemapPage';
 
 import { LangContext } from '../../containers/LangProvider';
 
@@ -134,6 +135,7 @@ const Main = () => {
         component={CertificatesPage}
       />
       <Route exact path="/:lang(en|ru)?/vacancy" component={VacancyPage} />
+      <Route exact path="/:lang(en|ru)?/sitemap" component={SitemapPage} />
       <Route render={() => <div className="container">404</div>} />
     </Switch>
     //   </animated.div>

@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { debounce } from 'throttle-debounce';
 import { LangContext } from '../../containers/LangProvider';
 import { HeaderContext } from '../../containers/HeaderProvider';
-import { getMenu, getFullMenu } from '../../api';
+import { getFullMenu } from '../../api';
 import MobileMenu from './MobileMenu';
 import DropdownMenu from './DropdownMenu';
 

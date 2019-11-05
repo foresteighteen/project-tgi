@@ -1,0 +1,28 @@
+.sitemap
+  margin-top: 200px
+  margin-bottom: 100px
+  h1
+    font-size: 2rem
+    margin-bottom: 1rem
+  &__nav
+    padding: 30px
+    border-radius: 5px
+    background: #fdfdfd
+    div:not([class])
+      display: none
+    h2
+      font-size: 1.5rem
+      margin: .5rem 0
+    ul
+      list-style-type: initial
+      margin-left: 1.2rem
+    li
+      padding: 5px 0
+      & > a:hover
+        color: #EC841C
+
+@media (max-width: 550px)
+  .sitemap
+    &__nav
+      li
+        padding: 10px 0
