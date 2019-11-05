@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Helmet } from 'react-helmet';
 import withPostData from '../../containers/withPostData';
 import { HeaderContext } from '../../containers/HeaderProvider';
 
@@ -21,6 +21,9 @@ const SingleNewsPage = ({ postData, postLoaded }) => {
       <main className="main single-news-page">
         {postLoaded ? (
           <React.Fragment>
+                      <Helmet>
+            <title>{postData.meta.title}</title>
+          </Helmet>
             <ErrorBoundary>
               <HeroSection
                 title={postData.meta.title}

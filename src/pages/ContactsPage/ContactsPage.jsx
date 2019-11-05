@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import withPageData from '../../containers/withPageData';
 import { HeaderContext } from '../../containers/HeaderProvider';
@@ -26,6 +27,9 @@ const ContactsPage = ({ pageData, pageLoaded }) => {
       <main className="contacts">
         {pageLoaded ? (
           <React.Fragment>
+                      <Helmet>
+            <title>{pageData.title.rendered}</title>
+          </Helmet>
             <HeroSection
               title={pageData.acf.title}
               subtitle={pageData.acf.subtitle}

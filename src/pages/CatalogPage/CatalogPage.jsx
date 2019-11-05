@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import withPageData from '../../containers/withPageData';
 import { HeaderContext } from '../../containers/HeaderProvider';
@@ -36,6 +37,9 @@ const CatalogPage = ({ pageData, pageLoaded, location: { hash } }) => {
       <main className="main catalog-page">
         {pageLoaded ? (
           <React.Fragment>
+          <Helmet>
+            <title>{pageData.title.rendered}</title>
+          </Helmet>
             <ErrorBoundary>
               <CatalogHeroSection data={pageData.acf.hero} />
             </ErrorBoundary>

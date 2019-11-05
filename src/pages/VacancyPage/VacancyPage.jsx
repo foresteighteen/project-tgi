@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { indexBy, prop, pluck, map, assoc } from 'ramda';
 import uniqid from 'uniqid';
+import { Helmet } from 'react-helmet';
 import withPageData from '../../containers/withPageData';
 import { HeaderContext } from '../../containers/HeaderProvider';
 import { QuestionForm, ErrorBoundary } from '../../components';
@@ -193,6 +194,9 @@ const VacancyPage = ({ pageData, pageLoaded }) => {
 
   return (
     <ErrorBoundary>
+            <Helmet>
+        <title>{pageData.title.rendered}</title>
+      </Helmet>
       <main className="main vacancy-page">
         <ErrorBoundary>
           <HeroSection

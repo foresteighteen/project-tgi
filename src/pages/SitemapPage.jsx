@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { HeaderContext } from '../containers/HeaderProvider';
 
 import withPageData from '../containers/withPageData';
@@ -21,6 +22,9 @@ const SitemapPage = ({ pageData, pageLoaded }) => {
   );
   return (
     <main className="sitemap">
+      <Helmet>
+        <title>{pageData.title.rendered}</title>
+      </Helmet>
       <div className="container">
         <div className="row">
           <div className="col-md-8 mx-auto">

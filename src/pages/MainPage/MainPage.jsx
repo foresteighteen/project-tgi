@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import withPageData from '../../containers/withPageData';
 
@@ -26,6 +27,9 @@ const MainPage = ({ pageData, pageLoaded }) => {
       <main className="main main__page">
         {pageLoaded ? (
           <ErrorBoundary>
+                      <Helmet>
+            <title>{pageData.title.rendered}</title>
+          </Helmet>
             <SectionNumbers>
               <ErrorBoundary>
                 <HeroSection data={pageData.acf.hero} />

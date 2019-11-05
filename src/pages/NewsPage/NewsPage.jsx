@@ -1,4 +1,6 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
+
 import withPageData from '../../containers/withPageData';
 import { HeaderContext } from '../../containers/HeaderProvider';
 import { ErrorBoundary } from '../../components';
@@ -17,6 +19,9 @@ const NewsPage = ({ pageData, pageLoaded }) => {
 
   return (
     <ErrorBoundary>
+       <Helmet>
+        <title>{pageData.title.rendered}</title>
+      </Helmet>
       <main className="main news-page">
         <NewsHeroSection data={pageData.acf} />
         <NewsRowSection />

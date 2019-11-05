@@ -4,7 +4,6 @@ import { TimelineLite } from 'gsap';
 import { Waypoint } from 'react-waypoint';
 import SplitText from '../../utils/SplitText';
 
-
 export default class RevealByWord extends PureComponent {
   static defaultProps = {
     duration: 0.5,
@@ -12,7 +11,7 @@ export default class RevealByWord extends PureComponent {
     waypointTopOffset: '0%',
     waypointBottomOffset: '20%',
     forwardSpeed: 1,
-    reverseSpeed: 0.5
+    reverseSpeed: 0.5,
   };
   constructor(props) {
     super(props);
@@ -26,31 +25,40 @@ export default class RevealByWord extends PureComponent {
   state = { waypointActive: true };
 
   componentDidMount() {
-    this.mySplitText = new SplitText(this.splitThisText, { type: 'words, lines' });
-    this.splitTextTimeline = new TimelineLite({ immediateRender: false, paused: true });
+    this.mySplitText = new SplitText(this.splitThisText, {
+      type: 'words, lines',
+    });
+    this.splitTextTimeline = new TimelineLite({
+      immediateRender: false,
+      paused: true,
+    });
 
     this.splitTextTimeline
       .addLabel('start')
-      .set(this.mySplitText.lines, { perspective: 400, overflow: 'hidden' }, 'start')
+      .set(
+        this.mySplitText.lines,
+        { perspective: 400, overflow: 'hidden' },
+        'start',
+      )
       .set(this.splitThisText, { opacity: 1 }, 'start')
       .staggerFromTo(
         this.mySplitText.words,
         this.props.duration,
         {
           y: '100%',
-          transformOrigin: 'top center -150'
+          transformOrigin: 'top center -150',
         },
         {
           y: '0%',
-          force3D: true
+          force3D: true,
         },
         this.props.stagger,
-        'start'
+        'start',
       );
   }
 
   componentWillUnmount() {
-    this.destroySplitText();
+    // this.destroySplitText();
   }
 
   destroySplitText() {
