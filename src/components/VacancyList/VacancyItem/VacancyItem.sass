@@ -4,10 +4,10 @@
 .vacancy__item
   display: grid
   grid-template: auto / repeat(2, auto)
-  padding-top: 60px
-  padding-left: 100px
-  padding-bottom: 50px
-  min-height: 510px
+  padding-top: 55px
+  padding-left: 85px
+  padding-bottom: 45px
+  min-height: 460px
   background-color: #fff
   margin-bottom: 50px
   margin-left: auto
@@ -22,11 +22,11 @@
     &:hover
       border-color: #EC841C
   h3 
-    font-size: 51px 
+    font-size: 42px 
     font-weight: 800
     margin-bottom: 20px
   h4 
-    font-size: 35px 
+    font-size: 31px 
     font-weight: 800
     margin-bottom: 40px
   // &__title
@@ -41,15 +41,23 @@
     letter-spacing: 0.15px
     max-height: 375px
     overflow: auto
-    padding-left: 10px
+    padding-left: 20px
+    margin-left: 10px
     margin-right: 10px
+    padding-right: 15px
+    max-width: 80%
+    margin-left: auto
     ol
       list-style: initial
     p 
       margin-bottom: 20px
+      margin-top: 20px
+      &:first-of-type
+        margin-top: 0
     li
-      margin-bottom: 20px
+      margin-bottom: 3px
       position: relative
+      line-height: 18px
       &:before
         content: ''
         position: absolute
@@ -57,8 +65,12 @@
         height: 1px
         background-color: #000000
         left: -10px
-        top: 7px
+        top: 8px
   
+@media (max-width: 1439px)
+  .vacancy__item
+    &__duties
+      max-width: 90%
 @media (max-width: 1199px)
   .vacancy__item
     padding-left: 50px

@@ -1,16 +1,21 @@
 .hero
-  min-height: 100vh
+  min-height: 800px
   position: relative
   color: #fff
+  display: flex
+  flex-direction: column
   .hero__section__inner
     height: 100%
-    min-height: 100vh
-    padding-top: 200px
+    padding-top: 170px
     display: flex
     flex-direction: column   
+    flex: 1
   & > .container
     position: relative
     height: 100%
+    flex: 1
+    display: flex
+    flex-direction: column
   &__info-slider
     margin-bottom: auto
     .slick-list
@@ -54,17 +59,17 @@
     margin-bottom: auto
   &__title
     font-family: 'ProximaNova', sans-serif
-    font-size: 4.375rem
+    font-size: 51px
     font-weight: 800
     text-transform: uppercase
-    line-height: 80px
-    margin-bottom: 25px
-    letter-spacing: 4.9px
+    line-height: 68px
+    margin-bottom: 21px
+    letter-spacing: 4.1px
   &__subtitle
     font-family: 'Roboto'
-    font-size: 21px
+    font-size: 18px
     font-weight: 300
-    line-height: 35px
+    line-height: 30px
   &__slider
     // margin-top: auto
     overflow: hidden
@@ -95,7 +100,7 @@
     align-items: flex-start
     padding-top: 120px
     padding-left: 30%
-    height: 280px
+    height: 240px
     // padding: 55px
     // margin-right: 2%
     background: rgba(255, 255, 255, .1)
@@ -103,9 +108,9 @@
     &__icon
       position: absolute
       left: 9%
-      top: 60px
-      width: 90px
-      height: 90px
+      top: 40px
+      width: 76px
+      height: 76px
       img
         max-width: 100%
 
@@ -115,16 +120,16 @@
   &__slide-title
     font-family: 'Roboto', sans-serif
     font-weight: 300
-    font-size: 23px
-    margin-bottom: 25px
+    font-size: 20px
+    margin-bottom: 21px
   &__slide-quantity
     font-family: 'Roboto', sans-serif
     font-weight: 700
-    font-size: 31px
-    letter-spacing: 1.5px
+    font-size: 26px
+    letter-spacing: 1.275px
     & > span
-      letter-spacing: 2.5px
-      font-size: 51px
+      letter-spacing: 2.1px
+      font-size: 43px
   &--dark
     position: absolute
     left: 0

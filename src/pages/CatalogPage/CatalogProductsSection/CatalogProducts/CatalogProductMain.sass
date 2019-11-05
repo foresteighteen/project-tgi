@@ -5,7 +5,7 @@
   font-family: ProximaNova
   position: relative
   grid-template: repeat(2, auto)/ repeat(2, auto)
-  margin-bottom: 70px
+  margin-bottom: 59.5px
   .flip-text
     display: none
   &:nth-child(3n+1)
@@ -16,26 +16,26 @@
       transform: rotate(-90deg)
       left: 3%
       // bottom: 34%
-      top: 600px
+      top: 510px
       font-family: "Roboto"
-      letter-spacing: 4.6px
+      letter-spacing: 3.9px
       text-transform: uppercase
-      font-size: 23px
+      font-size: 19.55px
       width: 1px
       height: 1px
       white-space: nowrap    
   &:nth-child(3n+2)
     padding-right: 11%
     .catalog-product__grid__title h3, .catalog-product__grid__list
-      width: 42%
+      width: 35.6%
     #{$blockClass}__img
       grid-area: 1 / 1/ -1/ 2
       img
-        width: 128%
-        left: 24%
+        width: 108.8%
+        left: 20.4%
         right: initial
       .white-bg
-        margin-left: -35px
+        margin-left: -29.75px
     #{$blockClass}__title, #{$blockClass}__items
       display: flex
       justify-content: flex-end
@@ -49,18 +49,18 @@
       //   bottom: 0
       //   right: -16%
       img
-        width: 570px
+        width: 484.5px
         top: initial
         height: 100%
         transform: none
         bottom: 0
-        right: 10%
+        right: 8.5%
       .white-bg
         top: initial
         bottom: 0
         right: 0
-        width: 150%
-        height: 55%
+        width: 127.5%
+        height: 46.75%
   &__img
     grid-area: 1 / 2/ -1/ -1
     position: relative
@@ -95,26 +95,27 @@
       right: 0
       top: 50%
       transform: translateY(-50%)
-      width: 160%
+      width: 136.1%
       z-index: 2
-      right: 13%
+      right: 11.04%
+      transition: opacity .65s
       // height: 100%
   &__title
-    padding-top: 165px
+    padding-top: 140.25px
     // padding-top: 8.4vw
     h3
       font-weight: 800
-      font-size: 70px
+      font-size: 59.5px
   &__items
-    padding-top: 180px
+    padding-top: 153px
     // padding-top: 9.38vw
-    padding-bottom: 150px
-    font-size: 45px
+    padding-bottom: 127.5px
+    font-size: 38.25px
     // padding-bottom: 7.8vw
   &__list
     &-item
       position: relative
-      margin-bottom: 50px
+      margin-bottom: 42.5px
       &:last-of-type
         margin-bottom: 0
       a
@@ -138,10 +139,10 @@
           transition: transform .55s
         .link-arrow
           position: absolute
-          left: -138px
+          left: -117.3px
           top: -4px
-          width: 66px
-          height: 66px
+          width: 56.1px
+          height: 56.1px
           background-color: #fff
           border-radius: 100%
           transition: background-color .55s
@@ -206,6 +207,7 @@
           right: 15%
         .white-bg
           height: 35%
+          width: 145%
 
 @media (max-width: 1199px)
   .catalog-product__grid
@@ -229,6 +231,9 @@
         left: -1%
         top: 450px
         font-size: 16px
+    &:nth-child(3n+3)
+      .catalog-product__grid__img img
+          right: 0%
 
 @media (max-width: 991px)
   .catalog-product__grid
@@ -254,15 +259,28 @@
       .flip-text
         left: 0
         top: 380px
+    &:nth-child(3n+2)
+      #{$blockClass}__img
+        img
+          width: 156%
     &:nth-child(3n+3)
       #{$blockClass}__img
         img
           width: 100%
+          right: 10%
 
 @media (max-width: 767px)
   .catalog-product__grid
     $blockClass: &
     grid-template: auto / 1fr 
+    &__img
+      &__wrap
+        padding: 20px
+      img
+        display: none
+        max-width: 200px
+        &:first-of-type
+          display: block
     &:nth-child(3n+1), &:nth-child(3n+2), &:nth-child(3n+3)
       padding: 0
       #{$blockClass}__img

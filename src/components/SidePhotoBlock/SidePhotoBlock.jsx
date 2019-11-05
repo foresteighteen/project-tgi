@@ -4,6 +4,7 @@ import {
   animated,
   useSpring,
   useChain,
+  useTrail,
   useTransition,
   config,
 } from 'react-spring';
@@ -14,7 +15,7 @@ import './SidePhotoBlock.sass';
 const SidePhotoBlock = ({ classes, title, textArray, imgSrc, imgAlt }) => {
   const [animate, play] = useState(false);
 
-  const textWithId = textArray.map(item => assoc('id', uniqid(), item));
+  const textWithId = textArray.map((item, i) => assoc('id', i, item));
 
   const springRef1 = useRef();
   const springPhotoBLock = useSpring({
@@ -70,7 +71,7 @@ const SidePhotoBlock = ({ classes, title, textArray, imgSrc, imgAlt }) => {
 
   return (
     <Waypoint
-      bottomOffset="40%"
+      bottomOffset="10%"
       onEnter={() => {
         if (!animate) play(true);
       }}

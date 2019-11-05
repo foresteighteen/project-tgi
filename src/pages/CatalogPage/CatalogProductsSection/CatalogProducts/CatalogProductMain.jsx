@@ -7,6 +7,7 @@ import { LangContext } from '../../../../containers/LangProvider';
 import './CatalogProductMain.sass';
 
 const CatalogProductMain = ({ item, index }) => {
+
   const [animate, play] = useState(false);
   const { state } = React.useContext(LangContext);
   const { img, title, vertical, products = [] } = item;
@@ -14,18 +15,13 @@ const CatalogProductMain = ({ item, index }) => {
   const springRef1 = useRef();
   const springPhotoBLock = useSpring({
     ref: springRef1,
-    // transform: animate ? 'translate3d(0,0,0)' : 'translate3d(0,-100%,0)',
     from: { transform: 'translate3d(0,-100%,0)' },
     to: { transform: 'translate3d(0,0,0)' },
-    // config: config.gentle,
   });
 
   const springRef2 = useRef();
   const springOverlay = useSpring({
     ref: springRef2,
-    // backgroundColor: animate ? '#EE9D35': '#fff',
-    // height: animate ? '0px': '100%',
-    // top: animate ? '100%': '0%',
     from: {
       backgroundColor: '#EE9D35',
       height: '100%',
@@ -74,26 +70,27 @@ const CatalogProductMain = ({ item, index }) => {
   useChain(animate ? [springRef1, springRef2, springRef3] : []);
   useChain(animate ? [springRef5, springRef4] : []);
 
-  // const renderLi = ({ name, product }) => (
-  //   <li className="catalog-product__grid__list-item" key={product.ID}>
-  //     <Link to={`/${state.lang}/catalog/${product.post_name}`}>
-  //       <span className="link-arrow"></span>
-  //       <span className="fill-text" data-text={name}>
-  //         {name}
-  //       </span>
-  //     </Link>
-  //   </li>
-  // );
+
+  const activeImage = useRef(0);
+  const activeImageRef = [];
 
   const renderLi = ({ ...animation }, index) => {
     const { product, name } = products[index];
     return (
       <animated.li
         className="catalog-product__grid__list-item"
-        key={product.ID || index}
+        key={index}
         style={animation}
       >
-        <Link to={`/${state.lang}/catalog/${product.post_name}`}>
+        <Link
+          to={`/${state.lang}/catalog/${product.post_name}`}
+          onMouseEnter={() => {
+            if (activeImage.current === index) return;
+            activeImageRef[index].style = 'opacity: 1';
+            activeImageRef[activeImage.current].style = 'opacity: 0';
+            activeImage.current = index;
+          }}
+        >
           <span className="link-arrow"></span>
           <span className="fill-text" data-text={name}>
             {name}
@@ -131,7 +128,20 @@ const CatalogProductMain = ({ item, index }) => {
               style={spring3}
               className="catalog-product__grid__img__wrap"
             >
-              <img src={`${img}`} alt="" />
+              {products.map(({ img }, i) => {
+                return (
+                  <img
+                    src={`${img}`}
+                    ref={ref => {
+                      activeImageRef[i] = ref;
+                      return true;
+                    }}
+                    alt=""
+                    style={{ opacity: !i ? '1' : '0' }}
+                    key={i}
+                  />
+                );
+              })}
             </animated.div>
             <div className="white-bg">
               <animated.div className="white-bg__wrap" style={springPhotoBLock}>

@@ -1,5 +1,6 @@
 .product-includes
   padding: 0 8.6%
+  counter-reset: section
    
 .product-item
   display: flex
@@ -53,13 +54,23 @@
       max-width: 100%
       height: auto
       display: block
-      max-height: 120px
+      max-width: 120px
   .product-item-text
     max-width: 580px
     font-size: 15px
     line-height: 30px
     text-align: justify
-    overflow: hidden
+    display: flex
+    align-items: center
+    flex: 1
+    &:before
+      display: block
+      counter-increment: section
+      content: counter(section)
+      font-size: 40px
+      font-weight: 800
+      margin-right: 25px
+      margin-left: -20px
     .product-item__wrap
       background: none
     // padding: 0 50px
@@ -73,6 +84,7 @@
   .product-includes
     padding: 0
     .product-item-text
+      flex: initial
       padding: 0 50px
 
 @media (max-width: 1199px)
@@ -90,3 +102,18 @@
   .product-item
     .product-item-left
       margin-bottom: 35px
+  .product-includes
+    .h2__header
+      text-align: center
+
+@media (max-width: 575px)
+  .product-includes
+    .product-item
+      &-text
+        flex-direction: column
+        padding-left: 20px
+        padding-right: 20px
+        &:before
+          margin-left: 0
+          margin-right: 0
+          margin-bottom: 20px

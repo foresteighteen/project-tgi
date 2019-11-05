@@ -209,7 +209,7 @@ const Map = ({ activeData, texts }) => {
             >
               <div className="tooltip-cross"></div>
               {/* <div className="tooltip__title">{parsed.countryName}</div> */}
-              <div className="tooltip__title">{activePath[data].active}</div>
+              <div className="tooltip__title">{activePath[data].name}</div>
               <div className="tooltip__list">
                 {activePath[data].oil ? (
                   <div className="tooltip__item">
