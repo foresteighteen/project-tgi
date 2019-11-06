@@ -35,7 +35,6 @@ library.add(fab);
 ReactDOM.render(
   // <Provider store={store}>
   //   <ConnectedRouter history={history}>
-
   <App />,
   //   </ConnectedRouter>
   // </Provider>,

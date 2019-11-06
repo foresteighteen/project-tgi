@@ -27,9 +27,9 @@ const ContactsPage = ({ pageData, pageLoaded }) => {
       <main className="contacts">
         {pageLoaded ? (
           <React.Fragment>
-                      <Helmet>
-            <title>{pageData.title.rendered}</title>
-          </Helmet>
+            <Helmet>
+              <title>{pageData.title.rendered}</title>
+            </Helmet>
             <HeroSection
               title={pageData.acf.title}
               subtitle={pageData.acf.subtitle}
