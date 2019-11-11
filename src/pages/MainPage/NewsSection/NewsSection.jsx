@@ -50,6 +50,20 @@ const NewsSection = ({ postsData, postsLoaded }) => {
     beforeChange: (current, next) => setActiveSlide(next),
     responsive: [
       {
+        breakpoint: 1639,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1439,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
         breakpoint: 575,
         settings: {
           slidesToShow: 1,

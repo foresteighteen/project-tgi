@@ -1,6 +1,9 @@
 .hero__section 
   color: #111111
   overflow: hidden
+  & > .container
+    position: relative
+    z-index: 2
   &.white
     color: #fff
   &.hero__ktc
@@ -17,7 +20,7 @@
     position: relative
   &.hero-covered
     position: relative
-    &:after
+    &:before
       content: ''
       left: 0
       right: 0

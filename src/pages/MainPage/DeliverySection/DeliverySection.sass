@@ -4,6 +4,9 @@
   background: #fff
   color: #111111
   position: relative
+  min-height: 100vh
+  display: flex
+  align-items: center
   &__title
     font-family: 'ProximaNova', sans-serif
     font-size: 38px
@@ -20,19 +23,18 @@
     width: 100%
     max-width: 1600px
     margin: 0 auto
+    height: 70vh
     overflow: hidden
     & > svg
-      margin-top: -50px
+      // margin-top: -50px
+      height: 100%
 
 @media (min-width: 1600px)
   .delivery
     &__subtitle
       max-width: 790px
 
-@media (max-width: 550px)
-  .__react_component_tooltip.show
-    left: 0!important
-
+@media (max-width: 575px)
   .delivery
     padding-top: 75px
     padding-bottom: 75px
@@ -41,6 +43,9 @@
     &__subtitle
       font-size: 1rem
     &__map-container
+      height: initial
       padding: 5px
+      padding-top: 150px
+      margin-top: 50px
       & > svg
         margin-top: 0

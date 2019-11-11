@@ -26,7 +26,7 @@ const App = () => {
     >
       <BrowserRouter>
         <ScrollToTop />
-        <ScrollRestoration />
+        {/* <ScrollRestoration /> */}
         <LangProvider>
           <HeaderProvider>
             <ModalProvider>

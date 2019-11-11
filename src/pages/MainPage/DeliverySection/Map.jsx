@@ -103,7 +103,7 @@ const Map = ({ activeData, texts }) => {
         viewBox="0 0 1670 1000"
         style={{
           width: '100%',
-          height: 'auto',
+          height: '100%',
           position: 'relative',
           zIndex: '1',
         }}
@@ -158,7 +158,7 @@ const Map = ({ activeData, texts }) => {
         viewBox="0 0 1670 1000"
         style={{
           width: '100%',
-          height: 'auto',
+          height: '100%',
           position: 'absolute',
           top: '0',
           left: '0',
