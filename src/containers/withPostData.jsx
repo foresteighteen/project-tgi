@@ -1,15 +1,17 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+
 import { getPost } from '../api';
 import { LangContext } from './LangProvider';
+import { ScrollContext } from './ScrollRestoration';
+
 const withPostData = postType => ComposedComponent => props => {
-  // const { match: { url } } = props;
-  // const path = url.match(/[^/]+/gm);
   const { state } = React.useContext(LangContext);
+  const { restoreScroll } = React.useContext(ScrollContext);
+
   const [data, setData] = React.useState(null);
   const [loaded, setLoaded] = React.useState(false);
   const [error, setError] = React.useState(null);
-  console.log(props);
+
   React.useEffect(() => {
     const fetchPosts = async () => {
       // const response = await getPost(...path);
@@ -28,6 +30,9 @@ const withPostData = postType => ComposedComponent => props => {
     fetchPosts();
   }, [state.lang, props.match.params.slug]);
 
+  React.useEffect(() => {
+    if (loaded && !error) setTimeout(() => restoreScroll());
+  }, [loaded]);
   return (
     <ComposedComponent
       {...props}

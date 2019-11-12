@@ -195,7 +195,6 @@ const Header = ({ history }) => {
                 key={ID}
                 onClick={() => {
                   setMenuMobile(false);
-                  console.log(setMenuMobile);
                 }}
               >
                 <Link

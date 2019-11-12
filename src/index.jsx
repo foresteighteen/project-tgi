@@ -8,14 +8,9 @@ import 'slick-carousel/slick/slick.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
-// import { ConnectedRouter } from 'connected-react-router';
 import Modal from 'react-modal';
-// import { BrowserRouter } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-
-// import configureStore, { history } from './store';
 
 import './assets/css/reset.scss';
 import './assets/css/custom-grid.css';
@@ -24,20 +19,10 @@ import './assets/css/main.sass';
 
 import App from './containers/App';
 
-const MOUNT_NODE = document.getElementById('app');
+const rootNode = document.getElementById('app');
 
-// const store = configureStore({}, history);
-
-Modal.setAppElement(MOUNT_NODE);
+Modal.setAppElement(rootNode);
 
 library.add(fab);
 
-ReactDOM.render(
-  // <Provider store={store}>
-  //   <ConnectedRouter history={history}>
-
-  <App />,
-  //   </ConnectedRouter>
-  // </Provider>,
-  MOUNT_NODE,
-);
+ReactDOM.render(<App />, rootNode);
