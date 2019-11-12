@@ -51,7 +51,6 @@ const NewsRowSection = () => {
       (res, val, i, arr) => i % 2 === 0 && items.push(arr.slice(i, i + 2)),
       [],
     );
-
   return (
     <div className="container">
       <NewsRow first data={posts.slice(0, 2)} />
@@ -70,5 +69,6 @@ const NewsRowSection = () => {
     </div>
   );
 };
+
 
 export default NewsRowSection;

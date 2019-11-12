@@ -22,7 +22,7 @@ const ProductPage = ({ postData, postLoaded }) => {
   // console.log(postData);
   return (
     <ErrorBoundary>
-            <Helmet>
+      <Helmet>
         <title>{postData.title.rendered}</title>
       </Helmet>
       <main className="main product-page">

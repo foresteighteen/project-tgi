@@ -1,76 +1,65 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { debounce } from 'throttle-debounce';
 
+export const ScrollContext = React.createContext({ restoreScroll: () => null });
+
+let scrollData = {};
+
+// TODO: move logic to cDU instead of gSBU if possible
 class ScrollRestoration extends Component {
-  static propTypes = {
-    location: PropTypes.object,
-  };
-  state = {
-    // prevPageYPos: null,
-    scrollY: 0,
-  };
-  // prevPageYPos = 0;
-  componentDidMount() {
-    document
-      .getElementById('page-wrap')
-      .addEventListener('scroll', this.debouncedUpdateScroll);
-    if (window.history.scrollRestoration) {
-      window.history.scrollRestoration = 'manual';
-    }
-    // optional
-    // window.scrollTo(0, 0);
-  }
-  // getSnapshotBeforeUpdate() {
-  //   if (this.props.history.action === 'PUSH') {
-  //     return document.getElementsByTagName('main')[0].getBoundingClientRect()
-  //       .top;
-  //   }
-  //   return null;
-  // }
-  componentDidUpdate(prevProps, prevState) {
-    // console.log(snapshot);
-    // if (snapshot !== null && snapshot > 0) {
-    //   this.prevPageYPos = snapshot;
-    //   window.scrollTo(0, 0);
-    // } else if (snapshot === null) {
-    //   setTimeout(() => {
-    //     window.scrollTo(0, this.prevPageYPos);
-    //   }, 1000);
-    // }
-    if (this.props.location.key !== prevProps.location.key) {
-      const { key } = this.props.location;
-      const top = window.sessionStorage.getItem(key);
+  // save scrollTop position to page location pathname before updating
+  getSnapshotBeforeUpdate(prevProps) {
+    const {
+      history: { action },
+      location: { pathname },
+    } = prevProps;
 
-      if (
-        top &&
-        document.getElementById('page-wrap').getBoundingClientRect().top >= top
-      ) {
-        setTimeout(() => {
-          document.getElementById('page-wrap').scrollTo({
-            top,
-            // behavior: 'smooth',
-          });
-        }, 1000);
-      }
+    if (action !== 'POP') {
+      scrollData = {
+        ...scrollData,
+        [pathname]: document.getElementById('page-wrap').scrollTop,
+      };
     }
-    if (prevState.scrollY !== this.state.scrollY) {
-      window.sessionStorage.setItem(
-        this.props.location.key,
-        this.state.scrollY,
-      );
-    }
-  }
-  updateScroll = () => {
-    const scrollY = document.getElementById('page-wrap').getBoundingClientRect()
-      .top;
-
-    this.setState({ scrollY: Math.abs(scrollY) });
-  };
-  debouncedUpdateScroll = debounce(300, this.updateScroll);
-  render() {
     return null;
+  }
+  // gSBU doesn't work without cDU
+  componentDidUpdate() {
+    return null;
+  }
+  restoreScroll = () => {
+    const {
+      history: { action },
+      location: { pathname },
+    } = this.props;
+    const scrolledArea = document.getElementById('page-wrap');
+
+    if (action === 'POP') {
+      // test pathname with followed regexr to make only MainPage(/ru|/en)
+      // wait 500ms to prevent animation bugs !!!(animations not firing right away...
+      // ...because of that they'll stuck untill WAYPOINT of section is reached)!!!
+      if (scrollData[pathname]) {
+        setTimeout(
+          () =>
+            scrolledArea.scrollTo({
+              left: 0,
+              top: scrollData[pathname],
+              behavior: 'smooth',
+            }),
+          /^\/(en|ru)$/g.test(pathname) ? 500 : 0,
+        );
+      } else {
+        setTimeout(scrolledArea.scrollTo({ left: 0, top: 0 }));
+      }
+    } else {
+      setTimeout(scrolledArea.scrollTo({ left: 0, top: 0 }));
+    }
+  };
+  render() {
+    return (
+      <ScrollContext.Provider value={{ restoreScroll: this.restoreScroll }}>
+        {this.props.children}
+      </ScrollContext.Provider>
+    );
   }
 }
 

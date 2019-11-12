@@ -37,9 +37,9 @@ const CatalogPage = ({ pageData, pageLoaded, location: { hash } }) => {
       <main className="main catalog-page">
         {pageLoaded ? (
           <React.Fragment>
-          <Helmet>
-            <title>{pageData.title.rendered}</title>
-          </Helmet>
+            <Helmet>
+              <title>{pageData.title.rendered}</title>
+            </Helmet>
             <ErrorBoundary>
               <CatalogHeroSection data={pageData.acf.hero} />
             </ErrorBoundary>
