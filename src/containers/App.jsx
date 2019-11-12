@@ -25,19 +25,18 @@ const App = () => {
       }}
     >
       <BrowserRouter>
-        {/* <ScrollToTop /> */}
-        <ScrollRestoration>
-          <LangProvider>
-            <HeaderProvider>
-              <ModalProvider>
-                <ContactsModal />
-                <Header />
-                <Main />
-                <Footer />
-              </ModalProvider>
-            </HeaderProvider>
-          </LangProvider>
-        </ScrollRestoration>
+        <ScrollToTop />
+        <ScrollRestoration />
+        <LangProvider>
+          <HeaderProvider>
+            <ModalProvider>
+              <ContactsModal />
+              <Header />
+              <Main />
+              <Footer />
+            </ModalProvider>
+          </HeaderProvider>
+        </LangProvider>
       </BrowserRouter>
     </div>
   );

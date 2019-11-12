@@ -17,6 +17,7 @@ const HeroSection = ({ activeVacancy, vacancies, changeActive, desc, title, bgIm
           <Select
             className="vacancy-select"
             classNamePrefix="vacancy-select"
+            // menuIsOpen={true}
             isSearchable={false}
             placeholder={activeVacancy}
             value={activeVacancy}

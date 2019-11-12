@@ -194,7 +194,7 @@ const VacancyPage = ({ pageData, pageLoaded }) => {
 
   return (
     <ErrorBoundary>
-            <Helmet>
+      <Helmet>
         <title>{pageData.title.rendered}</title>
       </Helmet>
       <main className="main vacancy-page">
