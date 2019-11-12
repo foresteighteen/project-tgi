@@ -18,11 +18,11 @@ const DeliverySection = ({ data }) => {
         <RevealByWord>
           <h2 className="delivery__title">{title}</h2>
         </RevealByWord>
-        <RevealByLine>
+        <RevealBlock>
           <p className="delivery__subtitle">
             {description}
           </p>
-        </RevealByLine>
+        </RevealBlock>
         <RevealBlock>
           <Map activeData={activeData} texts={{water_text, oil_text}} />
         </RevealBlock>

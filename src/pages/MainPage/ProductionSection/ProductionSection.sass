@@ -42,6 +42,7 @@
       display: flex
       flex-direction: column
       justify-content: space-between
+      min-width: 475px
       max-width: 521px
       width: 100%
       padding: 42px 17px 42px 76px
@@ -131,8 +132,14 @@
     &__list
       padding-left: 2%
       padding-right: 2%
+      justify-content: space-between
+      margin-top: -140px
     &__item
-      padding-left: 20px
+      padding-left: 0
+      margin-right: 0
+      flex: 1
+      a
+        min-width: auto
       &-title
         display: flex
         align-items: flex-end
@@ -154,6 +161,7 @@
       margin-right: 0
       margin-left: 0
       padding-left: 0
+      flex: initial
       &:first-child
         margin-right: 0
       &-title

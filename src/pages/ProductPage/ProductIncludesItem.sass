@@ -35,7 +35,7 @@
     min-width: 292px
     max-width: 292px
     img
-      max-width: 100%
+      max-width: 210px
       height: auto
       object-fit: fill
       display: block
@@ -65,12 +65,16 @@
     flex: 1
     &:before
       display: block
+
       counter-increment: section
-      content: counter(section)
-      font-size: 40px
+      content: counter(section)"."
+      font-size: 55px
       font-weight: 800
       margin-right: 25px
-      margin-left: -20px
+      margin-left: -10px
+      -webkit-text-fill-color: #fff
+      -webkit-text-stroke: #EC841C 1px
+      opacity: .8
     .product-item__wrap
       background: none
     // padding: 0 50px

@@ -19,12 +19,7 @@
     "url": "https://github.com/foresteighteen/project-tgi/issues"
   },
   "browserslist": [
-    "defaults",
-    "not ie < 11",
-    "last 2 versions",
-    "> 1%",
-    "iOS 7",
-    "last 3 iOS versions"
+    "since 2010"
   ],
   "homepage": "https://github.com/foresteighteen/project-tgi#readme",
   "pre-commit": "lint:staged",
