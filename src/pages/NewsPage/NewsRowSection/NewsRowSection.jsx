@@ -61,6 +61,7 @@ const NewsRowSection = () => {
         next={loadMore}
         hasMore={!!data.nextPage}
         loader={<div className="loader" key={0} />}
+        scrollableTarget="page-wrap"
       >
         {items.map(pair => (
           <NewsRow data={pair} />
