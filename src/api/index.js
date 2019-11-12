@@ -1,6 +1,6 @@
 const BASE_URI = 'https://tgi.thelegacy.com.ua/wp-json';
 
-async function getRequest(url) {
+export async function getRequest(url) {
   try {
     const response = await fetch(url, {
       credentials: 'include',
