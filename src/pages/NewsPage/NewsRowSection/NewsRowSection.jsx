@@ -13,7 +13,7 @@ const NewsRowSection = () => {
   React.useEffect(() => {
     const fetchFirstPosts = async () => {
       const request = await getRequest(
-        'https://tgi.thelegacy.com.ua/wp-json/tgi/v1/news-short',
+        `https://tgi.thelegacy.com.ua/wp-json/tgi/v1/news-short?lang=${state.lang}`,
       );
       if (!request.success) {
         setError(request.error);
@@ -69,6 +69,5 @@ const NewsRowSection = () => {
     </div>
   );
 };
-
 
 export default NewsRowSection;

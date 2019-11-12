@@ -3,7 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { Header, Footer } from '../components';
 import Main from './Main';
-// import ScrollToTop from '../utils/ScrollToTop';
 import { ModalProvider } from '../containers/ContactsModal/ModalProvider';
 import ContactsModal from '../containers/ContactsModal';
 import LangProvider from './LangProvider';
@@ -25,18 +24,18 @@ const App = () => {
       }}
     >
       <BrowserRouter>
-        <ScrollToTop />
-        <ScrollRestoration />
-        <LangProvider>
-          <HeaderProvider>
-            <ModalProvider>
-              <ContactsModal />
-              <Header />
-              <Main />
-              <Footer />
-            </ModalProvider>
-          </HeaderProvider>
-        </LangProvider>
+        <ScrollRestoration>
+          <LangProvider>
+            <HeaderProvider>
+              <ModalProvider>
+                <ContactsModal />
+                <Header />
+                <Main />
+                <Footer />
+              </ModalProvider>
+            </HeaderProvider>
+          </LangProvider>
+        </ScrollRestoration>
       </BrowserRouter>
     </div>
   );
