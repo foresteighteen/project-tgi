@@ -31,7 +31,6 @@ const CatalogPage = ({ pageData, pageLoaded, location: { hash } }) => {
       });
     }, 300);
   }
-
   return (
     <ErrorBoundary>
       <main className="main catalog-page">
