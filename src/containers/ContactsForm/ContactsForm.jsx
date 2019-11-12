@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Select, { components } from 'react-select';
 import CloseModalBtn from '../ContactsModal/CloseModalBtn';
-
+import { sendForm } from '../../api';
 import withPageData from '../../containers/withPageData';
+import { Spinner } from '../../components';
+import useSignUpForm from '../../utils/useSignUpForm';
 
 import './ContactsForm.sass';
 
@@ -82,12 +84,44 @@ const ContactsForm = ({
 }) => {
   if (!pageLoaded) return null;
   const { acf: formData } = pageData;
+  const [ selectedOption, setOption ] = useState(formData.salesDepartment.items[0]);
+  const [ requestProgress, setRequestProgress ] = useState(false);
+  const [ successIndicator, setSuccessIndicator ] = useState({success: false, visible: false });
   const selectOptions = formData.salesDepartment.items.map((item, i) => ({
-    value: i,
+    value: item.email,
     label: item.title,
   }));
+
+  // const testt = e => {
+  //   console.log(e.target.files[0])
+  // }
+
+  const handleSelectChange = option => setOption(option);
+  const signup = async () => {
+    // console.log(selectedOption);
+    setRequestProgress(true);
+    const res = await sendForm(Object.assign({}, selectedOption, inputs));
+    setRequestProgress(false);
+    console.log(res.success)
+    if (!res.success) onCloseModal();
+    
+    // console.log(Object.assign({}, selectedOption, inputs));
+  };
+  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(signup);
+  // const handleSubmits = (e) => {
+  //   e.preventDefault();
+  //   console.log(123);
+  //   console.log(inputs);
+  // };
   return (
-    <form className={`form ${className}`}>
+    <form className={`form ${className}`} onSubmit={handleSubmit}>
+      {requestProgress && (
+        <div className="form__overlay">
+        <div className="form__overlay__inner">
+          <Spinner />
+        </div> 
+      </div>    
+      )}
       <h2 className="form__title">{formData.title}</h2>
       {modal ? <CloseModalBtn onClick={onCloseModal} /> : null}
       <div className="form__row">
@@ -108,14 +142,17 @@ const ContactsForm = ({
           // onChange={e => onChange.setPayment(e)}
           options={selectOptions}
           placeholder={formData.salesDepartment.placeholder}
+          name="admin_email"
+          onChange={handleSelectChange}
+          value={selectedOption.email || null}
         />
-        <input
+        {/* <input
           tabIndex={-1}
           autoComplete="off"
           style={{ opacity: 0, height: 0, position: 'absolute' }}
           // value={controls.payment}
           required
-        />
+        /> */}
       </div>
       <div className="form__row">
         <label htmlFor="name" className="form__label">
@@ -127,6 +164,9 @@ const ContactsForm = ({
           id="name"
           className="form__input"
           placeholder={formData.fio.placeholder}
+          onChange={handleInputChange}
+          value={inputs.name || ''}
+          required
         />
       </div>
       <div className="form__row">
@@ -139,6 +179,9 @@ const ContactsForm = ({
           id="tel"
           className="form__input"
           placeholder={formData.tel.placeholder}
+          onChange={handleInputChange}
+          value={inputs.tel || ''}
+          required
         />
       </div>
       <div className="form__row">
@@ -151,8 +194,22 @@ const ContactsForm = ({
           id="email"
           className="form__input"
           placeholder={formData.email.placeholder}
+          onChange={handleInputChange}
+          value={inputs.email || ''}
+          required
         />
       </div>
+      {/* <div className="form__row">
+        <label htmlFor="file" className="form__label">
+          file
+        </label>
+        <input
+          type="file"
+          name="file"
+          className="form__input"
+          onChange={testt}
+        />
+      </div> */}
       <div className="form__row">
         <label htmlFor="comment" className="form__label">
           {formData.comment.title}
@@ -164,6 +221,8 @@ const ContactsForm = ({
           id="comment"
           className="form__input"
           placeholder={formData.comment.placeholder}
+          onChange={handleInputChange}
+          value={inputs.comment || ''}
         />
       </div>
       <div className="form__row">
@@ -171,7 +230,7 @@ const ContactsForm = ({
         <button
           type="submit"
           className="form__btn mx-auto"
-          onClick={onCloseModal}
+          // onClick={onCloseModal}
         >
           отправить
         </button>

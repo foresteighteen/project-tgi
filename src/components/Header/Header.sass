@@ -41,6 +41,10 @@
         top: 15px
         left: 0
         display: none !important
+        li 
+          border-bottom: 1px solid #F2F9FB
+          a 
+            font-size: 15px
         &:after
           z-index: 1
           content: ''
@@ -50,6 +54,7 @@
           position: absolute
           top: 30px
           right: 0
+          opacity: .98
         & > li
           position: relative
           margin-right: 0 !important
@@ -72,8 +77,8 @@
             right: 20px
             width: 8px
             height: 8px
-            border-top: 2px solid #000
-            border-right: 2px solid #000
+            border-top: 2px solid rgba(0,0,0, .15)
+            border-right: 2px solid rgba(0,0,0, .15)
             transform: rotate(45deg)
             transition: border-color .45s
           &.no-arrow
@@ -176,6 +181,8 @@ use.header-logo-icon
 @media (max-width: 1639px)
   .header
     .header__nav
+      a 
+        font-size: 15px
       ul
         li
           margin-right: 35px

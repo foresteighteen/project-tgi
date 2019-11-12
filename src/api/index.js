@@ -1,4 +1,4 @@
-const BASE_URI = 'https://tgi.thelegacy.com.ua/wp-json';
+const BASE_URI = 'https://tgi.thelegacy.com.ua';
 
 export async function getRequest(url) {
   try {
@@ -20,21 +20,48 @@ export async function getRequest(url) {
   }
 }
 
+export async function sendForm(data) {
+  const url = `${BASE_URI}/mail/mail.php`;
+  try {
+    const response = await fetch(url, {
+      credentials: 'include',
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    return {
+      success: true,
+    };
+  } catch (error) {
+    return {
+      success: false,
+    };
+  }
+  // fetch(`${BASE_URI}/mail/mail.php`, {
+  //   method: 'POST',
+  //   body: JSON.stringify(data)
+  // }).then((response) => {
+  //   console.log(response)
+  // })
+}
+
 export async function getMenu(lang = 'ru') {
-  const url = `${BASE_URI}/menus/v1/menus/Main?lang=${lang}`;
+  const url = `${BASE_URI}/wp-json/menus/v1/menus/Main?lang=${lang}`;
   const response = await getRequest(url);
 
   return response;
 }
 
 export async function getFullMenu(lang = 'ru') {
-  const url = `${BASE_URI}/tgi/v1/products-nav?lang=${lang}`;
+  const url = `${BASE_URI}/wp-json/tgi/v1/products-nav?lang=${lang}`;
   const [menu, products] = await Promise.all([getMenu(lang), getRequest(url)]);
   return [menu, products];
 }
 
 export async function getPage(id, lang = 'ru') {
-  const url = `${BASE_URI}/wp/v2/pages/${id}?lang=${lang}`;
+  const url = `${BASE_URI}/wp-json/wp/v2/pages/${id}?lang=${lang}`;
   const response = await getRequest(url);
 
   return response;
@@ -43,15 +70,15 @@ export async function getPage(id, lang = 'ru') {
 export async function getPosts(id, lang = 'ru') {
   const url =
     id === 'news'
-      ? `${BASE_URI}/tgi/v1/${id}?per_page=99&lang=${lang}`
-      : `${BASE_URI}/wp/v2/${id}?per_page=99&lang=${lang}`;
+      ? `${BASE_URI}/wp-json/tgi/v1/${id}?per_page=99&lang=${lang}`
+      : `${BASE_URI}/wp-json/wp/v2/${id}?per_page=99&lang=${lang}`;
   const response = await getRequest(url);
 
   return response;
 }
 
 export async function getFilteredPosts(category, ids, lang = 'ru') {
-  const url = `${BASE_URI}/wp/v2/${category}?include=${ids.join(
+  const url = `${BASE_URI}/wp-json/wp/v2/${category}?include=${ids.join(
     ',',
   )}&lang=${lang}`;
   const response = await getRequest(url);
@@ -62,8 +89,8 @@ export async function getFilteredPosts(category, ids, lang = 'ru') {
 export async function getPost(postType, slug, lang = 'ru') {
   const url =
     postType === 'news'
-      ? `${BASE_URI}/tgi/v1/${postType}/${slug}?lang=${lang}`
-      : `${BASE_URI}/wp/v2/${postType}?slug=${slug}&lang=${lang}`;
+      ? `${BASE_URI}/wp-json/tgi/v1/${postType}/${slug}?lang=${lang}`
+      : `${BASE_URI}/wp-json/wp/v2/${postType}?slug=${slug}&lang=${lang}`;
 
   // const url = `${BASE_URI}/wp/v2/${postType}?slug=${slug}&lang=${lang}`;
   const response = await getRequest(url);
