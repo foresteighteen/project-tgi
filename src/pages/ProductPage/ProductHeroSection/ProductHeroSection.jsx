@@ -11,7 +11,7 @@ const ProductHeroSection = ({ data }) => {
     <section id="product-hero">
       <Hero
         classes="hero__product"
-        brdcrmb={{ path: 'catalog', title: 'Продукция' }}
+        brdcrmb={{ path: 'catalog', title: '', id: 43 }}
       >
         <H1 text={title} />
         <HeroBg bgRightImg={bgImg} />

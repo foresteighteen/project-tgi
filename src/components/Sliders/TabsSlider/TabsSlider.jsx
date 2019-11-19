@@ -15,10 +15,8 @@ const TabsSlider = ({ slides }) => {
   const springRef1 = useRef();
   const springPhotoBLock = useSpring({
     ref: springRef1,
-    // transform: animate ? 'translate3d(0,0,0)' : 'translate3d(0,-100%,0)',
     from: { transform: 'translate3d(0,-100%,0)' },
     to: { transform: 'translate3d(0,0,0)' },
-    // config: config.gentle,
   });
 
   const springRef2 = useRef();
@@ -123,14 +121,11 @@ const TabsSlider = ({ slides }) => {
     >
       <div className="tabs-slider">
         <Slider {...settings}>
-          {slides.map(({ title, img, description }) => (
-            <div className="tabs-slider__item">
+          {slides.map(({ title, img, description }, i) => (
+            <div className="tabs-slider__item" key={i}>
               <div className="tabs-slider__title font-bold font-nova">
                 <h3>{title}</h3>
               </div>
-              {/* <div className="tabs-slider__img">
-              <img src={img.url} alt={img.alt} />
-            </div> */}
               <div className="tabs-slider__img">
                 <animated.div
                   className="tabs-slider__img__wrap"
@@ -149,7 +144,6 @@ const TabsSlider = ({ slides }) => {
               >
                 <animated.p style={spring5}>{description}</animated.p>
               </animated.div>
-              {/* <div className="fix">.</div> */}
             </div>
           ))}
         </Slider>

@@ -23,13 +23,13 @@ const CertificatesPage = ({ pageData, pageLoaded }) => {
       <main className="main cert-page">
         {pageLoaded ? (
           <React.Fragment>
-                      <Helmet>
-            <title>{pageData.title.rendered}</title>
-          </Helmet>
+            <Helmet>
+              <title>{pageData.title.rendered}</title>
+            </Helmet>
             <ErrorBoundary>
               <CertificateHeroSection title={pageData.acf.title} />
             </ErrorBoundary>
-            
+
             <ErrorBoundary>
               <GallerySection gallery={pageData.acf.gallery} />
             </ErrorBoundary>

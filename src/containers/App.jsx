@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { Header, Footer } from '../components';
+import { Header, Footer, ErrorBoundary } from '../components';
 import Main from './Main';
-// import ScrollToTop from '../utils/ScrollToTop';
 import { ModalProvider } from '../containers/ContactsModal/ModalProvider';
 import ContactsModal from '../containers/ContactsModal';
 import LangProvider from './LangProvider';
+import GlobalOptsProvider from './GlobalOptsProvider';
 import { HeaderProvider } from './HeaderProvider';
 import ScrollRestoration from './ScrollRestoration';
 
@@ -24,20 +24,32 @@ const App = () => {
         // overflow: 'hidden',
       }}
     >
-      <BrowserRouter>
-        {/* <ScrollToTop /> */}
-        <ScrollRestoration />
-        <LangProvider>
-          <HeaderProvider>
-            <ModalProvider>
-              <ContactsModal />
-              <Header />
-              <Main />
-              <Footer />
-            </ModalProvider>
-          </HeaderProvider>
-        </LangProvider>
-      </BrowserRouter>
+      <ErrorBoundary>
+        <BrowserRouter>
+          <ScrollRestoration>
+            <LangProvider>
+              <GlobalOptsProvider>
+                <HeaderProvider>
+                  <ModalProvider>
+                    <ErrorBoundary>
+                      <ContactsModal />
+                    </ErrorBoundary>
+                    <ErrorBoundary>
+                      <Header />
+                    </ErrorBoundary>
+                    <ErrorBoundary>
+                      <Main />
+                    </ErrorBoundary>
+                    <ErrorBoundary>
+                      <Footer />
+                    </ErrorBoundary>
+                  </ModalProvider>
+                </HeaderProvider>
+              </GlobalOptsProvider>
+            </LangProvider>
+          </ScrollRestoration>
+        </BrowserRouter>
+      </ErrorBoundary>
     </div>
   );
 };

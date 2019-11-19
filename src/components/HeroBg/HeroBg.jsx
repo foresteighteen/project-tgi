@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 
 import './HeroBg.sass';
 
-const HeroBg = ({bgRightImg, bgLeftImg}) => {
+const HeroBg = ({ bgRightImg, bgLeftImg }) => {
   return (
-  <div className="hero-bg">
-    <img src={`${bgRightImg}`} alt="" className="hero-bg-img img-right"/>
-    <img src={`${bgLeftImg}`} alt="" className="hero-bg-img img-left"/>
-  </div>
-  )
-}
+    <div className="hero-bg">
+      {bgRightImg && <img src={bgRightImg} alt="" className="hero-bg-img img-right" />}
+      {bgLeftImg && <img src={bgLeftImg} alt="" className="hero-bg-img img-left" />}
+    </div>
+  );
+};
 
 export default HeroBg;

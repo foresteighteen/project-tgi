@@ -24,7 +24,7 @@ const ContactsPage = ({ pageData, pageLoaded }) => {
 
   return (
     <ErrorBoundary>
-      <main className="contacts">
+      <main className="main contacts">
         {pageLoaded ? (
           <React.Fragment>
             <Helmet>

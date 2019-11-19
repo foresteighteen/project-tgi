@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import { prop, indexBy } from 'ramda';
+import { LangContext } from '../../../containers/LangProvider';
 import {
   RevealByWord,
-  RevealByLine,
   RevealBlock,
 } from '../../../containers/Animations';
 import Map from './Map';
@@ -11,6 +11,7 @@ import './DeliverySection.sass';
 
 const DeliverySection = ({ data }) => {
   const { title, description, map, water_text, oil_text } = data;
+  const {state:{lang}} = useContext(LangContext);
   const activeData = indexBy(prop('active'), map);
   return (
     <section className="delivery">
@@ -24,7 +25,7 @@ const DeliverySection = ({ data }) => {
           </p>
         </RevealBlock>
         <RevealBlock>
-          <Map activeData={activeData} texts={{water_text, oil_text}} />
+          <Map activeData={activeData} texts={{water_text, oil_text}} lang={lang} />
         </RevealBlock>
       </div>
     </section>

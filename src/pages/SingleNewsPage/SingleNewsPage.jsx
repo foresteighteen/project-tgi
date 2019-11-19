@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import withPostData from '../../containers/withPostData';
 import { HeaderContext } from '../../containers/HeaderProvider';
@@ -16,12 +17,16 @@ const SingleNewsPage = ({ postData, postLoaded }) => {
     setHeaderTheme('dark');
   }, []);
 
+  const PAGE_TITLE = postData?.title?.rendered;
+
+  if (!PAGE_TITLE) return <Redirect to="/" />;
+
   return (
     <ErrorBoundary>
       <main className="main single-news-page">
         {postLoaded ? (
           <React.Fragment>
-                      <Helmet>
+          <Helmet>
             <title>{postData.meta.title}</title>
           </Helmet>
             <ErrorBoundary>

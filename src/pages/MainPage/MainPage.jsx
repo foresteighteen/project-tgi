@@ -12,7 +12,6 @@ import NewsSection from './NewsSection';
 import SectionNumbers from './SectionNumbers';
 import { QuestionForm, ErrorBoundary } from '../../components';
 import { HeaderContext } from '../../containers/HeaderProvider';
-import { ScrollContext } from '../../containers/ScrollRestoration';
 
 import './MainPage.sass';
 
@@ -20,13 +19,11 @@ const WP_PAGE_ID = 9;
 
 const MainPage = ({ pageData, pageLoaded }) => {
   const { setHeaderTheme } = React.useContext(HeaderContext);
-  // const { restoreScroll } = React.useContext(ScrollContext);
+
   React.useEffect(() => {
     setHeaderTheme('light');
   }, []);
-  // React.useEffect(() => {
-  //   if (pageLoaded) restoreScroll();
-  // }, [pageLoaded]);
+
   return (
     <ErrorBoundary>
       <main className="main main__page">
@@ -57,7 +54,7 @@ const MainPage = ({ pageData, pageLoaded }) => {
               </ErrorBoundary>
 
               <ErrorBoundary>
-                <NewsSection />
+                <NewsSection data={pageData.acf.news} />
               </ErrorBoundary>
             </SectionNumbers>
             <QuestionForm />

@@ -3,11 +3,11 @@ import { Hero, H1, HeroText } from '../../../components';
 
 import './HeroSection.sass';
 
-const HeroSection = ({ title, subtitle }) => (
+const HeroSection = ({ title, desc }) => (
   <section id="certificate-hero">
-    <Hero classes="hero__single-news" brdcrmb={{path:'news', title:'Новости'}}>
+    <Hero classes="hero__single-news" brdcrmb={{ path: '/news', title: '', id: 100 }}>
       <H1 text={title} />
-      <HeroText desc={subtitle} />
+      <HeroText desc={desc} />
     </Hero>
   </section>
 );

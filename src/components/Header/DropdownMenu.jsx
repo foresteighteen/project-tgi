@@ -1,37 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+ 
 const DropdownMenu = ({ items, lang }) => {
   if (!items) return null;
-  const itemKeys = Object.keys(items);
   return (
     <ul>
-      {itemKeys.map(key => (
-        <React.Fragment>
-          {items[key][0].cat_id === 9 ? (
-            items[key].map(item => (
-              <li className="no-arrow">
-                <Link to={`/${lang}/catalog/${item.slug}`}>{item.title}</Link>
-              </li>
-            ))
-          ) : (
-            <li>
-              {key}
-              <ul>
-                {items[key].map(item => (
-                  <li>
-                    <Link to={`/${lang}/catalog/${item.slug}`}>
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          )}
-        </React.Fragment>
-      ))}
+      {items.map((item, index) =>
+        item.child_items ? (
+          <li key={index}>
+            {item.title}
+            <ul>
+              {item.child_items.map((childItem, indx) => (
+                <li key={indx} >
+                  <Link
+                    to={`/${lang}/catalog/${childItem.url.split('/').pop()}`}
+                  >
+                    {childItem.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ) : (
+          <li className="no-arrow" key={index}>
+            <Link to={`/${lang}/catalog/${item.url.split('/').pop()}`}>
+              {item.title}
+            </Link>
+          </li>
+        ),
+      )}
     </ul>
   );
 };
-
+ 
 export default DropdownMenu;

@@ -12,7 +12,6 @@ const ArrowBtn = ({ right, left, sliderBtn, disabled, click = () => false }) => 
     disabled,
   });
   return (
-    // <span className={btnClass}></span>
     <button onClick={click} type="button" className={btnClass} ></button>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { LangContext } from '../../../containers/LangProvider';
 import { NewsRow, SubscribeForm } from '../../../components';
-import { getRequest } from '../../../api';
+import { getRequest, BASE_URI } from '../../../api';
 
 const NewsRowSection = () => {
   const { state } = React.useContext(LangContext);
@@ -13,7 +13,7 @@ const NewsRowSection = () => {
   React.useEffect(() => {
     const fetchFirstPosts = async () => {
       const request = await getRequest(
-        'https://tgi.thelegacy.com.ua/wp-json/tgi/v1/news-short',
+        `${BASE_URI}/wp-json/tgi/v1/news-short?lang=${state.lang}`,
       );
       if (!request.success) {
         setError(request.error);
@@ -23,12 +23,15 @@ const NewsRowSection = () => {
       }
     };
     fetchFirstPosts();
+    return () => {
+      setData(null);
+    };
   }, [state.lang]);
   const loadMore = async () => {
     const reqURI =
       data && data.nextPage
         ? `${data.nextPage}&lang=${state.lang}`
-        : `https://tgi.thelegacy.com.ua/wp-json/tgi/v1/news-short?lang=${state.lang}`;
+        : `${BASE_URI}/wp-json/tgi/v1/news-short?lang=${state.lang}`;
 
     if (!reqURI) return;
 
@@ -53,7 +56,7 @@ const NewsRowSection = () => {
     );
   return (
     <div className="container">
-      <NewsRow first data={posts.slice(0, 2)} />
+      <NewsRow key={9999} first data={posts.slice(0, 2)} />
       <SubscribeForm />
       <InfiniteScroll
         dataLength={items.length}
@@ -62,13 +65,12 @@ const NewsRowSection = () => {
         loader={<div className="loader" key={0} />}
         scrollableTarget="page-wrap"
       >
-        {items.map(pair => (
-          <NewsRow data={pair} />
+        {items.map((pair, i) => (
+          <NewsRow key={i} data={pair} />
         ))}
       </InfiniteScroll>
     </div>
   );
 };
-
 
 export default NewsRowSection;

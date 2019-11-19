@@ -75,9 +75,10 @@ const PartnersSection = ({ data }) => {
         },
       },
       {
-        breakpoint: 550,
+        breakpoint: 575,
         settings: {
           slidesToShow: 1,
+          centerMode: true,
         },
       },
     ],

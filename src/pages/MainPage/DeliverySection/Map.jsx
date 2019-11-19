@@ -70,15 +70,16 @@ const randomStyles = {
 const Map = ({ activeData, texts }) => {
   const [data, setData] = useState(null);
   const [mapCompiled, setCompiled] = useState(false);
-  const [activePath, {}] = useState(activeData);
+  const [activePath, setActivePath] = useState(null);
   useEffect(() => {
+    setActivePath(activeData);
     async function fetchData() {
       const result = await fetch('/src/gadm36.json');
       const jsoned = await result.json();
       setData(jsoned);
     }
     if (!data) fetchData();
-  }, []);
+  }, [activeData]);
 
   const rerenderFunc = index => {
     const oldItems = data.objects.m.geometries;

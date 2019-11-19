@@ -8,8 +8,6 @@ const ProductionSlider = ({ slider }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    // slidesToShow: 3,
-    // lazyLoad: true,
     slidesToScroll: 1,
     centerMode: true,
     arrows: false,

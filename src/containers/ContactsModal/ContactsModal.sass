@@ -16,7 +16,7 @@
   padding-bottom: 20vh
 .modal
   box-shadow: 2px 2px 5px rgba(0,0,0,.1)
-  padding: 65px 45px 25px 45px
+  padding: 45px 45px 25px 45px
   width: 45vw
   max-width: 100%
   background: #fff
@@ -25,7 +25,7 @@
   & > .form__row
     min-height: 60px
   & > .form__title
-    margin-bottom: 60px
+    margin-bottom: 30px
   &__controls
     display: flex
     justify-content: flex-end
@@ -35,7 +35,7 @@
   &__close-btn
     cursor: pointer
     position: absolute
-    top: 65px
+    top: 45px
     right: 45px
     width: 35px
     height: 35px
@@ -57,9 +57,6 @@
 
 
 
-@media (max-width: 1399px)
-  .modal
-    width: 60%
     
 @media (max-width: 1399px) and (max-height: 799px)
   .modal
@@ -80,6 +77,7 @@
 
 @media (max-width: 575px)
   .modal
+    width: 90%
     padding: 10px
     & > .form__title
       font-size: 24px

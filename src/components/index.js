@@ -16,7 +16,9 @@ import PhotoVideoBlock from './PhotoVideoBlock';
 import Footer from './Footer';
 import Spinner from './Spinner';
 import ErrorBoundary from './ErrorBoundary';
+import SuccessCheck from './SuccessCheck';
 export {
+  SuccessCheck,
   ErrorBoundary,
   Spinner,
   ArrowBtn,
