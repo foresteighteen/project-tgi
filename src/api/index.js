@@ -44,7 +44,6 @@ export async function sendForm(data) {
 export async function sendSubscribe(url) {
   try {
     const response = await fetch(url, {
-      credentials: 'include',
       method: 'POST',
     });
     if (!response.ok) {

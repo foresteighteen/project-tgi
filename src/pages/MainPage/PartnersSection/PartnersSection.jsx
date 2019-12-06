@@ -30,7 +30,7 @@ const PartnersList = ({ items }) => {
       <div className="partners__list">
         {trail.map(({ ...animation }, index) => {
           return (
-            <animated.div style={animation} key={uniqid()}>
+            <animated.div style={animation} key={index}>
               <LogoItem src={items[index].img.url} alt={items[index].img.alt} />
             </animated.div>
           );
@@ -89,11 +89,11 @@ const PartnersSection = ({ data }) => {
       {isOpenLight && (
         <Lightbox
           mainSrc={certificates[photoIndex].img.url}
-          nextSrc={certificates[(photoIndex + 1) % certificates.length]}
+          nextSrc={certificates[(photoIndex + 1) % certificates.length].img.url}
           prevSrc={
             certificates[
               (photoIndex + certificates.length - 1) % certificates.length
-            ]
+            ].img.url
           }
           onCloseRequest={() => updateLight(false)}
           onMovePrevRequest={() =>

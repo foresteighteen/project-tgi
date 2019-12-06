@@ -97,12 +97,10 @@ const SidePhotoBlock = ({ classes, title, textArray, imgSrc, imgAlt }) => {
                 <img src={imgSrc} alt={imgAlt} />
               </animated.div>
             </div>
-            {springTexts.map(
+            {springTexts.length && springTexts.map(
               ({ item, key, props }) =>
                 item && (
-                  <animated.p style={props} key={key}>
-                    {item.text}
-                  </animated.p>
+                  <animated.div style={props} key={key} dangerouslySetInnerHTML={{ __html: item.text}} />
                 ),
             )}
           </div>

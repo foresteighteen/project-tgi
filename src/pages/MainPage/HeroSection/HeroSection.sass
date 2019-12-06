@@ -202,25 +202,45 @@
 
 @media (max-width: 575px)
   .hero
+    .hero__section__inner
+      padding-top: 30%
+      padding-bottom: 20px
+    &__info
+      margin-bottom: 50px
+      padding-bottom: 0
     &__title
       font-size: 12vw
       line-height: 1
       letter-spacing: 2px
+    &__subtitle
+      font-size: 15px
+      line-height: 22px
+      margin-bottom: 5px
     &__slider-arrows
       margin-top: 5px
+      display: none
+    &__slider
+      margin: 0 -15px
     &__slide
+      min-height: 150px
+      height: auto
       padding-left: 85px
-      padding-top: 50px
+      padding-top: 15px
       padding-right: 10px
-      &-quantity span
-        width: 100%
-        display: block
+      &-quantity 
+        font-size: 20px
+        span
+          width: 100%
+          display: block
+          font-size: 24px
       &__icon
         width: 61px
       &-info
         align-items: flex-start
       &-title
         line-height: 25px
+        font-size: 18px
+        margin-bottom: 8px
 
 
 // @media (min-width: 1600px)

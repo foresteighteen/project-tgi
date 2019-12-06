@@ -116,8 +116,8 @@ const Header = ({ history }) => {
               </div>
               <ul className="lang-list">
                 <li>
-                  <Link
-                    to="#"
+                  <a
+                    // to="ru"
                     onClick={() => {
                       dispatch({ type: 'changeLang', lang: 'ru' });
                       history.replace(`/ru/${currentUrl}`);
@@ -129,11 +129,11 @@ const Header = ({ history }) => {
                         className="lang-svg"
                       />
                     </svg>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="#"
+                  <a
+                    // to="en/"
                     onClick={() => {
                       dispatch({ type: 'changeLang', lang: 'en' });
                       history.replace(`/en/${currentUrl}`);
@@ -145,7 +145,7 @@ const Header = ({ history }) => {
                         className="lang-svg"
                       />
                     </svg>
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

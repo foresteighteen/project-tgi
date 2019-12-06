@@ -10,7 +10,7 @@ const ListSection = ({ addressArray, setMapCenter }) => {
   return (
     <div className="container">
       <div className="contacts__list row">
-        {spring.map(({ ...animation }, i) => {
+        {addressArray.length && spring.map(({ ...animation }, i) => {
           const address = addressArray[i];
           return (
             <animated.div
@@ -24,7 +24,7 @@ const ListSection = ({ addressArray, setMapCenter }) => {
               }`}
             >
               <p className="contacts__item-title">{address.title}</p>
-              <p className="contacts__item-description">{address.text}</p>
+              <div className="contacts__item-description" dangerouslySetInnerHTML={{ __html:address.text }} />
             </animated.div>
           );
         })}

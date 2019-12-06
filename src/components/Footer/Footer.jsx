@@ -11,7 +11,7 @@ const Footer = () => {
   const { footer } = useContext(GlobalOptsContext);
 
   const { state } = useContext(LangContext);
-  const { copyrights, menu, menu_pdf, address, socials } = footer;
+  const { copyrights, menu, menu_pdf, address, socials, development } = footer;
   return (
     <footer className="footer-wrap">
       <div className="container">
@@ -28,25 +28,23 @@ const Footer = () => {
             </div>
           </div>
           <div className="footer__contacts">
-            {address.map(({ item }, i) => (
+            {address.length && address.map(({ item }, i) => (
               <div className="footer__contacts__item" key={i}>
                 <h5 className="footer__subtitle">{item.title}</h5>
-                <a href={item.link}>{item.subtitle}</a>
+                <div dangerouslySetInnerHTML={{ __html: item.subtitle}} />
               </div>
             ))}
           </div>
           <div className="footer__social">
             <div className="footer__social__icons">
-              {socials.map(({ item }, i) => (
-                <a href={item.link} className="footer__social__icon"  key={i}>
+              {socials.length && socials.map(({ item }, i) => (
+                <a href={item.link} className="footer__social__icon" target="_blank" rel="noopener noreferrer" key={i}>
                   <FontAwesomeIcon icon={['fab', item.icon]} />
                 </a>
               ))}
             </div>
             <div className="footer__developer">
-              <span>
-                Разработка сайта <a href="#">TheLegacy</a>
-              </span>
+              <span>{development} <a href="https://thelegacy.agency/" target="_blank" rel="noopener noreferrer">TheLegacy</a></span>         
             </div>
           </div>
         </div>

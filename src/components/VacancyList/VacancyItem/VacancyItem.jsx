@@ -14,8 +14,8 @@ const VacancyItem = ({position, salary, info, duties, buttonText, currencySymbol
   return (
     <article className="vacancy__item">
       <div className="vacancy__item__title">
-        <h3 className="font-nova">{position}</h3>
-        <h4 className="font-nova">{salary.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} {currencySymbol}</h4>
+        <h3>{position}</h3>
+        <h4>{salary.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} {currencySymbol}</h4>
         <ul className="vacancy__item__info">
           {info.map(renderInfo)}
         </ul>

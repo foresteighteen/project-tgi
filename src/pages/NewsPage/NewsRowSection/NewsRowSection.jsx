@@ -23,9 +23,6 @@ const NewsRowSection = () => {
       }
     };
     fetchFirstPosts();
-    return () => {
-      setData(null);
-    };
   }, [state.lang]);
   const loadMore = async () => {
     const reqURI =

@@ -3,6 +3,7 @@
   font-family: 'Roboto';
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
   src: url(../fonts/Roboto-Light/Roboto-Light.eot);
   src: url(../fonts/Roboto-Light/Roboto-Light.eot?#iefix)
       format('embedded-opentype'),
@@ -13,6 +14,7 @@
   font-family: 'Roboto';
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
   src: url(../fonts/Roboto-Regular/Roboto-Regular.eot);
   src: url(../fonts/Roboto-Regular/Roboto-Regular.eot?#iefix)
       format('embedded-opentype'),
@@ -23,6 +25,7 @@
   font-family: 'Roboto';
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
   src: url(../fonts/Roboto-Medium/Roboto-Medium.eot);
   src: url(../fonts/Roboto-Medium/Roboto-Medium.eot?#iefix)
       format('embedded-opentype'),
@@ -33,6 +36,7 @@
   font-family: 'Roboto';
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
   src: url(../fonts/Roboto-Bold/Roboto-Bold.eot);
   src: url(../fonts/Roboto-Bold/Roboto-Bold.eot?#iefix)
       format('embedded-opentype'),
@@ -43,6 +47,7 @@
   font-family: 'ProximaNova';
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
   src: url(../fonts/ProximaNova-Regular/ProximaNova-Regular.eot);
   src: url(../fonts/ProximaNova-Regular/ProximaNova-Regular.eot?#iefix)
       format('embedded-opentype'),
@@ -54,6 +59,7 @@
   font-family: 'ProximaNova';
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
   src: url(../fonts/ProximaNova-Semibold/ProximaNova-Semibold.eot);
   src: url(../fonts/ProximaNova-Semibold/ProximaNova-Semibold.eot?#iefix)
       format('embedded-opentype'),
@@ -65,6 +71,7 @@
   font-family: 'ProximaNova';
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
   src: url(../fonts/ProximaNova-Bold/ProximaNova-Bold.ttf);
   src: url(../fonts/ProximaNova-Bold/ProximaNova-Bold.eot?#iefix)
       format('embedded-opentype'),
@@ -76,6 +83,7 @@
   font-family: 'ProximaNova';
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
   src: url(../fonts/ProximaNova-Bold/ProximaNova-Bold.eot);
   src: url(../fonts/ProximaNova-Bold/ProximaNova-Bold.eot?#iefix)
       format('embedded-opentype'),
@@ -86,6 +94,7 @@
   font-family: 'ProximaNova';
   font-weight: 800;
   font-style: normal;
+  font-display: swap;
   src: url(../fonts/ProximaNova-Extrabold/ProximaNova-Extrabold.eot);
   src: url(../fonts/ProximaNova-Extrabold/ProximaNova-Extrabold.eot?#iefix)
       format('embedded-opentype'),
