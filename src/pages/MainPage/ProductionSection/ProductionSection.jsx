@@ -15,28 +15,52 @@ const ProductionSection = ({ data }) => {
   const springRef1 = useRef();
   const springPhotoBLock = useSpring({
     ref: springRef1,
-    transform: animate ? 'translate3d(0,0,0)' : 'translate3d(-100%,0,0)',
+    from: {
+      transform: 'translate3d(-100%,0,0)'
+    },
+    to: {
+      transform: 'translate3d(0,0,0)'
+    },
+    // transform: animate ? 'translate3d(0,0,0)' : 'translate3d(-100%,0,0)',
   });
 
   const springRef2 = useRef();
   const springOverlay = useSpring({
     ref: springRef2,
-    backgroundColor: animate ? '#fff' : '#EE9D35',
-    width: animate ? '0px' : '100%',
-    left: animate ? '100%' : '0%',
+    from: {
+      backgroundColor: '#EE9D35',
+      width: '100%',
+      left: '0%',
+    },
+    to: {
+      backgroundColor: '#fff',
+      width: '0px',
+      left: '100%',
+    },
+    // backgroundColor: animate ? '#fff' : '#EE9D35',
+    // width: animate ? '0px' : '100%',
+    // left: animate ? '100%' : '0%',
   });
 
   const springRef3 = useRef();
   const itemsTrail = useTrail(blocks.length, {
     ref: springRef3,
-    opacity: animate ? 1 : 0,
-    transform: animate ? 'translate3d(0,0,0)' : 'translate3d(0,50px,0)',
+    from: {
+      opacity: 0,
+      transform: 'translate3d(0,50px,0)'
+    },
+    to: {
+      opacity: 1,
+      transform: 'translate3d(0,0,0)'
+    },
+    // opacity: animate ? 1 : 0,
+    // transform: animate ? 'translate3d(0,0,0)' : 'translate3d(0,50px,0)',
   });
 
   useChain(
     animate
       ? [springRef1, springRef2, springRef3]
-      : [springRef3, springRef2, springRef1],
+      : [],
   );
 
   const renderBlocks = (index, animation) => (

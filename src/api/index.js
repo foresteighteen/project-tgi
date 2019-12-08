@@ -1,4 +1,6 @@
-const BASE_URI = 'https://tgi.thelegacy.com.ua';
+export const BASE_URI = window.location.origin.includes('localhost')
+  ? 'https://tgi.thelegacy.com.ua'
+  : window.location.origin;
 
 export async function getRequest(url) {
   try {
@@ -39,18 +41,36 @@ export async function sendForm(data) {
       success: false,
     };
   }
-  // fetch(`${BASE_URI}/mail/mail.php`, {
-  //   method: 'POST',
-  //   body: JSON.stringify(data)
-  // }).then((response) => {
-  //   console.log(response)
-  // })
+}
+
+export async function sendSubscribe(url) {
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+    });
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    return {
+      success: true,
+    };
+  } catch (error) {
+    return {
+      success: false,
+    };
+  }
 }
 
 export async function getMenu(lang = 'ru') {
   const url = `${BASE_URI}/wp-json/menus/v1/menus/Main?lang=${lang}`;
   const response = await getRequest(url);
 
+  return response;
+}
+
+export async function getPageTitle(id, lang = 'ru') {
+  const url = `${BASE_URI}/wp-json/tgi/v1/page_title/${id}?lang=${lang}`;
+  const response = await getRequest(url);
   return response;
 }
 

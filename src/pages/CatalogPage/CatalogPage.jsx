@@ -13,6 +13,8 @@ import { QuestionForm, ErrorBoundary } from '../../components';
 
 import './CatalogPage.sass';
 
+const WP_PAGE_ID = 302;
+
 const CatalogPage = ({ pageData, pageLoaded, location: { hash } }) => {
   const { setHeaderTheme } = React.useContext(HeaderContext);
 
@@ -59,4 +61,4 @@ const CatalogPage = ({ pageData, pageLoaded, location: { hash } }) => {
   );
 };
 
-export default withPageData(43)(CatalogPage);
+export default withPageData(WP_PAGE_ID)(CatalogPage);

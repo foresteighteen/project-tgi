@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import withPostData from '../../containers/withPostData';
 import { HeaderContext } from '../../containers/HeaderProvider';
@@ -10,6 +11,13 @@ import { QuestionForm, ErrorBoundary } from '../../components';
 import './SingleNewsPage.sass';
 
 const SingleNewsPage = ({ postData, postLoaded }) => {
+
+  if (!postLoaded) return <main className="main single-news-page"></main>;
+
+  const PAGE_TITLE = postData?.meta?.title;
+
+  if (!PAGE_TITLE) return <Redirect to="/" />;
+
   const { setHeaderTheme } = React.useContext(HeaderContext);
 
   React.useEffect(() => {
@@ -19,10 +27,9 @@ const SingleNewsPage = ({ postData, postLoaded }) => {
   return (
     <ErrorBoundary>
       <main className="main single-news-page">
-        {postLoaded ? (
           <React.Fragment>
-                      <Helmet>
-            <title>{postData.meta.title}</title>
+          <Helmet>
+            <title>{PAGE_TITLE}</title>
           </Helmet>
             <ErrorBoundary>
               <HeroSection
@@ -37,7 +44,6 @@ const SingleNewsPage = ({ postData, postLoaded }) => {
 
             <QuestionForm />
           </React.Fragment>
-        ) : null}
       </main>
     </ErrorBoundary>
   );

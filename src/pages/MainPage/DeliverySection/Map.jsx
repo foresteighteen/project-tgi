@@ -67,21 +67,60 @@ const randomStyles = {
   },
 };
 
+const Tooltip = React.memo(({ activePath, texts }) => {
+  return (
+    <div
+      className={classnames({
+        tooltip: true,
+        'tooltip-single': !activePath.oil || !activePath.water,
+      })}
+    >
+      <div className="tooltip-cross"></div>
+      {/* <div className="tooltip__title">{parsed.countryName}</div> */}
+      <div className="tooltip__title">{activePath.name}</div>
+      <div className="tooltip__list">
+        {activePath.oil ? (
+          <div className="tooltip__item">
+            <WaterDropSVG className="water-drop" />
+            <div className="tooltip__item-info">
+              <p className="tooltip__item-title">{activePath.oil}</p>
+              <p className="tooltip__item-subtitle">{texts.oil_text}</p>
+            </div>
+          </div>
+        ) : null}
+        {activePath.water ? (
+          <div className="tooltip__item">
+            <WaterDropSVG className="water-drop water-drop--blue" />
+            <div className="tooltip__item-info">
+              <p className="tooltip__item-title">{activePath.water}</p>
+              <p className="tooltip__item-subtitle">{texts.water_text}</p>
+            </div>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+});
+
 const Map = ({ activeData, texts }) => {
   const [data, setData] = useState(null);
   const [mapCompiled, setCompiled] = useState(false);
-  const [activePath, {}] = useState(activeData);
+  const [activePath, setActivePath] = useState(null);
   useEffect(() => {
+    setActivePath(activeData);
     async function fetchData() {
       const result = await fetch('/src/gadm36.json');
       const jsoned = await result.json();
+
       setData(jsoned);
     }
     if (!data) fetchData();
-  }, []);
+  }, [activeData]);
 
   const rerenderFunc = index => {
+    // if (!index) return;
     const oldItems = data.objects.m.geometries;
+
     if (index === oldItems.length - 1) return;
     const newItems = [
       ...oldItems.slice(0, index),
@@ -93,8 +132,14 @@ const Map = ({ activeData, texts }) => {
       objects: { m: { ...data.objects.m, geometries: newItems } },
     };
     setData(newData);
+    // setData(oldData => ({
+    //   ...oldData,
+    //   objects: { m: { ...data.objects.m, geometries: newItems } },
+    // }));
   };
+
   if (!data || !activePath) return null;
+
   return (
     <div className="delivery__map-container">
       <ComposableMap
@@ -124,11 +169,12 @@ const Map = ({ activeData, texts }) => {
                     setCompiled(true);
                   }, 0);
                 }
+
                 return (
                   <Geography
-                    onMouseEnter={() => {
-                      rerenderFunc(i);
-                    }}
+                    // onMouseEnter={() => {
+                    //   rerenderFunc(i);
+                    // }}
                     data-for="country-tooltip"
                     // data-event="click"
                     // data-tip={JSON.stringify({
@@ -194,21 +240,28 @@ const Map = ({ activeData, texts }) => {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-
+      {/* <Tooltip activePath={activePath} texts={texts} /> */}
       <ReactTooltip
         id="country-tooltip"
+        getContent={tdata => {
+          return activePath[tdata] ? (
+            <Tooltip activePath={activePath[tdata]} texts={texts} />
+          ) : null;
+        }}
+        type="light"
+      />
+      {/* <ReactTooltip
+        id="country-tooltip"
         getContent={data => {
-          // const parsed = JSON.parse(data);
-          // const parsed = activePath[data];
           return activePath[data] ? (
             <div
               className={classnames({
                 tooltip: true,
-                'tooltip-single': !activePath[data].oil || !activePath[data].water,
+                'tooltip-single':
+                  !activePath[data].oil || !activePath[data].water,
               })}
             >
               <div className="tooltip-cross"></div>
-              {/* <div className="tooltip__title">{parsed.countryName}</div> */}
               <div className="tooltip__title">{activePath[data].name}</div>
               <div className="tooltip__list">
                 {activePath[data].oil ? (
@@ -229,7 +282,9 @@ const Map = ({ activeData, texts }) => {
                       <p className="tooltip__item-title">
                         {activePath[data].water}
                       </p>
-                      <p className="tooltip__item-subtitle">{texts.water_text}</p>
+                      <p className="tooltip__item-subtitle">
+                        {texts.water_text}
+                      </p>
                     </div>
                   </div>
                 ) : null}
@@ -238,7 +293,7 @@ const Map = ({ activeData, texts }) => {
           ) : null;
         }}
         type="light"
-      />
+      /> */}
     </div>
   );
 };

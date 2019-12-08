@@ -8,6 +8,14 @@ let scrollData = {};
 // TODO: move logic to cDU instead of gSBU if possible
 class ScrollRestoration extends Component {
   // save scrollTop position to page location pathname before updating
+  scrollToSupport = true;
+
+  componentDidMount() {
+    const testElement = document.getElementById('page-wrap');
+    if (testElement.scrollTo === undefined) {
+      this.scrollToSupport = false;
+    }
+  }
   getSnapshotBeforeUpdate(prevProps) {
     const {
       history: { action },
@@ -27,6 +35,7 @@ class ScrollRestoration extends Component {
     return null;
   }
   restoreScroll = () => {
+    if (!this.scrollToSupport) return;
     const {
       history: { action },
       location: { pathname },

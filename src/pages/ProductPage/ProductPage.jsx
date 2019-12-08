@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import withPostData from '../../containers/withPostData';
@@ -19,12 +20,16 @@ const ProductPage = ({ postData, postLoaded }) => {
     setHeaderTheme('dark');
   }, []);
 
-  // console.log(postData);
+  const PAGE_TITLE = postData?.title?.rendered;
+
+  if (!PAGE_TITLE) return <Redirect to="/" />;
+
   return (
     <ErrorBoundary>
       <Helmet>
-        <title>{postData.title.rendered}</title>
+        <title>{PAGE_TITLE}</title>
       </Helmet>
+
       <main className="main product-page">
         <ErrorBoundary>
           <ProductHeroSection data={postData.acf.hero} />
@@ -47,4 +52,4 @@ const ProductPage = ({ postData, postLoaded }) => {
   );
 };
 
-export default withPostData('products')(ProductPage);
+export default withPostData('catalog')(ProductPage);

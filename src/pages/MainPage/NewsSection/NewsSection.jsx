@@ -11,7 +11,7 @@ import { getRequest } from '../../../api';
 import SliderArrows from '../SliderArrows';
 import './NewsSection.sass';
 
-const NewsSection = () => {
+const NewsSection = ({ data: { title } }) => {
   const { state } = React.useContext(LangContext);
   const [activeSlide, setActiveSlide] = React.useState(0);
   const [animate, play] = React.useState(false);
@@ -122,7 +122,7 @@ const NewsSection = () => {
         <div className="container left-offset">
           <div className="news__header">
             <h2 className="news__title">
-              <RevealByWord>Новости</RevealByWord>
+              <RevealByWord>{title}</RevealByWord>
             </h2>
             <SliderArrows
               onClickPrev={() => {

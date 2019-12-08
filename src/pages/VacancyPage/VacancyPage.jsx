@@ -10,187 +10,189 @@ import VacancySection from './VacancySection';
 
 import './VacancyPage.sass';
 
-const myVac = {
-  Moskov: [
-    {
-      position: 'Gruzchik',
-      salary: 25000,
-      info: [
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-      ],
-      duties: [
-        {
-          title: 'Objazanosti',
-          items: [
-            'Выполнение погрузочных и разгрузочных работ.',
-            'Выполнение погрузочных и разгрузочных работ.',
-          ],
-        },
-        {
-          title: 'Objazanosti',
-          items: [
-            'Выполнение погрузочных и разгрузочных работ.',
-            'Выполнение погрузочных и разгрузочных работ.',
-          ],
-        },
-        {
-          title: 'Plushki',
-          items: ['Soc strah', 'Soc strah'],
-        },
-      ],
-    },
-    {
-      position: 'Gruzchik',
-      salary: 25000,
-      info: [
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-      ],
-      duties: [
-        {
-          title: 'Objazanosti',
-          items: [
-            'Выполнение погрузочных и разгрузочных работ.',
-            'Выполнение погрузочных и разгрузочных работ.',
-          ],
-        },
-        {
-          title: 'Objazanosti',
-          items: [
-            'Выполнение погрузочных и разгрузочных работ.',
-            'Выполнение погрузочных и разгрузочных работ.',
-          ],
-        },
-        {
-          title: 'Plushki',
-          items: ['Soc strah', 'Soc strah'],
-        },
-      ],
-    },
-  ],
-  'Peter-burg': [
-    {
-      position: 'Gruzchik2',
-      salary: 25000,
-      info: [
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-      ],
-      duties: [
-        {
-          title: 'Objazanosti',
-          items: [
-            'Выполнение погрузочных и разгрузочных работ.',
-            'Выполнение погрузочных и разгрузочных работ.',
-          ],
-        },
-        {
-          title: 'Objazanosti',
-          items: [
-            'Выполнение погрузочных и разгрузочных работ.',
-            'Выполнение погрузочных и разгрузочных работ.',
-          ],
-        },
-        {
-          title: 'Plushki',
-          items: ['Soc strah', 'Soc strah'],
-        },
-      ],
-    },
-    {
-      position: 'Gruzchik',
-      salary: 25000,
-      info: [
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-        {
-          title: 'Сфера деятельности',
-          desc: 'сменный график',
-        },
-      ],
-      duties: [
-        {
-          title: 'Objazanosti',
-          items: [
-            'Выполнение погрузочных и разгрузочных работ.',
-            'Выполнение погрузочных и разгрузочных работ.',
-          ],
-        },
-        {
-          title: 'Objazanosti',
-          items: [
-            'Выполнение погрузочных и разгрузочных работ.',
-            'Выполнение погрузочных и разгрузочных работ.',
-          ],
-        },
-        {
-          title: 'Plushki',
-          items: ['Soc strah', 'Soc strah'],
-        },
-      ],
-    },
-  ],
-};
+const WP_PAGE_ID = 312;
 
-const WP_PAGE_ID = 38;
+// const myVac = {
+//   Moskov: [
+//     {
+//       position: 'Gruzchik',
+//       salary: 25000,
+//       info: [
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//       ],
+//       duties: [
+//         {
+//           title: 'Objazanosti',
+//           items: [
+//             'Выполнение погрузочных и разгрузочных работ.',
+//             'Выполнение погрузочных и разгрузочных работ.',
+//           ],
+//         },
+//         {
+//           title: 'Objazanosti',
+//           items: [
+//             'Выполнение погрузочных и разгрузочных работ.',
+//             'Выполнение погрузочных и разгрузочных работ.',
+//           ],
+//         },
+//         {
+//           title: 'Plushki',
+//           items: ['Soc strah', 'Soc strah'],
+//         },
+//       ],
+//     },
+//     {
+//       position: 'Gruzchik',
+//       salary: 25000,
+//       info: [
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//       ],
+//       duties: [
+//         {
+//           title: 'Objazanosti',
+//           items: [
+//             'Выполнение погрузочных и разгрузочных работ.',
+//             'Выполнение погрузочных и разгрузочных работ.',
+//           ],
+//         },
+//         {
+//           title: 'Objazanosti',
+//           items: [
+//             'Выполнение погрузочных и разгрузочных работ.',
+//             'Выполнение погрузочных и разгрузочных работ.',
+//           ],
+//         },
+//         {
+//           title: 'Plushki',
+//           items: ['Soc strah', 'Soc strah'],
+//         },
+//       ],
+//     },
+//   ],
+//   'Peter-burg': [
+//     {
+//       position: 'Gruzchik2',
+//       salary: 25000,
+//       info: [
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//       ],
+//       duties: [
+//         {
+//           title: 'Objazanosti',
+//           items: [
+//             'Выполнение погрузочных и разгрузочных работ.',
+//             'Выполнение погрузочных и разгрузочных работ.',
+//           ],
+//         },
+//         {
+//           title: 'Objazanosti',
+//           items: [
+//             'Выполнение погрузочных и разгрузочных работ.',
+//             'Выполнение погрузочных и разгрузочных работ.',
+//           ],
+//         },
+//         {
+//           title: 'Plushki',
+//           items: ['Soc strah', 'Soc strah'],
+//         },
+//       ],
+//     },
+//     {
+//       position: 'Gruzchik',
+//       salary: 25000,
+//       info: [
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//         {
+//           title: 'Сфера деятельности',
+//           desc: 'сменный график',
+//         },
+//       ],
+//       duties: [
+//         {
+//           title: 'Objazanosti',
+//           items: [
+//             'Выполнение погрузочных и разгрузочных работ.',
+//             'Выполнение погрузочных и разгрузочных работ.',
+//           ],
+//         },
+//         {
+//           title: 'Objazanosti',
+//           items: [
+//             'Выполнение погрузочных и разгрузочных работ.',
+//             'Выполнение погрузочных и разгрузочных работ.',
+//           ],
+//         },
+//         {
+//           title: 'Plushki',
+//           items: ['Soc strah', 'Soc strah'],
+//         },
+//       ],
+//     },
+//   ],
+// };
 
 const VacancyPage = ({ pageData, pageLoaded }) => {
   if (!pageLoaded) return <main className="main vacancy-page"></main>;
 
   const { setHeaderTheme } = React.useContext(HeaderContext);
 
+  const [activeVacancy, changeActive] = useState({});
+  const [currencySymbol, setCurrency] = useState('');
+  const [buttonText, SetButton] = useState('');
+  const [vacancies, SetVacancies] = useState(null);
+
   React.useEffect(() => {
     setHeaderTheme('light');
-  }, []);
-
-  const [activeVacancy, changeActive] = useState(
-    pageData.acf.vacancies.city[0].city,
-  );
-  const [currencySymbol, {}] = useState(pageData.acf.vacancies.currency);
-  const [buttonText, {}] = useState(pageData.acf.vacancies.btn_text);
-  const [vacancies, {}] = useState(
-    map(
-      item => map(item => assoc('id', uniqid(), item), item),
-      pluck('vacancy', indexBy(prop('city'), pageData.acf.vacancies.city)),
-    ),
-  );
+    changeActive(pageData.acf.vacancies.city[0].city);
+    SetButton(pageData.acf.vacancies.btn_text);
+    setCurrency(pageData.acf.vacancies.currency);
+    SetVacancies(
+      map(
+        item => map(item => assoc('id', uniqid(), item), item),
+        pluck('vacancy', indexBy(prop('city'), pageData.acf.vacancies.city)),
+      ),
+    );
+  }, [pageData]);
 
   return (
     <ErrorBoundary>
@@ -198,23 +200,27 @@ const VacancyPage = ({ pageData, pageLoaded }) => {
         <title>{pageData.title.rendered}</title>
       </Helmet>
       <main className="main vacancy-page">
-        <ErrorBoundary>
-          <HeroSection
-            title={pageData.acf.hero.title}
-            bgImg={pageData.acf.hero.bgImg}
-            desc={pageData.acf.hero.description}
-            {...{ activeVacancy, vacancies, changeActive }}
-          />
-        </ErrorBoundary>
-        <ErrorBoundary>
-          <VacancySection
-            buttonText={buttonText}
-            currencySymbol={currencySymbol}
-            vacancies={vacancies[activeVacancy]}
-            activeVacancy={activeVacancy}
-          />
-        </ErrorBoundary>
-        <QuestionForm />
+        {vacancies && (
+          <React.Fragment>
+            <ErrorBoundary>
+              <HeroSection
+                title={pageData.acf.hero.title}
+                bgImg={pageData.acf.hero.bgImg}
+                desc={pageData.acf.hero.description}
+                {...{ activeVacancy, vacancies, changeActive }}
+              />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <VacancySection
+                buttonText={buttonText}
+                currencySymbol={currencySymbol}
+                vacancies={vacancies[activeVacancy]}
+                activeVacancy={activeVacancy}
+              />
+            </ErrorBoundary>
+            <QuestionForm />
+          </React.Fragment>
+        )}
       </main>
     </ErrorBoundary>
   );

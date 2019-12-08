@@ -6,6 +6,8 @@ import withPageData from '../containers/withPageData';
 
 import './SitemapPage.sass';
 
+const WP_PAGE_ID = 310;
+
 const SitemapPage = ({ pageData, pageLoaded }) => {
   const { setHeaderTheme } = React.useContext(HeaderContext);
 
@@ -40,4 +42,4 @@ const SitemapPage = ({ pageData, pageLoaded }) => {
   );
 };
 
-export default withPageData(823)(SitemapPage);
+export default withPageData(WP_PAGE_ID)(SitemapPage);

@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const postcssPresetEnv = require('postcss-preset-env');
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
@@ -22,15 +23,57 @@ module.exports = options => ({
           options: options.babelQuery,
         },
       },
+      // process.env.NODE_ENV !== 'production' && {
+      //   test: /\.(sc|sa|c)ss$/,
+      //   use: ['style-loader'],
+      // },
+      // process.env.NODE_ENV === 'production' && {
+      //   test: /\.(sc|sa|c)ss$/,
+      //   use: [MiniCssExtractPlugin.loader],
+      // },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.(sc|sa|c)ss$/,
+        use: [
+          process.env.NODE_ENV === 'production'
+            ? MiniCssExtractPlugin.loader
+            : 'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 1 } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              // config: {
+              //   path: __dirname + '/postcss.config.js',
+              // },
+              ident: 'postcss',
+              plugins: () => [
+                postcssPresetEnv({
+                  autoprefixer: {
+                    flexbox: 'no-2009',
+                    grid: true,
+                  },
+                  stage: 3,
+                }),
+              ],
+            },
+          },
+          'sass-loader',
+        ],
       },
-      {
-        test: /\.(scss|sass)$/,
-        exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
+      // {
+      //   test: /\.css$/,
+      //   loader: require.resolve('postcss-loader'),
+      //   options: {
+      //     ident: 'postcss',
+      //     plugins: () => [
+      //       require('postcss-preset-env')({
+      //         autoprefixer: {
+      //           flexbox: 'no-2009',
+      //         },
+      //         stage: 3,
+      //       }),
+      //     ],
+      //   },
+      // },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
         loader: 'file-loader',
@@ -93,22 +136,27 @@ module.exports = options => ({
           },
         },
       },
-    ],
+    ].filter(Boolean),
   },
 
   plugins: options.plugins.concat([
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
-    }),
+    // new webpack.EnvironmentPlugin({
+    //   NODE_ENV: 'development',
+    // }),
+    new webpack.DefinePlugin(JSON.stringify(process.env.NODE_ENV)),
   ]),
 
   resolve: {
     modules: ['node_modules', 'src'],
     extensions: ['.js', '.jsx'],
+    alias: {
+      'react-spring$': 'react-spring/web.cjs',
+      'react-spring/renderprops$': 'react-spring/renderprops.cjs',
+    },
   },
 
   devtool: options.devtool,
   devServer: options.devServer || {},
   target: 'web',
-  performance: options.performance || {},
+  performance: false,
 });

@@ -33,6 +33,17 @@ class HeroSection extends React.Component {
             slidesToShow: 1,
           },
         },
+        {
+          breakpoint: 575,
+          settings: {
+            swipe: true,
+            centerMode: true,
+            slidesToShow: 1,
+            centerPadding: "20px",
+            infinite: false,
+            initialSlide: 0,
+          },
+        },
       ],
     };
     if (!this.props.data) return null;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Hero, H1 } from '../../../components';
-
 import './HeroSection.sass';
 
 const HeroSection = ({ title, bgImg }) => (

@@ -9,6 +9,8 @@ import NewsRowSection from './NewsRowSection';
 
 import './NewsPage.sass';
 
+const WP_PAGE_ID = 314;
+
 const NewsPage = ({ pageData, pageLoaded }) => {
   if (!pageLoaded) return <main className="main news-page"></main>;
   const { setHeaderTheme } = React.useContext(HeaderContext);
@@ -30,4 +32,4 @@ const NewsPage = ({ pageData, pageLoaded }) => {
   );
 };
 
-export default withPageData(100)(NewsPage);
+export default withPageData(WP_PAGE_ID)(NewsPage);

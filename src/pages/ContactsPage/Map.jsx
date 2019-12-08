@@ -59,8 +59,8 @@ const MapContainer = ({
             state={defaultState}
             style={{ width: '100%', height: '100%' }}
           >
-            {markers.map(marker => (
-              <Placemark geometry={[Number(marker.lat), Number(marker.lng)]} />
+            {markers.map((marker, i) => (
+              <Placemark key={i} geometry={[Number(marker.lat), Number(marker.lng)]} />
             ))}
           </Map>
         </YMaps>

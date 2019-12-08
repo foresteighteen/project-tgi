@@ -12,7 +12,7 @@ import { QuestionForm, ErrorBoundary } from '../../components';
 
 import './AboutPage.sass';
 
-const WP_PAGE_ID = 12;
+const WP_PAGE_ID = 300;
 
 const AboutPage = ({ pageData, pageLoaded }) => {
   const { setHeaderTheme } = React.useContext(HeaderContext);
@@ -25,9 +25,9 @@ const AboutPage = ({ pageData, pageLoaded }) => {
       <main className="main about-page">
         {pageLoaded ? (
           <React.Fragment>
-          <Helmet>
-            <title>{pageData.title.rendered}</title>
-          </Helmet>
+            <Helmet>
+              <title>{pageData.title.rendered}</title>
+            </Helmet>
             <ErrorBoundary>
               <AboutHeroSection
                 title={pageData.acf.title}
@@ -36,7 +36,7 @@ const AboutPage = ({ pageData, pageLoaded }) => {
             </ErrorBoundary>
             <ErrorBoundary>
               <AboutInfoSection data={pageData.acf.about} />
-            </ErrorBoundary>        
+            </ErrorBoundary>
             <ErrorBoundary>
               <AboutSliderSection data={pageData.acf.benefits} />
             </ErrorBoundary>

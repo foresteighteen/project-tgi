@@ -15,7 +15,7 @@ import { HeaderContext } from '../../containers/HeaderProvider';
 
 import './MainPage.sass';
 
-const WP_PAGE_ID = 9;
+const WP_PAGE_ID = 295;
 
 const MainPage = ({ pageData, pageLoaded }) => {
   const { setHeaderTheme } = React.useContext(HeaderContext);
@@ -54,7 +54,7 @@ const MainPage = ({ pageData, pageLoaded }) => {
               </ErrorBoundary>
 
               <ErrorBoundary>
-                <NewsSection />
+                <NewsSection data={pageData.acf.news} />
               </ErrorBoundary>
             </SectionNumbers>
             <QuestionForm />

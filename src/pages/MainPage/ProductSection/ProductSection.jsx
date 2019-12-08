@@ -26,12 +26,11 @@ const ProductSection = ({ data }) => {
           onLeave={() => setAnimB(false)}
         >
           <div className="products__list">
-            {slider.map(slide => (
-              <Link to={`${slide.link}`}>
+            {slider.map((slide, i) => (
+              <Link key={i} to={`${slide.link}`}>
               <animated.div
                 style={blockAnimation}
                 className="products__item"
-                key={uniqid()}
               >
                 <h3 className="products__item-title">
                   <span className="animated-span">{slide.title}</span>

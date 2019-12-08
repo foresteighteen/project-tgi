@@ -3,7 +3,6 @@ import React from 'react';
 import PhotoVideoBlock from '../../components/PhotoVideoBlock';
 
 const ProductInfoSection = ({ data }) => {
-  console.log(data);
   return (
     <section id="product-info-section">
       <div className="container">
@@ -16,7 +15,7 @@ const ProductInfoSection = ({ data }) => {
                 <h3>{e.title}</h3>
               </div>
               <div className="additional-info-block__img">
-                <img src={e.img} alt={e.title} />
+                {e.img && <img src={e.img} alt={e.title} />}
               </div>
               <div
                 className="additional-info-block__text"

@@ -16,6 +16,7 @@ const PartnersList = ({ items }) => {
     opacity: animate ? 1 : 0,
     transform: animate ? 'scale(1)' : 'scale(0.3)',
   });
+  if (!items) return null;
   return (
     <Waypoint
       onEnter={() => {
@@ -30,7 +31,7 @@ const PartnersList = ({ items }) => {
       <div className="partners__list">
         {trail.map(({ ...animation }, index) => {
           return (
-            <animated.div style={animation} key={uniqid()}>
+            <animated.div style={animation} key={index}>
               <LogoItem src={items[index].img.url} alt={items[index].img.alt} />
             </animated.div>
           );
@@ -54,7 +55,9 @@ const PartnersSection = ({ data }) => {
 
   const revealSpring = useSpring({
     opacity: animate ? 1 : 0,
-    transform: animate ? 'matrix(1, 0, 0, 1, 0, 0)' : 'matrix(1, 0, 0, 1.4, 0, 280)',
+    transform: animate
+      ? 'matrix(1, 0, 0, 1, 0, 0)'
+      : 'matrix(1, 0, 0, 1.4, 0, 280)',
     config: config.molasses,
   });
   const sliderOptions = {
@@ -75,9 +78,10 @@ const PartnersSection = ({ data }) => {
         },
       },
       {
-        breakpoint: 550,
+        breakpoint: 575,
         settings: {
           slidesToShow: 1,
+          centerMode: true,
         },
       },
     ],
@@ -88,11 +92,11 @@ const PartnersSection = ({ data }) => {
       {isOpenLight && (
         <Lightbox
           mainSrc={certificates[photoIndex].img.url}
-          nextSrc={certificates[(photoIndex + 1) % certificates.length]}
+          nextSrc={certificates[(photoIndex + 1) % certificates.length].img.url}
           prevSrc={
             certificates[
               (photoIndex + certificates.length - 1) % certificates.length
-            ]
+            ].img.url
           }
           onCloseRequest={() => updateLight(false)}
           onMovePrevRequest={() =>
@@ -133,15 +137,16 @@ const PartnersSection = ({ data }) => {
               className="partners__cert-list"
               {...sliderOptions}
             >
-              {certificates.map(({ img }, i) => (
-                <CertificateItem
-                  src={img.url}
-                  alt={img.alt}
-                  key={uniqid()}
-                  click={openLight}
-                  index={i}
-                />
-              ))}
+              {certificates &&
+                certificates.map(({ img }, i) => (
+                  <CertificateItem
+                    src={img.url}
+                    alt={img.alt}
+                    key={uniqid()}
+                    click={openLight}
+                    index={i}
+                  />
+                ))}
             </Slider>
           </animated.div>
           <PartnersList items={logotypes} />

@@ -12,9 +12,12 @@ const withPostData = postType => ComposedComponent => props => {
   const [loaded, setLoaded] = React.useState(false);
   const [error, setError] = React.useState(null);
 
+
+
   React.useEffect(() => {
     const fetchPosts = async () => {
       // const response = await getPost(...path);
+      if (loaded) setLoaded(false); 
       const response = await getPost(
         postType,
         props.match.params.slug,

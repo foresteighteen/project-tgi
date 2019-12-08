@@ -2,7 +2,6 @@ import React from 'react';
 import Modal from 'react-modal';
 import ContactsForm from '../ContactsForm';
 import { ModalContext } from './ModalProvider';
-import CloseModalBtn from './CloseModalBtn';
 
 import './ContactsModal.sass';
 
@@ -12,15 +11,6 @@ const modalStyles = {
     position: 'absolute',
     backgroundColor: 'transparent',
   },
-  // content: {
-  //   top: '50%',
-  //   left: '50%',
-  //   right: 'auto',
-  //   bottom: 'auto',
-  //   // marginRight: '-50%',
-  //   transform: 'translate(-50%, -50%)',
-  //   padding: 0,
-  // },
 };
 
 const ContactsModal = () => {
@@ -34,7 +24,7 @@ const ContactsModal = () => {
       className="modal-form-open"
     >
       <div className="modal-wrap">
-       <ContactsForm onCloseModal={closeModal} className="modal" modal />
+        <ContactsForm onCloseModal={closeModal} className="modal" modal />
       </div>
     </Modal>
   );

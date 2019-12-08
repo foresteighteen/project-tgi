@@ -9,7 +9,7 @@ import GallerySection from './GallerySection';
 import { QuestionForm, ErrorBoundary } from '../../components';
 import './CertificatesPage.sass';
 
-const WP_PAGE_ID = 104;
+const WP_PAGE_ID = 304;
 
 const CertificatesPage = ({ pageData, pageLoaded }) => {
   const { setHeaderTheme } = React.useContext(HeaderContext);

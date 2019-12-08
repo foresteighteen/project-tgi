@@ -11,7 +11,7 @@ import QualitySliderSection from './QualitySliderSection';
 import { QuestionForm, ErrorBoundary } from '../../components';
 import './QualityPage.sass';
 
-const WP_PAGE_ID = 102;
+const WP_PAGE_ID = 308;
 
 const QualityPage = ({ pageData, pageLoaded }) => {
   const { setHeaderTheme } = React.useContext(HeaderContext);
@@ -23,9 +23,9 @@ const QualityPage = ({ pageData, pageLoaded }) => {
       <main className="main quality-page">
         {pageLoaded ? (
           <React.Fragment>
-                      <Helmet>
-            <title>{pageData.title.rendered}</title>
-          </Helmet>
+            <Helmet>
+              <title>{pageData.title.rendered}</title>
+            </Helmet>
             <ErrorBoundary>
               <QualityHeroSection
                 title={pageData.acf.title}

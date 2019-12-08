@@ -3,6 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { Link, withRouter } from 'react-router-dom';
 import { debounce } from 'throttle-debounce';
 import { LangContext } from '../../containers/LangProvider';
+import { GlobalOptsContext } from '../../containers/GlobalOptsProvider';
 import { HeaderContext } from '../../containers/HeaderProvider';
 import { getFullMenu } from '../../api';
 import MobileMenu from './MobileMenu';
@@ -12,28 +13,20 @@ import Burger from './Burger';
 
 import './Header.sass';
 
-const testStringByWord = (word, str) =>
-  new RegExp(`\\b(${word})\\b`, 'gi').test(str);
-
 const Header = ({ history }) => {
   const { state, dispatch } = React.useContext(LangContext);
   const { theme } = React.useContext(HeaderContext);
+  const { header: { phone } } = React.useContext(GlobalOptsContext);
   const [menu, setMenu] = React.useState([]);
-  const [productsMenu, setProductsMenu] = React.useState([]);
   const [menuLoaded, setMenuLoaded] = React.useState(false);
   const [menuOpen, setMenuMobile] = useState(false);
 
   React.useEffect(() => {
     const fetchMenu = async () => {
-      const [menuResp, productsResp] = await getFullMenu(state.lang);
-
+      const [menuResp] = await getFullMenu(state.lang);
       if (menuResp.success) {
         setMenu(menuResp.data.items);
         setMenuLoaded(true);
-      }
-
-      if (productsResp.success) {
-        setProductsMenu(productsResp.data);
       }
     };
     fetchMenu();
@@ -56,10 +49,6 @@ const Header = ({ history }) => {
 
   useEffect(() => {
     window['page-wrap'].addEventListener('scroll', handleScroll);
-
-    // return () => {
-    //   window['page-wrap'].removeEventListener('scroll', () => handleScroll);
-    // };
   }, []);
 
   return (
@@ -85,57 +74,35 @@ const Header = ({ history }) => {
             <div className="mr-auto col-auto nav__menu">
               <nav className="header__nav">
                 <ul>
-                  {menuLoaded
-                    ? menu.map(({ title, url, ID }) => (
+                {menuLoaded
+                    ? menu.map(item => (
                         <li
-                          key={ID}
-                          className={
-                            testStringByWord('catalog', url)
-                              ? 'header__nav--dropdown'
-                              : ''
-                          }
+                          key={item.ID}
+                          className={item.classes.join(' ')}
                         >
                           <Link
-                            to={`/${url
+                            to={`/${item.url
                               .split('/')
                               .slice(3)
                               .join('/')}`}
                           >
-                            {title}
+                            {item.title}
                           </Link>
-                          {testStringByWord('catalog', url) ? (
+                          {item.child_items ? (
                             <DropdownMenu
-                              items={productsMenu}
+                              items={item.child_items}
                               lang={state.lang}
                             />
                           ) : null}
                         </li>
                       ))
                     : null}
-                  {/* <li>
-                  <Link to={`/${state.lang}/about`}>О компании</Link>
-                </li>
-                <li>
-                  <Link to={`/${state.lang}/catalog`}>Продукция</Link>
-                </li>
-                <li>
-                  <Link to={`/${state.lang}/certificates`}>Сертификаты</Link>
-                </li>
-                <li>
-                  <Link to={`/${state.lang}/vacancy`}>Вакансии</Link>
-                </li>
-                <li>
-                  <Link to={`/${state.lang}/news`}>Новости</Link>
-                </li>
-                <li>
-                  <Link to={`/${state.lang}/contacts`}>Контакты</Link>
-                </li> */}
                 </ul>
               </nav>
             </div>
             <div className="col-auto">
-              <a href="tel:+8 800 777 10 91" className="roboto-m">
-                8 800 777 10 91
+              <a href={`tel:+${phone.replace(/\D/gm, '')}`} className="roboto-m">
+                {phone}
               </a>
             </div>
             <div className="col-auto header__lang">
@@ -149,8 +116,8 @@ const Header = ({ history }) => {
               </div>
               <ul className="lang-list">
                 <li>
-                  <Link
-                    to="#"
+                  <a
+                    // to="ru"
                     onClick={() => {
                       dispatch({ type: 'changeLang', lang: 'ru' });
                       history.replace(`/ru/${currentUrl}`);
@@ -162,11 +129,11 @@ const Header = ({ history }) => {
                         className="lang-svg"
                       />
                     </svg>
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
-                    to="#"
+                  <a
+                    // to="en/"
                     onClick={() => {
                       dispatch({ type: 'changeLang', lang: 'en' });
                       history.replace(`/en/${currentUrl}`);
@@ -178,7 +145,7 @@ const Header = ({ history }) => {
                         className="lang-svg"
                       />
                     </svg>
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

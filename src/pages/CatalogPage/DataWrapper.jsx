@@ -14,4 +14,4 @@ const DataWrapper = ({ children, postsData, postsLoaded }) => {
   return <div>{newChildren}</div>;
 };
 
-export default withPostsData('products')(DataWrapper);
+export default withPostsData('catalog')(DataWrapper);

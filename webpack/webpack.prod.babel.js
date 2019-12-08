@@ -3,13 +3,15 @@ const { HashedModuleIdsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
 
 module.exports = require('./webpack.base.babel')({
   mode: 'production',
   entry: [path.join(process.cwd(), 'src/index.jsx')],
   output: {
-    filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].chunk.js',
+    filename: '[name].[contenthash:8].js',
+    chunkFilename: '[name].[contenthash:8].chunk.js',
   },
   optimization: {
     minimize: true,
@@ -17,48 +19,59 @@ module.exports = require('./webpack.base.babel')({
       new TerserPlugin({
         terserOptions: {
           warnings: false,
-          compress: {
-            comparisons: false,
+          parse: {
+            ecma: 8,
           },
-          parse: {},
+          compress: {
+            ecma: 5,
+            warnings: false,
+            comparisons: false,
+            inline: 2,
+          },
           mangle: true,
           output: {
+            ecma: 5,
             comments: false,
             ascii_only: true,
           },
         },
-        parallel: true,
-        cache: true,
+        // parallel: true,
+        // cache: true,
         sourceMap: true,
       }),
     ],
     nodeEnv: 'production',
     sideEffects: true,
     concatenateModules: true,
-    runtimeChunk: 'single',
+    // runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'initial',
-      maxInitialRequests: 10,
-      minSize: 0,
-      cacheGroups: {
-        /* extract react and react-related libs to separate chunk */
-        react: {
-          test: /react/,
-          name: 'react',
-          chunks: 'all',
-          enforce: true,
-        },
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          priority: -10,
-        },
-      },
+      chunks: 'all',
+      // maxInitialRequests: 10,
+      // minSize: 0,
+      // cacheGroups: {
+      //   /* extract react and react-related libs to separate chunk */
+      //   react: {
+      //     test: /react/,
+      //     name: 'react',
+      //     chunks: 'all',
+      //     enforce: true,
+      //   },
+      //   vendor: {
+      //     test: /[\\/]node_modules[\\/]/,
+      //     name: 'vendor',
+      //     priority: -10,
+      //   },
+
+      // },
+    },
+    runtimeChunk: {
+      name: entrypoint => `runtime-${entrypoint.name}`,
     },
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+      inject: true,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -71,7 +84,11 @@ module.exports = require('./webpack.base.babel')({
         minifyCSS: true,
         minifyURLs: true,
       },
-      inject: true,
+    }),
+    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+      chunkFilename: 'css/[name].[contenthash:8].chunk.css',
     }),
     new CompressionPlugin({
       algorithm: 'gzip',
@@ -79,14 +96,14 @@ module.exports = require('./webpack.base.babel')({
       threshold: 10240,
       minRatio: 0.8,
     }),
-    new HashedModuleIdsPlugin({
-      hashFunction: 'sha256',
-      hashDigest: 'hex',
-      hashDigestLength: 20,
-    }),
+    // new HashedModuleIdsPlugin({
+    //   hashFunction: 'sha256',
+    //   hashDigest: 'hex',
+    //   hashDigestLength: 20,
+    // }),
   ],
-  performance: {
-    assetFilter: assetFilename =>
-      !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
-  },
+  // performance: {
+  //   assetFilter: assetFilename =>
+  //     !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
+  // },
 });

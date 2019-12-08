@@ -12,7 +12,7 @@ import Map from './Map';
 import { QuestionForm, ErrorBoundary } from '../../components';
 import './ContactsPage.sass';
 
-const WP_PAGE_ID = 29;
+const WP_PAGE_ID = 306;
 
 const ContactsPage = ({ pageData, pageLoaded }) => {
   const { setHeaderTheme } = React.useContext(HeaderContext);
@@ -24,7 +24,7 @@ const ContactsPage = ({ pageData, pageLoaded }) => {
 
   return (
     <ErrorBoundary>
-      <main className="contacts">
+      <main className="main contacts">
         {pageLoaded ? (
           <React.Fragment>
             <Helmet>

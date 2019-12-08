@@ -1,30 +1,36 @@
-.form
-  .form__overlay
+.form__overlay
+  position: absolute
+  left: 0
+  top: 0
+  right: 0
+  bottom: 0
+  z-index: 5
+  .loader
+    border-color: rgba(238, 157, 53, .2)
+    border-left-color: rgb(238, 157, 53)
+  &:before
     position: absolute
     left: 0
     top: 0
     right: 0
     bottom: 0
-    z-index: 1
-    .loader
-      border-color: rgba(238, 157, 53, .2)
-      border-left-color: rgb(238, 157, 53)
-    &:before
-      position: absolute
-      left: 0
-      top: 0
-      right: 0
-      bottom: 0
-      content: ''
-      background-color: #fff
-      opacity: .8
-    &__inner
-      width: 100%
-      height: 100%
-      position: relative
-      display: flex
-      align-items: center
-      justify-content: center
+    content: ''
+    background-color: #fff
+    opacity: .8
+  &__inner
+    width: 100%
+    height: 100%
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+
+.form
+  &__row
+    padding-top: 2px
+    border-radius: 8px
+  .show__danger
+    animation: showDanger 1s forwards
   &__title
     font-family: ProximaNova
     font-weight: 800
@@ -33,7 +39,7 @@
   &__row
     display: flex
     min-height: 76.5px
-    margin-bottom: 20px
+    margin-bottom: 8px
     font-size: 17.8px
   &__label
     align-self: center
@@ -56,8 +62,14 @@
   //   margin-left: 33.333333%
   //   & > button:nth-child(2n)
   //     margin-left: 20px
+  &__politics
+    color: #EC841C
   &__btn
-    margin-top: 20px
+    margin-top: 0px
+    display: inline-block
+    margin-left: 0
+    margin-right: 0
+    justify-self: flex-start
     background: linear-gradient(74deg, #EE9D35 0%, #EC841C 100%)
     box-shadow: 0px 10px 15px rgba(#B45A0B, .2)
     border-radius: 5px
@@ -124,3 +136,11 @@ textarea.form__input
       min-height: 40px
     &__btn-sub
       margin-left: 0
+
+@keyframes showDanger 
+  0%
+    background: transparent
+  50%
+    background: #ff6961
+  100%
+    background: transparent
