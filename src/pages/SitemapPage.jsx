@@ -18,10 +18,10 @@ const SitemapPage = ({ pageData, pageLoaded }) => {
   if (!pageLoaded) {
     return <main className="sitemap" />;
   }
-  const updatedData = pageData.content.rendered.replace(
-    /(\/products\/)/g,
-    '/catalog/',
-  );
+  // const updatedData = pageData.content.rendered.replace(
+  //   /(\/products\/)/g,
+  //   '/catalog/',
+  // );
   return (
     <main className="sitemap">
       <Helmet>
@@ -33,7 +33,7 @@ const SitemapPage = ({ pageData, pageLoaded }) => {
             <h1>{pageData.title.rendered}</h1>
             <nav
               className="sitemap__nav"
-              dangerouslySetInnerHTML={{ __html: updatedData }}
+              dangerouslySetInnerHTML={{ __html: pageData.content.rendered }}
             ></nav>
           </div>
         </div>

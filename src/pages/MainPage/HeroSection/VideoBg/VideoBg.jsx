@@ -23,9 +23,9 @@ const VideoBg = ({ src }) => (
       autoPlay
       playsInline
       style={{
-        width: '100%',
-        height: '106%',
-        top: '-3%',
+        // width: '100%',
+        // height: '106%',
+        top: '-4%',
         position: 'relative',
         objectFit: 'cover',
       }}

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
- 
+
 const DropdownMenu = ({ items, lang }) => {
   if (!items) return null;
+  console.log(items);
+
   return (
     <ul>
       {items.map((item, index) =>
@@ -11,9 +13,12 @@ const DropdownMenu = ({ items, lang }) => {
             {item.title}
             <ul>
               {item.child_items.map((childItem, indx) => (
-                <li key={indx} >
+                <li key={indx}>
                   <Link
-                    to={`/${lang}/catalog/${childItem.url.split('/').pop()}`}
+                    to={`/${lang}/catalog/${childItem.url
+                      .split('/')
+                      .filter(Boolean)
+                      .pop()}`}
                   >
                     {childItem.title}
                   </Link>
@@ -23,7 +28,12 @@ const DropdownMenu = ({ items, lang }) => {
           </li>
         ) : (
           <li className="no-arrow" key={index}>
-            <Link to={`/${lang}/catalog/${item.url.split('/').pop()}`}>
+            <Link
+              to={`/${lang}/catalog/${item.url
+                .split('/')
+                .filter(Boolean)
+                .pop()}`}
+            >
               {item.title}
             </Link>
           </li>
@@ -32,5 +42,5 @@ const DropdownMenu = ({ items, lang }) => {
     </ul>
   );
 };
- 
+
 export default DropdownMenu;

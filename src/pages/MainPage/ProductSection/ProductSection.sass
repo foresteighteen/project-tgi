@@ -1,3 +1,4 @@
+
 .products
   background: #F2F9FB
   padding-top: 130px
@@ -11,9 +12,9 @@
     display: inline-block
     overflow: hidden
   &__list
-    display: grid
-    grid-template-columns: 50% 50%
-    grid-gap: 15px
+    display: flex
+    & > a
+      width: 50%
   &__item
     position: relative
     width: 90%!important
@@ -57,6 +58,7 @@
     z-index: 2
     right: -34px
     bottom: 17px
+
 @media (max-width: 1439px)
   .products
     &__item
@@ -109,3 +111,12 @@
       max-height: 100%
       padding: 0 15px
 
+@supports (display: grid)
+  @media (min-width: 992px)
+    .products
+      &__list
+        display: grid
+        grid-template-columns: 50% 50%
+        grid-gap: 15px
+        & > a
+          width: auto
