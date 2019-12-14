@@ -60,7 +60,7 @@
             background: #fff
         & > .production__item-title
           color: #ffffff
-        & > .production__item-icon
+        & > .production__item-icon > svg
           fill: #fff
     // &--orange
     //   background: #EE9D35
@@ -113,13 +113,12 @@
       transform: rotate(45deg)
       transition: background-color .55s
   &__item-icon
-    fill: #EE9D35
-    width: 90px
-    height: 90px
-    transform: scale(.85) translateX(-10px)
-    transition: .55s
-    &:hover
-      fill: #fff
+    & > svg
+      fill: #EE9D35
+      width: 90px
+      height: 90px
+      transform: scale(.85) translateX(-10px)
+      transition: .55s
   &__item-title
     font-size: 26px
     font-family: 'Roboto', sans-serif

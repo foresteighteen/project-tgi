@@ -3,16 +3,22 @@
   
 .vacancy__item
   display: grid
-  grid-template: auto / repeat(2, 1fr)
+  grid-template: auto / 1fr 1fr
+  // grid-template: auto / repeat(2, 1fr)
   padding-top: 55px
   padding-left: 85px
   padding-bottom: 45px
-  min-height: 460px
   background-color: #fff
   margin-bottom: 50px
   margin-left: auto
   margin-right: auto
   max-width: 83%
+  min-height: 460px
+  &__duties
+    grid-column: 2
+    min-height: 460px
+  &__btn
+    grid-row: 2
   .btn-main
     text-transform: none
     border-radius: 5px

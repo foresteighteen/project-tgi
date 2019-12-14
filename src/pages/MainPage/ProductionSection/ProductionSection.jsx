@@ -16,10 +16,10 @@ const ProductionSection = ({ data }) => {
   const springPhotoBLock = useSpring({
     ref: springRef1,
     from: {
-      transform: 'translate3d(-100%,0,0)'
+      transform: 'translate3d(-100%,0,0)',
     },
     to: {
-      transform: 'translate3d(0,0,0)'
+      transform: 'translate3d(0,0,0)',
     },
     // transform: animate ? 'translate3d(0,0,0)' : 'translate3d(-100%,0,0)',
   });
@@ -47,29 +47,27 @@ const ProductionSection = ({ data }) => {
     ref: springRef3,
     from: {
       opacity: 0,
-      transform: 'translate3d(0,50px,0)'
+      transform: 'translate3d(0,50px,0)',
     },
     to: {
       opacity: 1,
-      transform: 'translate3d(0,0,0)'
+      transform: 'translate3d(0,0,0)',
     },
     // opacity: animate ? 1 : 0,
     // transform: animate ? 'translate3d(0,0,0)' : 'translate3d(0,50px,0)',
   });
 
-  useChain(
-    animate
-      ? [springRef1, springRef2, springRef3]
-      : [],
-  );
+  useChain(animate ? [springRef1, springRef2, springRef3] : []);
+  window.bb = blocks;
 
   const renderBlocks = (index, animation) => (
     <animated.div key={index} style={animation} className="production__item">
       <Link to={`/${state.lang}${blocks[index].block.link}`}>
-        <svg
-          type="image/svg+xml"
+        <div
           className="production__item-icon"
-          dangerouslySetInnerHTML={{ __html: blocks[index].block.icon }}
+          dangerouslySetInnerHTML={{
+            __html: blocks[index].block.icon.replace(/<\/?p[>]*>/g, ''),
+          }}
         />
         <h3 className="production__item-title">
           {blocks[index].block.title}

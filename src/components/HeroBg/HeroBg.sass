@@ -6,7 +6,7 @@
   z-index: -1
   top: 0
   // overflow: hidden
-  img
+  &-img
     object-fit: contain
     position: absolute
     bottom: 0
@@ -17,9 +17,10 @@
   .img-left
     display: none
     width: 40%
-    height: 100%
-    left: -50%
-    bottom: -12%
+    height: auto
+    transform: translate(-125%, -50%)
+    // left: -50%
+    // bottom: -43%
     // top: -3%
 @media (max-width: 1439px)
   .hero-bg
