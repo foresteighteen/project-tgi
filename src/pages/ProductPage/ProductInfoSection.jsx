@@ -11,16 +11,21 @@ const ProductInfoSection = ({ data }) => {
           data.big_text_info.length &&
           data.big_text_info.map((e, i) => (
             <div className="additional-info-block" key={i}>
-              <div className="additional-info-block__title">
+              <div className="additional-info-block__title additional-info-block__title-mobile">
                 <h3>{e.title}</h3>
               </div>
               <div className="additional-info-block__img">
                 {e.img && <img src={e.img} alt={e.title} />}
               </div>
-              <div
-                className="additional-info-block__text"
-                dangerouslySetInnerHTML={{ __html: e.tekst }}
-              />
+              <div className="additional-info-block__desc">
+                <div className="additional-info-block__title">
+                  <h3>{e.title}</h3>
+                </div>
+                <div
+                  className="additional-info-block__text"
+                  dangerouslySetInnerHTML={{ __html: e.tekst }}
+                />
+              </div>
             </div>
           ))}
       </div>

@@ -1,12 +1,17 @@
 .catalog__categories-grid
-  display: grid
-  grid-template: 569.5px / repeat(4, 24%)
-  grid-gap: 23px
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  & > div
+    width: 24%
+    margin-bottom: 20px
 
 @media (max-width: 1439px)
   .catalog__categories-grid
-    grid-template: auto / repeat(2, auto)
+    & > div
+      width: 48%
 
 @media (max-width: 767px)
   .catalog__categories-grid
-    grid-template: auto / 1fr
+    & > div
+      width: 100%

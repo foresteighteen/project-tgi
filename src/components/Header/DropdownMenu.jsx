@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 const DropdownMenu = ({ items, lang }) => {
   if (!items) return null;
-  console.log(items);
-
   return (
     <ul>
       {items.map((item, index) =>

@@ -94,10 +94,9 @@ const ProductionSection = ({ data }) => {
               style={springPhotoBLock}
             >
               <animated.div style={springOverlay} className="overlay-block" />
-              <img
-                src={bgImg.url}
-                alt={bgImg.alt}
-                className="production__poster__img"
+              <div
+                style={{ backgroundImage: `url(${bgImg.url})` }}
+                className="production__poster__img background-img-cover"
               />
             </animated.div>
           </div>

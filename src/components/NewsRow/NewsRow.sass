@@ -1,7 +1,12 @@
 .news-grid
-  display: grid
+  display: flex
   grid-template: auto / repeat(2, calc(50% - 9px))
+  justify-content: space-between
   grid-gap: 18px
+  flex-wrap: wrap
+  .news-item
+    width: calc(50% - 9px)
+    margin-bottom: 50px
   &__bottom
   grid-gap: 160px 18px
 
@@ -11,5 +16,5 @@
 
 @media (max-width: 767px)
   .news-grid
-    grid-template: auto / 100%
-    grid-gap: 50px
+    .news-item
+      width: 100%

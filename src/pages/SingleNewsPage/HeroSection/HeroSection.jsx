@@ -5,7 +5,7 @@ import './HeroSection.sass';
 
 const HeroSection = ({ title, desc }) => (
   <section id="certificate-hero">
-    <Hero classes="hero__single-news" brdcrmb={{ path: 'news', title: '', id: 100 }}>
+    <Hero classes="hero__single-news" brdcrmb={{ path: 'news', title: '', id: 314 }}>
       <H1 text={title} />
       <HeroText desc={desc} />
     </Hero>

@@ -7,7 +7,6 @@ import { LangContext } from '../../../../containers/LangProvider';
 import './CatalogProductMain.sass';
 
 const CatalogProductMain = ({ item, index }) => {
-
   const [animate, play] = useState(false);
   const { state } = React.useContext(LangContext);
   const { img, title, vertical, products = [] } = item;
@@ -70,8 +69,7 @@ const CatalogProductMain = ({ item, index }) => {
   useChain(animate ? [springRef1, springRef2, springRef3] : []);
   useChain(animate ? [springRef5, springRef4] : []);
 
-
-  const activeImage = useRef(0);
+  const activeImage = useRef(1);
   const activeImageRef = [];
 
   const renderLi = ({ ...animation }, index) => {
@@ -112,12 +110,18 @@ const CatalogProductMain = ({ item, index }) => {
             <animated.h2 style={spring5}>{vertical}</animated.h2>
           </div>
           <animated.div
-            className="catalog-product__grid__title"
+            className="catalog-product__grid__title catalog-product__grid__title-mobile"
             style={spring5}
           >
             <h3 dangerouslySetInnerHTML={{ __html: title }}></h3>
           </animated.div>
           <div className="catalog-product__grid__items">
+            <animated.div
+              className="catalog-product__grid__title"
+              style={spring5}
+            >
+              <h3 dangerouslySetInnerHTML={{ __html: title }}></h3>
+            </animated.div>
             <ul className="catalog-product__grid__list">
               {/* {products.map(renderLi)} */}
               {spring4.map(renderLi)}

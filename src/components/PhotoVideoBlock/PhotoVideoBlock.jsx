@@ -73,14 +73,15 @@ const PhotoVideoBlock = ({ data }) => {
           >
             <animated.div style={springOverlay} className="overlay-block" />
             <div className={coverClass}>
-              <img
-                className="coverImage"
-                src={
-                  isVideo
-                    ? `https://img.youtube.com/vi/${video}/maxresdefault.jpg`
-                    : bgImg
-                }
-                alt=""
+              <div
+                className="coverImage background-img-cover"
+                style={{
+                  backgroundImage: `url(${
+                    isVideo
+                      ? `https://img.youtube.com/vi/${video}/maxresdefault.jpg`
+                      : bgImg
+                  })`,
+                }}
               />
               {isVideo && isOpen ? <YouTubePlayer video={video} /> : null}
               {isVideo ? (
