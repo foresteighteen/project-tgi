@@ -14,6 +14,7 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import objectFitImages from 'object-fit-images';
 
 import './assets/css/reset.scss';
 import './assets/css/custom-grid.css';
@@ -29,3 +30,5 @@ Modal.setAppElement(rootNode);
 library.add(fab);
 
 ReactDOM.render(<App />, rootNode);
+
+objectFitImages();

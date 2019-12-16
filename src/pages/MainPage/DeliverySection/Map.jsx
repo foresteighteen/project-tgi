@@ -117,26 +117,26 @@ const Map = ({ activeData, texts }) => {
     if (!data) fetchData();
   }, [activeData]);
 
-  const rerenderFunc = index => {
-    // if (!index) return;
-    const oldItems = data.objects.m.geometries;
+  // const rerenderFunc = index => {
+  //   // if (!index) return;
+  //   const oldItems = data.objects.m.geometries;
 
-    if (index === oldItems.length - 1) return;
-    const newItems = [
-      ...oldItems.slice(0, index),
-      ...oldItems.slice(index + 1),
-      ...oldItems.slice(index, index + 1),
-    ];
-    const newData = {
-      ...data,
-      objects: { m: { ...data.objects.m, geometries: newItems } },
-    };
-    setData(newData);
-    // setData(oldData => ({
-    //   ...oldData,
-    //   objects: { m: { ...data.objects.m, geometries: newItems } },
-    // }));
-  };
+  //   if (index === oldItems.length - 1) return;
+  //   const newItems = [
+  //     ...oldItems.slice(0, index),
+  //     ...oldItems.slice(index + 1),
+  //     ...oldItems.slice(index, index + 1),
+  //   ];
+  //   const newData = {
+  //     ...data,
+  //     objects: { m: { ...data.objects.m, geometries: newItems } },
+  //   };
+  //   setData(newData);
+  //   // setData(oldData => ({
+  //   //   ...oldData,
+  //   //   objects: { m: { ...data.objects.m, geometries: newItems } },
+  //   // }));
+  // };
 
   if (!data || !activePath) return null;
 

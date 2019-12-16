@@ -2,11 +2,7 @@ import React from 'react';
 import { useTransition, animated } from 'react-spring';
 import VacancyItem from './VacancyItem';
 
-const VacancyList = ({
-  vacancies,
-  currencySymbol,
-  buttonText,
-}) => {
+const VacancyList = ({ vacancies, currencySymbol, buttonText }) => {
   const transition = useTransition(vacancies, item => item.id, {
     from: { opacity: 0, transform: 'translate3d(0,150px,0)' },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
@@ -22,7 +18,8 @@ const VacancyList = ({
         return (
           <animated.div
             key={key}
-            style={{ ...props, zIndex: `-${key}` }}
+            // style={{ ...props, zIndex: `-${key}` }}
+            style={{ ...props }}
             className="vacancy-wrapp"
           >
             <VacancyItem
